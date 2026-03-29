@@ -71,6 +71,9 @@
         .group-selector { display: flex; gap: 5px; margin-bottom: 15px; overflow-x: auto; padding-bottom: 5px; }
         .group-btn { padding: 8px 15px; border-radius: 20px; border: 1px solid #ddd; background: white; font-size: 12px; white-space: nowrap; cursor: pointer; }
         .group-btn.active { background: var(--p); color: white; border-color: var(--p); }
+        
+        /* ANKET IFRAME */
+        iframe { width: 100%; border: none; border-radius: 8px; min-height: 500px; }
     </style>
 </head>
 <body>
@@ -87,13 +90,22 @@
             <div class="news-card">
                 
                 <a href="https://drive.google.com/file/d/1L7dXWV8kqGlUSLF9es5lAgJv_FdXC5FW/view?usp=sharing" target="_blank"><img src="https://lh3.googleusercontent.com/d/1L7dXWV8kqGlUSLF9es5lAgJv_FdXC5FW" class="news-img" loading="lazy"></a>
-                <div class="news-body"><div class="news-date">29.03.2026</div><div class="news-title">Turnuva Başlıyor</div><div class="news-text">Deneme</div></div>
+                <div class="news-body"><div class="news-date">29.03.2026</div><div class="news-title">Turnuva Başlıyor</div><div class="news-text">Turnuva Fikstür Çekimi Yapıldı.</div></div>
             </div>
             <div class="news-card">
                 
                 
                 <div class="news-body"><div class="news-date">30.03.2026</div><div class="news-title">Sistem Hazır</div><div class="news-text">İzmir Maliyespor Turnuva sistemi aktiftir. Başarılar dileriz.</div></div>
             </div></div>
+    </div>
+
+    <!-- ANKET SAYFASI -->
+    <div id="p-anket" class="page">
+        <div class="card">
+            <h2>🗳️ Haftanın Anketi</h2>
+            <p style="font-size:12px; color:#666; margin-bottom:15px;">Turnuvanın nabzını tutuyoruz! Fikrinizi bizimle paylaşın.</p>
+            <div id="anket-container"><iframe src="https://forms.gle/ssL2nxgFnPvEPDEy5">Yükleniyor...</iframe></div>
+        </div>
     </div>
 
     <!-- FİKSTÜR SAYFASI -->
@@ -207,6 +219,14 @@
                 <button class="btn" style="background:var(--a); color:white;" onclick="elemeKaydet()">Eleme Maçını İşle</button>
             </div>
 
+            <!-- YENİ: ANKET YAYINLA -->
+            <div class="card" style="border: 2px solid #8e44ad;">
+                <h2>🗳️ Anket Yayınla / Güncelle</h2>
+                <p style="font-size:11px; color:#666; margin-bottom:10px;">Google Forms üzerinden aldığınız uzun veya kısa linki buraya yapıştırın.</p>
+                <input type="text" id="a-anket" placeholder="Google Form Linki">
+                <button class="btn" style="background:#8e44ad; color:white;" onclick="anketKaydet()">Anketi Yayınla</button>
+            </div>
+
             <div class="card" style="border: 2px solid #17a2b8;">
                 <h2>📅 Fikstür Ekle / Güncelle</h2>
                 <input type="text" id="a-fikstur" placeholder="Fikstür Linki (Drive PDF veya Resim)">
@@ -258,6 +278,7 @@
 
 <nav class="nav-bar">
     <button class="nav-item" onclick="nav('p-news', this)"><i class="fas fa-newspaper"></i>Haberler</button>
+    <button class="nav-item" onclick="nav('p-anket', this)"><i class="fas fa-poll"></i>Anket</button>
     <button class="nav-item" onclick="nav('p-fikstur', this)"><i class="fas fa-calendar-alt"></i>Fikstür</button>
     <button class="nav-item" onclick="nav('p-puan', this)"><i class="fas fa-list-ol"></i>Puan</button>
     <button class="nav-item" onclick="nav('p-stats', this)"><i class="fas fa-chart-bar"></i>İstat.</button>
@@ -268,12 +289,13 @@
 // --- VERİTABANI ---
 let db = {
     "fixtureLink": "https://drive.google.com/file/d/15zUru3_Vrzy03h_foInbFTVy4xtjC9-f/view?usp=sharing",
+    "pollLink": "https://forms.gle/ssL2nxgFnPvEPDEy5",
     "news": [
         {
             "title": "Turnuva Başlıyor",
             "img": "https://lh3.googleusercontent.com/d/1L7dXWV8kqGlUSLF9es5lAgJv_FdXC5FW",
             "rawImg": "https://drive.google.com/file/d/1L7dXWV8kqGlUSLF9es5lAgJv_FdXC5FW/view?usp=sharing",
-            "text": "Deneme",
+            "text": "Turnuva Fikstür Çekimi Yapıldı.",
             "date": "29.03.2026",
             "id": 1774773671165
         },
@@ -556,6 +578,7 @@ function doLogin() {
         selectors.forEach(s => document.getElementById(s).innerHTML = options);
         
         document.getElementById('a-fikstur').value = db.fixtureLink || "";
+        document.getElementById('a-anket').value = db.pollLink || "";
         
         renderNews(); // Admin giriş yapınca "Haber Sil" butonları görünsün
         alert("Sayın Onur ELMAZ, sisteme hoş geldiniz.");
@@ -584,6 +607,12 @@ function fixImageLink(url) {
 }
 
 // --- ADMIN KAYIT İŞLEMLERİ ---
+function anketKaydet() {
+    db.pollLink = document.getElementById('a-anket').value.trim();
+    renderPoll();
+    alert("Anket güncellendi! Kalıcı olması için sistemi güncellemeyi unutmayın.");
+}
+
 function fiksturKaydet() {
     db.fixtureLink = document.getElementById('a-fikstur').value.trim();
     renderFixture();
@@ -752,6 +781,16 @@ function renderFixture() {
     `;
 }
 
+function renderPoll() {
+    const cont = document.getElementById('anket-container');
+    if(!db.pollLink) {
+        cont.innerHTML = '<p style="text-align:center; color:#999; font-size:13px; margin:20px 0;">Şu an aktif bir anket bulunmuyor.</p>';
+        return;
+    }
+    // Formun ekrana sığması için iframe
+    cont.innerHTML = `<iframe src="${db.pollLink}">Yükleniyor...</iframe>`;
+}
+
 function renderNews() {
     const cont = document.getElementById('news-list'); cont.innerHTML = '';
     if(db.news.length === 0) cont.innerHTML = '<p style="text-align:center; color:#999;">Henüz haber yok.</p>';
@@ -813,7 +852,7 @@ function indirGuncel() {
     renderNews();
 }
 
-window.onload = () => { calculateStats(); renderNews(); renderFixture(); filterG('A', document.querySelector('.group-btn')); renderStats(); renderKnockouts(); };
+window.onload = () => { calculateStats(); renderNews(); renderPoll(); renderFixture(); filterG('A', document.querySelector('.group-btn')); renderStats(); renderKnockouts(); };
 </script>
 
 
