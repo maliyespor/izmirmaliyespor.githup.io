@@ -1,0 +1,477 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>İzmir Maliye Spor - Turnuva Paneli</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        :root { --p: #004080; --s: #0059b3; --a: #e60000; --bg: #f4f7f6; --white: #ffffff; }
+        * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; margin: 0; padding: 0; }
+        body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); color: #333; padding-bottom: 80px; }
+
+        /* HEADER */
+        .header { background: var(--p); color: white; padding: 20px; text-align: center; position: sticky; top: 0; z-index: 1000; }
+        .header h1 { font-size: 1.1rem; text-transform: uppercase; }
+
+        /* NAVIGATION */
+        .nav-bar { position: fixed; bottom: 0; width: 100%; background: white; display: flex; border-top: 1px solid #ddd; z-index: 1000; padding: 5px 0; }
+        .nav-item { flex: 1; text-align: center; color: #777; font-size: 10px; cursor: pointer; border: none; background: none; }
+        .nav-item i { font-size: 20px; display: block; margin-bottom: 3px; }
+        .nav-item.active { color: var(--p); font-weight: bold; }
+
+        /* CONTAINER */
+        .container { padding: 15px; max-width: 600px; margin: auto; }
+        .page { display: none; animation: slideUp 0.2s ease-out; }
+        .page.active { display: block; }
+        @keyframes slideUp { from { transform: translateY(10px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+
+        /* CARDS & MATCHES */
+        .card { background: white; border-radius: 12px; padding: 15px; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.06); }
+        .card h2 { font-size: 1rem; color: var(--p); margin-bottom: 12px; border-left: 4px solid var(--a); padding-left: 10px; }
+        
+        .match-card { background: #f8f9fa; border: 1px solid #eee; border-radius: 8px; padding: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
+        .match-teams { font-weight: bold; font-size: 13px; flex: 1; }
+        .match-score { font-size: 16px; font-weight: 900; color: var(--a); background: #fff; padding: 5px 10px; border-radius: 6px; border: 1px solid #ddd; }
+        .stage-title { font-size: 14px; color: var(--s); margin: 15px 0 5px 0; border-bottom: 1px solid #ccc; padding-bottom: 5px; }
+
+        /* TABLES */
+        .table-w { width: 100%; overflow-x: auto; }
+        table { width: 100%; border-collapse: collapse; font-size: 12px; }
+        th { background: #f8f9fa; padding: 8px; text-align: center; color: #666; border-bottom: 2px solid #eee; }
+        td { padding: 10px 5px; text-align: center; border-bottom: 1px solid #f0f0f0; }
+        .t-left { text-align: left; font-weight: bold; min-width: 100px; }
+        .highlight { background: #eef2f7; font-weight: bold; color: var(--p); border-radius: 4px; }
+
+        /* ADMIN FORMS */
+        input, select, textarea { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; }
+        .btn { width: 100%; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        .btn-p { background: var(--p); color: white; }
+        .btn-s { background: #28a745; color: white; }
+        .btn-w { background: #ffc107; color: #333; }
+        .btn-d { background: #dc3545; color: white; }
+
+        /* HABER TASARIMI */
+        .news-card { background: white; border-radius: 12px; overflow: hidden; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .news-img { width: 100%; height: 200px; object-fit: cover; background: #eee; }
+        .news-body { padding: 15px; }
+        .news-date { font-size: 10px; color: #999; margin-bottom: 5px; }
+        .news-title { font-size: 1.1rem; font-weight: bold; color: var(--p); margin-bottom: 8px; }
+        .news-text { font-size: 13px; color: #555; line-height: 1.4; }
+
+        .group-selector { display: flex; gap: 5px; margin-bottom: 15px; overflow-x: auto; padding-bottom: 5px; }
+        .group-btn { padding: 8px 15px; border-radius: 20px; border: 1px solid #ddd; background: white; font-size: 12px; white-space: nowrap; }
+        .group-btn.active { background: var(--p); color: white; }
+    </style>
+</head>
+<body>
+
+<header class="header">
+    <h1>İZMİR MALİYESPOR</h1>
+    <p style="font-size: 10px; opacity: 0.8; margin-top: 5px;">Turnuva Resmi Bilgi Sistemi</p>
+</header>
+
+<div class="container">
+    <!-- HABERLER SAYFASI -->
+    <div id="p-news" class="page active">
+        <div id="news-list"></div>
+    </div>
+
+    <!-- PUAN DURUMU & ELEMELER SAYFASI -->
+    <div id="p-puan" class="page">
+        <div class="group-selector">
+            <button class="group-btn active" onclick="filterG('A', this)">Grup A</button>
+            <button class="group-btn" onclick="filterG('B', this)">Grup B</button>
+            <button class="group-btn" onclick="filterG('C', this)">Grup C</button>
+            <button class="group-btn" onclick="filterG('D', this)">Grup D</button>
+            <button class="group-btn" style="border-color:var(--a); color:var(--a);" onclick="showKnockouts(this)">🏆 Elemeler</button>
+        </div>
+        
+        <!-- Grup Tabloları Alanı -->
+        <div class="card" id="group-area" style="display: block;">
+            <h2 id="g-title">🏆 Puan Durumu - Grup A</h2>
+            <div class="table-w">
+                <table>
+                    <thead><tr><th>Takım</th><th>O</th><th>G</th><th>M</th><th>AV</th><th>P</th></tr></thead>
+                    <tbody id="puan-body"></tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Eleme Turları (Knockout) Alanı -->
+        <div class="card" id="knockout-area" style="display: none;">
+            <h2>🏆 Eleme Turları Fikstürü</h2>
+            <div id="knockout-list"></div>
+        </div>
+    </div>
+
+    <!-- İSTATİSTİK SAYFASI -->
+    <div id="p-stats" class="page">
+        <div class="card">
+            <h2>⚽ Gol Krallığı</h2>
+            <table id="gol-table">
+                <thead><tr><th>Oyuncu</th><th>Takım</th><th>Gol</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+        <div class="card">
+            <h2>🛡️ Takım Fair-Play (Kartlar)</h2>
+            <table id="takim-kart-table">
+                <thead><tr><th>Takım</th><th>B</th><th>S</th><th>K</th></tr></thead>
+                <tbody id="takim-kart-body"></tbody>
+            </table>
+        </div>
+        <div class="card">
+            <h2>🟥 Oyuncu Kart Listesi</h2>
+            <table id="kart-table">
+                <thead><tr><th>Oyuncu</th><th>B</th><th>S</th><th>K</th></tr></thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </div>
+
+    <!-- ADMIN SAYFASI -->
+    <div id="p-admin" class="page">
+        <!-- Giriş Paneli -->
+        <div id="admin-login" class="card" style="display: block;">
+            <h2>🔒 Yönetici Girişi</h2>
+            <input type="password" id="admin-pass" placeholder="Admin Şifresi">
+            <button class="btn btn-p" onclick="doLogin()">Giriş Yap</button>
+        </div>
+
+        <!-- Yönetim Paneli -->
+        <div id="admin-panel" style="display: none;">
+            
+            <div class="card" style="border: 2px solid var(--p);">
+                <h2>📊 Grup Maçı Gir</h2>
+                <select id="m-ev"><option value="">Takım Seç</option></select>
+                <select id="m-dep"><option value="">Takım Seç</option></select>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:5px;">
+                    <input type="number" id="m-ev-skor" placeholder="Ev Skor" min="0">
+                    <input type="number" id="m-dep-skor" placeholder="Dep Skor" min="0">
+                </div>
+                <button class="btn btn-p" onclick="macKaydet()">Grup Maçını İşle</button>
+            </div>
+
+            <div class="card" style="border: 2px solid var(--a);">
+                <h2>🏆 Eleme Maçı Gir (Play-Off vb.)</h2>
+                <select id="k-tur">
+                    <option value="">Aşama Seçiniz...</option>
+                    <option value="Play-Off Turu">Play-Off Turu</option>
+                    <option value="Çeyrek Final">Çeyrek Final</option>
+                    <option value="Yarı Final">Yarı Final</option>
+                    <option value="3.lük Maçı">3.lük Maçı</option>
+                    <option value="FİNAL">FİNAL</option>
+                </select>
+                <select id="k-ev"><option value="">Takım Seç</option></select>
+                <select id="k-dep"><option value="">Takım Seç</option></select>
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:5px;">
+                    <input type="number" id="k-ev-skor" placeholder="Skor 1" min="0">
+                    <input type="number" id="k-dep-skor" placeholder="Skor 2" min="0">
+                </div>
+                <button class="btn" style="background:var(--a); color:white;" onclick="elemeKaydet()">Eleme Maçını İşle</button>
+            </div>
+
+            <div class="card" style="border: 2px solid #ff9800;">
+                <h2>🛡️ Takım Toplam Kart Güncelle</h2>
+                <select id="tk-takim"><option value="">Takım Seç</option></select>
+                <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:5px;">
+                    <input type="number" id="tk-b" placeholder="Beyaz">
+                    <input type="number" id="tk-s" placeholder="Sarı">
+                    <input type="number" id="tk-k" placeholder="Kırmızı">
+                </div>
+                <button class="btn btn-w" onclick="takimKartGuncelle()">Takım Kartlarını Kaydet</button>
+            </div>
+
+            <div class="card" style="border: 2px solid var(--p);">
+                <h2>⚽ Oyuncu İstatistik Güncelle</h2>
+                <select id="s-takim"><option value="">Takım Seç</option></select>
+                <input type="text" id="s-isim" placeholder="Oyuncu Adı">
+                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:5px;">
+                    <input type="number" id="s-gol" placeholder="Gol" min="0">
+                    <input type="number" id="s-b" placeholder="Beyaz K." min="0">
+                    <input type="number" id="s-s" placeholder="Sarı K." min="0">
+                    <input type="number" id="s-k" placeholder="Kırmızı K." min="0">
+                </div>
+                <button class="btn btn-p" onclick="statGuncelle()">İstatistik Kaydet</button>
+            </div>
+
+            <div class="card" style="border: 2px solid var(--s);">
+                <h2>📣 Haber Ekle</h2>
+                <input type="text" id="h-baslik" placeholder="Haber Başlığı">
+                <input type="text" id="h-resim" placeholder="Resim Linki (Drive veya Web)">
+                <textarea id="h-ozet" rows="3" placeholder="Haber Detayı..."></textarea>
+                <button class="btn btn-s" onclick="haberEkle()">Haberi Yayınla</button>
+            </div>
+
+            <div class="card" style="background: #fff3cd;">
+                <h2>💾 Sistemi Güncelle</h2>
+                <p style="font-size:11px;">Verileri girdikten sonra indirip tiiny.host'a yükleyin.</p>
+                <button class="btn btn-s" onclick="indirGuncel()">GÜNCEL DOSYAYI İNDİR</button>
+            </div>
+            
+            <button class="btn btn-d" onclick="cikisYap()">Kapat (Güvenli Çıkış)</button>
+        </div>
+    </div>
+</div>
+
+<nav class="nav-bar">
+    <button class="nav-item active" onclick="nav('p-news', this)"><i class="fas fa-newspaper"></i>Haberler</button>
+    <button class="nav-item" onclick="nav('p-puan', this)"><i class="fas fa-list-ol"></i>Puan</button>
+    <button class="nav-item" onclick="nav('p-stats', this)"><i class="fas fa-chart-bar"></i>İstatistik</button>
+    <button class="nav-item" onclick="nav('p-admin', this)"><i class="fas fa-user-shield"></i>Admin</button>
+</nav>
+
+<script>
+// --- VERİTABANI ---
+let db = {
+    "news": [
+        {
+            "title": "Turnuva Başlıyor",
+            "img": "https://lh3.googleusercontent.com/d/1L7dXWV8kqGlUSLF9es5lAgJv_FdXC5FW",
+            "text": "Deneme",
+            "date": "29.03.2026"
+        },
+        {
+            "title": "Sistem Hazır",
+            "img": "",
+            "text": "Turnuva uygulaması aktiftir.",
+            "date": "30.03.2026"
+        }
+    ],
+    "matches": [],
+    "knockouts": [],
+    "teams": {
+        "TAŞITLAR F.C.": { "g": "A", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 },
+        "MUHAKEMAT 1838": { "g": "A", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 },
+        "ALİAĞA V.D.MÜD.": { "g": "A", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 },
+        "YEMEKHANE GÜCÜ": { "g": "A", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 },
+        "BORNOVA KOMPLEKS": { "g": "B", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 },
+        "DENETİM F.C.": { "g": "B", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 },
+        "EĞİTİM F.K.": { "g": "B", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 },
+        "PERSONEL MÜD.": { "g": "B", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 },
+        "KARŞIYAKA V.D.MÜD.": { "g": "C", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 },
+        "İDARİ MALİ İŞLER": { "g": "C", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 },
+        "EGE V.D.MÜD.": { "g": "C", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 },
+        "TAŞITLAR MASTER": { "g": "C", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 },
+        "İZMİR İHTİSAS": { "g": "D", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 },
+        "DENETİM GÜCÜ": { "g": "D", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 },
+        "ÇAKABEY İHTİSAS": { "g": "D", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 },
+        "GAZİ BUCA SPOR": { "g": "D", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 }
+    },
+    "players": []
+};
+
+// --- CORE FUNCTIONS ---
+function nav(id, btn) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.getElementById(id).classList.add('active');
+    btn.classList.add('active');
+    window.scrollTo(0,0);
+}
+
+function doLogin() {
+    if(document.getElementById('admin-pass').value === "dikili35h") {
+        document.getElementById('admin-login').style.display='none';
+        document.getElementById('admin-panel').style.display='block';
+        
+        const selectors = ['m-ev','m-dep','k-ev','k-dep','s-takim','tk-takim'];
+        let options = '<option value="">Takım Seç</option>';
+        Object.keys(db.teams).sort().forEach(t => options += `<option value="${t}">${t}</option>`);
+        selectors.forEach(s => document.getElementById(s).innerHTML = options);
+    } else { alert("Şifre Hatalı!"); }
+}
+
+function cikisYap() {
+    // Admin panelini gizle, şifre alanını aç
+    document.getElementById('admin-panel').style.display = 'none';
+    document.getElementById('admin-login').style.display = 'block';
+    document.getElementById('admin-pass').value = '';
+    
+    // Haberler sekmesine dön
+    nav('p-news', document.querySelectorAll('.nav-item')[0]);
+    alert("Güvenli çıkış yapıldı!");
+}
+
+// DRİVE LİNK DÜZELTİCİ
+function fixImageLink(url) {
+    if(!url) return "";
+    if(!url.includes("http")) return url; 
+    const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/) || url.match(/id=([a-zA-Z0-9_-]+)/);
+    if(match && match[1]) {
+        return `https://lh3.googleusercontent.com/d/${match[1]}`;
+    }
+    return url;
+}
+
+// --- ADMIN KAYIT İŞLEMLERİ ---
+function haberEkle() {
+    const title = document.getElementById('h-baslik').value;
+    let img = fixImageLink(document.getElementById('h-resim').value);
+    const text = document.getElementById('h-ozet').value;
+    if(!title || !text) return alert("Eksik bilgi!");
+    db.news.unshift({title, img, text, date: new Date().toLocaleDateString('tr-TR')});
+    renderNews(); alert("Haber yayınlandı!");
+}
+
+function macKaydet() {
+    const ev = document.getElementById('m-ev').value;
+    const dep = document.getElementById('m-dep').value;
+    const evS = parseInt(document.getElementById('m-ev-skor').value);
+    const depS = parseInt(document.getElementById('m-dep-skor').value);
+    if(!ev || !dep || isNaN(evS) || isNaN(depS) || ev === dep) return alert("Hatalı veri!");
+    db.matches.push({ev, dep, evS, depS});
+    calculateStats(); filterG('A', document.querySelector('.group-btn'));
+    alert("Grup Maçı İşlendi!");
+}
+
+function elemeKaydet() {
+    const stage = document.getElementById('k-tur').value;
+    const ev = document.getElementById('k-ev').value;
+    const dep = document.getElementById('k-dep').value;
+    const evS = parseInt(document.getElementById('k-ev-skor').value);
+    const depS = parseInt(document.getElementById('k-dep-skor').value);
+    if(!stage || !ev || !dep || isNaN(evS) || isNaN(depS) || ev === dep) return alert("Hatalı veri!");
+    
+    let idx = db.knockouts.findIndex(k => k.stage === stage && k.ev === ev && k.dep === dep);
+    if(idx > -1) db.knockouts[idx] = {stage, ev, dep, evS, depS};
+    else db.knockouts.push({stage, ev, dep, evS, depS});
+    
+    renderKnockouts(); alert("Eleme Maçı İşlendi!");
+}
+
+function takimKartGuncelle() {
+    const team = document.getElementById('tk-takim').value;
+    if(!team) return alert("Takım seçiniz!");
+    db.teams[team].tb = parseInt(document.getElementById('tk-b').value) || 0;
+    db.teams[team].ts = parseInt(document.getElementById('tk-s').value) || 0;
+    db.teams[team].tk = parseInt(document.getElementById('tk-k').value) || 0;
+    renderStats(); alert("Takım kartları kaydedildi!");
+}
+
+function statGuncelle() {
+    const name = document.getElementById('s-isim').value.trim();
+    const team = document.getElementById('s-takim').value;
+    const gol = parseInt(document.getElementById('s-gol').value) || 0;
+    const b = parseInt(document.getElementById('s-b').value) || 0;
+    const s = parseInt(document.getElementById('s-s').value) || 0;
+    const k = parseInt(document.getElementById('s-k').value) || 0;
+    if(!name || !team) return alert("Eksik!");
+    let pIdx = db.players.findIndex(p => p.name === name && p.team === team);
+    if(pIdx > -1) db.players[pIdx] = {name, team, gol, b, s, k};
+    else db.players.push({name, team, gol, b, s, k});
+    renderStats(); alert("Oyuncu güncellendi!");
+}
+
+// --- HESAPLAMA VE RENDER ---
+function calculateStats() {
+    Object.keys(db.teams).forEach(t => {
+        let cardData = { tb: db.teams[t].tb, ts: db.teams[t].ts, tk: db.teams[t].tk };
+        db.teams[t] = { g: db.teams[t].g, o: 0, gal: 0, b: 0, m: 0, ag: 0, yg: 0, av: 0, p: 0, ...cardData };
+    });
+    db.matches.forEach(m => {
+        let t1 = db.teams[m.ev]; let t2 = db.teams[m.dep];
+        t1.o++; t2.o++; t1.ag += m.evS; t1.yg += m.depS; t2.ag += m.depS; t2.yg += m.evS;
+        if(m.evS > m.depS) { t1.gal++; t1.p += 3; t2.m++; }
+        else if(m.evS < m.depS) { t2.gal++; t2.p += 3; t1.m++; }
+        else { t1.b++; t2.b++; t1.p += 1; t2.p += 1; }
+        t1.av = t1.ag - t1.yg; t2.av = t2.ag - t2.yg;
+    });
+}
+
+function filterG(g, btn) {
+    document.querySelectorAll('.group-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('group-area').style.display = 'block';
+    document.getElementById('knockout-area').style.display = 'none';
+    document.getElementById('g-title').innerText = `🏆 Puan Durumu - Grup ${g}`;
+    
+    const tbody = document.getElementById('puan-body'); tbody.innerHTML = '';
+    Object.keys(db.teams).filter(t => db.teams[t].g === g).sort((a,b) => db.teams[b].p - db.teams[a].p || db.teams[b].av - db.teams[a].av).forEach(t => {
+        const d = db.teams[t];
+        tbody.innerHTML += `<tr><td class="t-left">${t}</td><td>${d.o}</td><td>${d.gal}</td><td>${d.m}</td><td>${d.av}</td><td class="highlight">${d.p}</td></tr>`;
+    });
+}
+
+function showKnockouts(btn) {
+    document.querySelectorAll('.group-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    document.getElementById('group-area').style.display = 'none';
+    document.getElementById('knockout-area').style.display = 'block';
+    renderKnockouts();
+}
+
+function renderKnockouts() {
+    const list = document.getElementById('knockout-list');
+    list.innerHTML = '';
+    if(!db.knockouts || db.knockouts.length === 0) {
+        list.innerHTML = '<p style="text-align:center; color:#999; margin:20px 0;">Henüz eleme eşleşmesi girilmedi.</p>'; return;
+    }
+    
+    const stages = [...new Set(db.knockouts.map(k => k.stage))];
+    stages.forEach(stage => {
+        list.innerHTML += `<div class="stage-title">${stage}</div>`;
+        db.knockouts.filter(k => k.stage === stage).forEach(m => {
+            list.innerHTML += `
+                <div class="match-card">
+                    <div class="match-teams">${m.ev} <br> <span style="color:#777;font-size:10px;">vs</span> <br> ${m.dep}</div>
+                    <div class="match-score">${m.evS} - ${m.depS}</div>
+                </div>`;
+        });
+    });
+}
+
+function renderNews() {
+    const cont = document.getElementById('news-list'); cont.innerHTML = '';
+    db.news.forEach(n => {
+        cont.innerHTML += `<div class="news-card">
+            ${n.img ? `<img src="${n.img}" class="news-img" loading="lazy">` : ''}
+            <div class="news-body"><div class="news-date">${n.date}</div><div class="news-title">${n.title}</div><div class="news-text">${n.text}</div></div></div>`;
+    });
+}
+
+function renderStats() {
+    const gBody = document.querySelector('#gol-table tbody'); gBody.innerHTML = '';
+    db.players.sort((a,b) => b.gol - a.gol).slice(0,10).forEach(p => {
+        if(p.gol > 0) gBody.innerHTML += `<tr><td class="t-left">${p.name}</td><td>${p.team}</td><td class="highlight">${p.gol}</td></tr>`;
+    });
+
+    const tkBody = document.getElementById('takim-kart-body'); tkBody.innerHTML = '';
+    let tkArr = [];
+    Object.keys(db.teams).forEach(t => {
+        const d = db.teams[t];
+        if(d.tb > 0 || d.ts > 0 || d.tk > 0) tkArr.push({name: t, b: d.tb, s: d.ts, k: d.tk});
+    });
+    tkArr.sort((a,b) => b.k - a.k || b.s - a.s).forEach(t => {
+        tkBody.innerHTML += `<tr><td class="t-left">${t.name}</td><td>${t.b}</td><td>${t.s}</td><td style="color:red;font-weight:bold">${t.k}</td></tr>`;
+    });
+
+    const kBody = document.querySelector('#kart-table tbody'); kBody.innerHTML = '';
+    db.players.sort((a,b) => b.k - a.k || b.s - a.s).forEach(p => {
+        if(p.b > 0 || p.s > 0 || p.k > 0) kBody.innerHTML += `<tr><td class="t-left">${p.name}</td><td>${p.b}</td><td>${p.s}</td><td style="color:red;font-weight:bold">${p.k}</td></tr>`;
+    });
+}
+
+function indirGuncel() {
+    // DOSYAYA KAYDEDERKEN ADMIN PANELİNİ GİZLE Kİ, OYUNCULARA AÇIK GİTMESİN!
+    document.getElementById('admin-panel').style.display = 'none';
+    document.getElementById('admin-login').style.display = 'block';
+    
+    const tamKod = document.documentElement.outerHTML;
+    const regex = /let db = \{[\s\S]*?\};/;
+    const yeniKod = tamKod.replace(regex, `let db = ${JSON.stringify(db, null, 4)};`);
+    
+    const blob = new Blob([yeniKod], { type: 'text/html' });
+    const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
+    a.download = 'Maliyespor_Guncel.html'; a.click();
+    
+    // İndirme bitince paneli geri aç (Sen işleme devam edebil diye)
+    document.getElementById('admin-panel').style.display = 'block';
+    document.getElementById('admin-login').style.display = 'none';
+}
+
+window.onload = () => { calculateStats(); renderNews(); filterG('A', document.querySelector('.group-btn')); renderStats(); renderKnockouts(); };
+</script>
+</body>
+</html>
