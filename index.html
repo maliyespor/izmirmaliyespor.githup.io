@@ -1,6 +1,4 @@
-<!DOCTYPE html>
-<html lang="tr">
-<head>
+<html lang="tr"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>İzmir Maliye Spor - Turnuva Paneli</title>
@@ -11,7 +9,7 @@
         body { font-family: 'Segoe UI', Tahoma, sans-serif; background: var(--bg); color: #333; padding-bottom: 80px; }
 
         /* HEADER */
-        .header { background: var(--p); color: white; padding: 20px; text-align: center; position: sticky; top: 0; z-index: 1000; }
+        .header { background: var(--p); color: white; padding: 20px; text-align: center; position: sticky; top: 0; z-index: 1000; box-shadow: 0 2px 5px rgba(0,0,0,0.1); }
         .header h1 { font-size: 1.1rem; text-transform: uppercase; }
 
         /* NAVIGATION */
@@ -33,7 +31,7 @@
         .match-card { background: #f8f9fa; border: 1px solid #eee; border-radius: 8px; padding: 10px; margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center; }
         .match-teams { font-weight: bold; font-size: 13px; flex: 1; }
         .match-score { font-size: 16px; font-weight: 900; color: var(--a); background: #fff; padding: 5px 10px; border-radius: 6px; border: 1px solid #ddd; }
-        .stage-title { font-size: 14px; color: var(--s); margin: 15px 0 5px 0; border-bottom: 1px solid #ccc; padding-bottom: 5px; }
+        .stage-title { font-size: 14px; color: var(--s); margin: 15px 0 5px 0; border-bottom: 1px solid #ccc; padding-bottom: 5px; font-weight: bold; }
 
         /* TABLES */
         .table-w { width: 100%; overflow-x: auto; }
@@ -45,23 +43,26 @@
 
         /* ADMIN FORMS */
         input, select, textarea { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; }
-        .btn { width: 100%; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px; }
+        .btn { width: 100%; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px; transition: 0.2s; }
         .btn-p { background: var(--p); color: white; }
         .btn-s { background: #28a745; color: white; }
         .btn-w { background: #ffc107; color: #333; }
         .btn-d { background: #dc3545; color: white; }
+        
+        .admin-info { font-size: 11px; color: #666; text-align: center; margin-bottom: 15px; font-style: italic; }
 
         /* HABER TASARIMI */
-        .news-card { background: white; border-radius: 12px; overflow: hidden; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+        .news-card { background: white; border-radius: 12px; overflow: hidden; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); position: relative; }
         .news-img { width: 100%; height: 200px; object-fit: cover; background: #eee; }
         .news-body { padding: 15px; }
         .news-date { font-size: 10px; color: #999; margin-bottom: 5px; }
         .news-title { font-size: 1.1rem; font-weight: bold; color: var(--p); margin-bottom: 8px; }
         .news-text { font-size: 13px; color: #555; line-height: 1.4; }
+        .btn-delete-news { position: absolute; top: 10px; right: 10px; background: rgba(220,53,69,0.9); color: white; border: none; padding: 5px 10px; border-radius: 5px; font-size: 12px; cursor: pointer; display: none; } /* Sadece adminde görünür */
 
         .group-selector { display: flex; gap: 5px; margin-bottom: 15px; overflow-x: auto; padding-bottom: 5px; }
-        .group-btn { padding: 8px 15px; border-radius: 20px; border: 1px solid #ddd; background: white; font-size: 12px; white-space: nowrap; }
-        .group-btn.active { background: var(--p); color: white; }
+        .group-btn { padding: 8px 15px; border-radius: 20px; border: 1px solid #ddd; background: white; font-size: 12px; white-space: nowrap; cursor: pointer; }
+        .group-btn.active { background: var(--p); color: white; border-color: var(--p); }
     </style>
 </head>
 <body>
@@ -73,8 +74,18 @@
 
 <div class="container">
     <!-- HABERLER SAYFASI -->
-    <div id="p-news" class="page active">
-        <div id="news-list"></div>
+    <div id="p-news" class="page">
+        <div id="news-list">
+            <div class="news-card">
+                
+                <img src="https://lh3.googleusercontent.com/d/1L7dXWV8kqGlUSLF9es5lAgJv_FdXC5FW" class="news-img" loading="lazy">
+                <div class="news-body"><div class="news-date">29.03.2026</div><div class="news-title">Maliye Spor Tunuvası Başlıyor</div><div class="news-text">Geleneksel Maliye Spor Futbol Turnuvası, 13 Nisan Pazartesi günü başlayacaktır. Turnuvada 16 takım ve 145 personel, Alsancak Namık Kemal Halı Sahası’nda şampiyonluk için mücadele edecektir. Tüm takımlarımıza başarılar dileriz.</div></div>
+            </div>
+            <div class="news-card">
+                
+                
+                <div class="news-body"><div class="news-date">30.03.2026</div><div class="news-title">Sistem Hazır</div><div class="news-text">İzmir Maliyespor Turnuva sistemi aktiftir. Başarılar dileriz.</div></div>
+            </div></div>
     </div>
 
     <!-- PUAN DURUMU & ELEMELER SAYFASI -->
@@ -87,74 +98,76 @@
             <button class="group-btn" style="border-color:var(--a); color:var(--a);" onclick="showKnockouts(this)">🏆 Elemeler</button>
         </div>
         
-        <!-- Grup Tabloları Alanı -->
         <div class="card" id="group-area" style="display: block;">
             <h2 id="g-title">🏆 Puan Durumu - Grup A</h2>
             <div class="table-w">
                 <table>
                     <thead><tr><th>Takım</th><th>O</th><th>G</th><th>M</th><th>AV</th><th>P</th></tr></thead>
-                    <tbody id="puan-body"></tbody>
+                    <tbody id="puan-body"><tr><td class="t-left">TAŞITLAR F.C.</td><td>1</td><td>1</td><td>0</td><td>1</td><td class="highlight">3</td></tr><tr><td class="t-left">MUHAKEMAT 1838</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="highlight">0</td></tr><tr><td class="t-left">YEMEKHANE GÜCÜ</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="highlight">0</td></tr><tr><td class="t-left">ALİAĞA V.D.MÜD.</td><td>1</td><td>0</td><td>1</td><td>-1</td><td class="highlight">0</td></tr></tbody>
                 </table>
             </div>
         </div>
 
-        <!-- Eleme Turları (Knockout) Alanı -->
         <div class="card" id="knockout-area" style="display: none;">
             <h2>🏆 Eleme Turları Fikstürü</h2>
-            <div id="knockout-list"></div>
+            <div id="knockout-list"><div class="stage-title">Play-Off Turu</div>
+                <div class="match-card">
+                    <div class="match-teams">KARŞIYAKA V.D.MÜD. <br> <span style="color:#777;font-size:10px;">vs</span> <br> EĞİTİM F.K.</div>
+                    <div class="match-score">2 - 1</div>
+                </div></div>
         </div>
     </div>
 
     <!-- İSTATİSTİK SAYFASI -->
     <div id="p-stats" class="page">
         <div class="card">
-            <h2>⚽ Gol Krallığı</h2>
+            <h2>⚽ Gol Krallığı (Top 10)</h2>
             <table id="gol-table">
                 <thead><tr><th>Oyuncu</th><th>Takım</th><th>Gol</th></tr></thead>
-                <tbody></tbody>
+                <tbody><tr><td class="t-left">Onur ELMAZ</td><td>DENETİM F.C.</td><td class="highlight">1</td></tr></tbody>
             </table>
         </div>
         <div class="card">
-            <h2>🛡️ Takım Fair-Play (Kartlar)</h2>
+            <h2>🛡️ Takım Fair-Play Listesi</h2>
             <table id="takim-kart-table">
                 <thead><tr><th>Takım</th><th>B</th><th>S</th><th>K</th></tr></thead>
                 <tbody id="takim-kart-body"></tbody>
             </table>
         </div>
         <div class="card">
-            <h2>🟥 Oyuncu Kart Listesi</h2>
+            <h2>🟥 Oyuncu Kart &amp; Cezalı Listesi</h2>
             <table id="kart-table">
                 <thead><tr><th>Oyuncu</th><th>B</th><th>S</th><th>K</th></tr></thead>
-                <tbody></tbody>
+                <tbody><tr><td class="t-left">Onur ELMAZ</td><td>1</td><td>1</td><td style="color:red;font-weight:bold">0</td></tr></tbody>
             </table>
         </div>
     </div>
 
     <!-- ADMIN SAYFASI -->
-    <div id="p-admin" class="page">
-        <!-- Giriş Paneli -->
+    <div id="p-admin" class="page active">
         <div id="admin-login" class="card" style="display: block;">
             <h2>🔒 Yönetici Girişi</h2>
+            <div class="admin-info">Sistem Yöneticisi: Onur ELMAZ<br>Strateji Müdürlüğü</div>
             <input type="password" id="admin-pass" placeholder="Admin Şifresi">
             <button class="btn btn-p" onclick="doLogin()">Giriş Yap</button>
         </div>
 
-        <!-- Yönetim Paneli -->
         <div id="admin-panel" style="display: none;">
             
             <div class="card" style="border: 2px solid var(--p);">
-                <h2>📊 Grup Maçı Gir</h2>
-                <select id="m-ev"><option value="">Takım Seç</option></select>
-                <select id="m-dep"><option value="">Takım Seç</option></select>
+                <h2>📊 Grup Maçı Gir / Düzelt</h2>
+                <p style="font-size:11px; color:#666; margin-bottom:10px;">Hatalı maçı düzeltmek için aynı takımları seçip DOĞRU skoru girin.</p>
+                <select id="m-ev"><option value="">Takım Seç</option><option value="ALİAĞA V.D.MÜD.">ALİAĞA V.D.MÜD.</option><option value="BORNOVA KOMPLEKS">BORNOVA KOMPLEKS</option><option value="DENETİM F.C.">DENETİM F.C.</option><option value="DENETİM GÜCÜ">DENETİM GÜCÜ</option><option value="EGE V.D.MÜD.">EGE V.D.MÜD.</option><option value="EĞİTİM F.K.">EĞİTİM F.K.</option><option value="GAZİ BUCA SPOR">GAZİ BUCA SPOR</option><option value="KARŞIYAKA V.D.MÜD.">KARŞIYAKA V.D.MÜD.</option><option value="MUHAKEMAT 1838">MUHAKEMAT 1838</option><option value="PERSONEL MÜD.">PERSONEL MÜD.</option><option value="TAŞITLAR F.C.">TAŞITLAR F.C.</option><option value="TAŞITLAR MASTER">TAŞITLAR MASTER</option><option value="YEMEKHANE GÜCÜ">YEMEKHANE GÜCÜ</option><option value="ÇAKABEY İHTİSAS">ÇAKABEY İHTİSAS</option><option value="İDARİ MALİ İŞLER">İDARİ MALİ İŞLER</option><option value="İZMİR İHTİSAS">İZMİR İHTİSAS</option></select>
+                <select id="m-dep"><option value="">Takım Seç</option><option value="ALİAĞA V.D.MÜD.">ALİAĞA V.D.MÜD.</option><option value="BORNOVA KOMPLEKS">BORNOVA KOMPLEKS</option><option value="DENETİM F.C.">DENETİM F.C.</option><option value="DENETİM GÜCÜ">DENETİM GÜCÜ</option><option value="EGE V.D.MÜD.">EGE V.D.MÜD.</option><option value="EĞİTİM F.K.">EĞİTİM F.K.</option><option value="GAZİ BUCA SPOR">GAZİ BUCA SPOR</option><option value="KARŞIYAKA V.D.MÜD.">KARŞIYAKA V.D.MÜD.</option><option value="MUHAKEMAT 1838">MUHAKEMAT 1838</option><option value="PERSONEL MÜD.">PERSONEL MÜD.</option><option value="TAŞITLAR F.C.">TAŞITLAR F.C.</option><option value="TAŞITLAR MASTER">TAŞITLAR MASTER</option><option value="YEMEKHANE GÜCÜ">YEMEKHANE GÜCÜ</option><option value="ÇAKABEY İHTİSAS">ÇAKABEY İHTİSAS</option><option value="İDARİ MALİ İŞLER">İDARİ MALİ İŞLER</option><option value="İZMİR İHTİSAS">İZMİR İHTİSAS</option></select>
                 <div style="display:grid; grid-template-columns: 1fr 1fr; gap:5px;">
                     <input type="number" id="m-ev-skor" placeholder="Ev Skor" min="0">
                     <input type="number" id="m-dep-skor" placeholder="Dep Skor" min="0">
                 </div>
-                <button class="btn btn-p" onclick="macKaydet()">Grup Maçını İşle</button>
+                <button class="btn btn-p" onclick="macKaydet()">Maçı Sisteme İşle</button>
             </div>
 
             <div class="card" style="border: 2px solid var(--a);">
-                <h2>🏆 Eleme Maçı Gir (Play-Off vb.)</h2>
+                <h2>🏆 Eleme Maçı Gir / Düzelt</h2>
                 <select id="k-tur">
                     <option value="">Aşama Seçiniz...</option>
                     <option value="Play-Off Turu">Play-Off Turu</option>
@@ -163,8 +176,8 @@
                     <option value="3.lük Maçı">3.lük Maçı</option>
                     <option value="FİNAL">FİNAL</option>
                 </select>
-                <select id="k-ev"><option value="">Takım Seç</option></select>
-                <select id="k-dep"><option value="">Takım Seç</option></select>
+                <select id="k-ev"><option value="">Takım Seç</option><option value="ALİAĞA V.D.MÜD.">ALİAĞA V.D.MÜD.</option><option value="BORNOVA KOMPLEKS">BORNOVA KOMPLEKS</option><option value="DENETİM F.C.">DENETİM F.C.</option><option value="DENETİM GÜCÜ">DENETİM GÜCÜ</option><option value="EGE V.D.MÜD.">EGE V.D.MÜD.</option><option value="EĞİTİM F.K.">EĞİTİM F.K.</option><option value="GAZİ BUCA SPOR">GAZİ BUCA SPOR</option><option value="KARŞIYAKA V.D.MÜD.">KARŞIYAKA V.D.MÜD.</option><option value="MUHAKEMAT 1838">MUHAKEMAT 1838</option><option value="PERSONEL MÜD.">PERSONEL MÜD.</option><option value="TAŞITLAR F.C.">TAŞITLAR F.C.</option><option value="TAŞITLAR MASTER">TAŞITLAR MASTER</option><option value="YEMEKHANE GÜCÜ">YEMEKHANE GÜCÜ</option><option value="ÇAKABEY İHTİSAS">ÇAKABEY İHTİSAS</option><option value="İDARİ MALİ İŞLER">İDARİ MALİ İŞLER</option><option value="İZMİR İHTİSAS">İZMİR İHTİSAS</option></select>
+                <select id="k-dep"><option value="">Takım Seç</option><option value="ALİAĞA V.D.MÜD.">ALİAĞA V.D.MÜD.</option><option value="BORNOVA KOMPLEKS">BORNOVA KOMPLEKS</option><option value="DENETİM F.C.">DENETİM F.C.</option><option value="DENETİM GÜCÜ">DENETİM GÜCÜ</option><option value="EGE V.D.MÜD.">EGE V.D.MÜD.</option><option value="EĞİTİM F.K.">EĞİTİM F.K.</option><option value="GAZİ BUCA SPOR">GAZİ BUCA SPOR</option><option value="KARŞIYAKA V.D.MÜD.">KARŞIYAKA V.D.MÜD.</option><option value="MUHAKEMAT 1838">MUHAKEMAT 1838</option><option value="PERSONEL MÜD.">PERSONEL MÜD.</option><option value="TAŞITLAR F.C.">TAŞITLAR F.C.</option><option value="TAŞITLAR MASTER">TAŞITLAR MASTER</option><option value="YEMEKHANE GÜCÜ">YEMEKHANE GÜCÜ</option><option value="ÇAKABEY İHTİSAS">ÇAKABEY İHTİSAS</option><option value="İDARİ MALİ İŞLER">İDARİ MALİ İŞLER</option><option value="İZMİR İHTİSAS">İZMİR İHTİSAS</option></select>
                 <div style="display:grid; grid-template-columns: 1fr 1fr; gap:5px;">
                     <input type="number" id="k-ev-skor" placeholder="Skor 1" min="0">
                     <input type="number" id="k-dep-skor" placeholder="Skor 2" min="0">
@@ -172,9 +185,17 @@
                 <button class="btn" style="background:var(--a); color:white;" onclick="elemeKaydet()">Eleme Maçını İşle</button>
             </div>
 
+            <div class="card" style="border: 2px solid var(--s);">
+                <h2>📣 Haber Ekle</h2>
+                <input type="text" id="h-baslik" placeholder="Haber Başlığı">
+                <input type="text" id="h-resim" placeholder="Resim Linki (Drive veya URL)">
+                <textarea id="h-ozet" rows="3" placeholder="Haber Detayı..."></textarea>
+                <button class="btn btn-s" onclick="haberEkle()">Haberi Yayınla</button>
+            </div>
+
             <div class="card" style="border: 2px solid #ff9800;">
                 <h2>🛡️ Takım Toplam Kart Güncelle</h2>
-                <select id="tk-takim"><option value="">Takım Seç</option></select>
+                <select id="tk-takim"><option value="">Takım Seç</option><option value="ALİAĞA V.D.MÜD.">ALİAĞA V.D.MÜD.</option><option value="BORNOVA KOMPLEKS">BORNOVA KOMPLEKS</option><option value="DENETİM F.C.">DENETİM F.C.</option><option value="DENETİM GÜCÜ">DENETİM GÜCÜ</option><option value="EGE V.D.MÜD.">EGE V.D.MÜD.</option><option value="EĞİTİM F.K.">EĞİTİM F.K.</option><option value="GAZİ BUCA SPOR">GAZİ BUCA SPOR</option><option value="KARŞIYAKA V.D.MÜD.">KARŞIYAKA V.D.MÜD.</option><option value="MUHAKEMAT 1838">MUHAKEMAT 1838</option><option value="PERSONEL MÜD.">PERSONEL MÜD.</option><option value="TAŞITLAR F.C.">TAŞITLAR F.C.</option><option value="TAŞITLAR MASTER">TAŞITLAR MASTER</option><option value="YEMEKHANE GÜCÜ">YEMEKHANE GÜCÜ</option><option value="ÇAKABEY İHTİSAS">ÇAKABEY İHTİSAS</option><option value="İDARİ MALİ İŞLER">İDARİ MALİ İŞLER</option><option value="İZMİR İHTİSAS">İZMİR İHTİSAS</option></select>
                 <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:5px;">
                     <input type="number" id="tk-b" placeholder="Beyaz">
                     <input type="number" id="tk-s" placeholder="Sarı">
@@ -184,42 +205,34 @@
             </div>
 
             <div class="card" style="border: 2px solid var(--p);">
-                <h2>⚽ Oyuncu İstatistik Güncelle</h2>
-                <select id="s-takim"><option value="">Takım Seç</option></select>
-                <input type="text" id="s-isim" placeholder="Oyuncu Adı">
+                <h2>⚽ Oyuncu İstatistik Gir / Düzelt</h2>
+                <select id="s-takim"><option value="">Takım Seç</option><option value="ALİAĞA V.D.MÜD.">ALİAĞA V.D.MÜD.</option><option value="BORNOVA KOMPLEKS">BORNOVA KOMPLEKS</option><option value="DENETİM F.C.">DENETİM F.C.</option><option value="DENETİM GÜCÜ">DENETİM GÜCÜ</option><option value="EGE V.D.MÜD.">EGE V.D.MÜD.</option><option value="EĞİTİM F.K.">EĞİTİM F.K.</option><option value="GAZİ BUCA SPOR">GAZİ BUCA SPOR</option><option value="KARŞIYAKA V.D.MÜD.">KARŞIYAKA V.D.MÜD.</option><option value="MUHAKEMAT 1838">MUHAKEMAT 1838</option><option value="PERSONEL MÜD.">PERSONEL MÜD.</option><option value="TAŞITLAR F.C.">TAŞITLAR F.C.</option><option value="TAŞITLAR MASTER">TAŞITLAR MASTER</option><option value="YEMEKHANE GÜCÜ">YEMEKHANE GÜCÜ</option><option value="ÇAKABEY İHTİSAS">ÇAKABEY İHTİSAS</option><option value="İDARİ MALİ İŞLER">İDARİ MALİ İŞLER</option><option value="İZMİR İHTİSAS">İZMİR İHTİSAS</option></select>
+                <input type="text" id="s-isim" placeholder="Oyuncu Adı (Aynı adı yazarsan üstüne yazar)">
                 <div style="display:grid; grid-template-columns: 1fr 1fr; gap:5px;">
                     <input type="number" id="s-gol" placeholder="Gol" min="0">
-                    <input type="number" id="s-b" placeholder="Beyaz K." min="0">
-                    <input type="number" id="s-s" placeholder="Sarı K." min="0">
-                    <input type="number" id="s-k" placeholder="Kırmızı K." min="0">
+                    <input type="number" id="s-b" placeholder="Beyaz" min="0">
+                    <input type="number" id="s-s" placeholder="Sarı" min="0">
+                    <input type="number" id="s-k" placeholder="Kırmızı" min="0">
                 </div>
                 <button class="btn btn-p" onclick="statGuncelle()">İstatistik Kaydet</button>
             </div>
 
-            <div class="card" style="border: 2px solid var(--s);">
-                <h2>📣 Haber Ekle</h2>
-                <input type="text" id="h-baslik" placeholder="Haber Başlığı">
-                <input type="text" id="h-resim" placeholder="Resim Linki (Drive veya Web)">
-                <textarea id="h-ozet" rows="3" placeholder="Haber Detayı..."></textarea>
-                <button class="btn btn-s" onclick="haberEkle()">Haberi Yayınla</button>
-            </div>
-
-            <div class="card" style="background: #fff3cd;">
-                <h2>💾 Sistemi Güncelle</h2>
-                <p style="font-size:11px;">Verileri girdikten sonra indirip tiiny.host'a yükleyin.</p>
-                <button class="btn btn-s" onclick="indirGuncel()">GÜNCEL DOSYAYI İNDİR</button>
+            <div class="card" style="background: #e6ffe6; border: 2px solid #28a745;">
+                <h2>💾 Sistemi Güncelle &amp; İndir</h2>
+                <p style="font-size:11px; margin-bottom:10px;">Yaptığınız tüm değişiklikleri GitHub'a yüklemek için aşağıdaki butona basın ve inen dosyayı GitHub'a atın.</p>
+                <button class="btn btn-s" onclick="indirGuncel()"><i class="fas fa-download"></i> GÜNCEL DOSYAYI İNDİR</button>
             </div>
             
-            <button class="btn btn-d" onclick="cikisYap()">Kapat (Güvenli Çıkış)</button>
+            <button class="btn btn-d" onclick="cikisYap()">Güvenli Çıkış Yap</button>
         </div>
     </div>
 </div>
 
 <nav class="nav-bar">
-    <button class="nav-item active" onclick="nav('p-news', this)"><i class="fas fa-newspaper"></i>Haberler</button>
+    <button class="nav-item" onclick="nav('p-news', this)"><i class="fas fa-newspaper"></i>Haberler</button>
     <button class="nav-item" onclick="nav('p-puan', this)"><i class="fas fa-list-ol"></i>Puan</button>
     <button class="nav-item" onclick="nav('p-stats', this)"><i class="fas fa-chart-bar"></i>İstatistik</button>
-    <button class="nav-item" onclick="nav('p-admin', this)"><i class="fas fa-user-shield"></i>Admin</button>
+    <button class="nav-item active" onclick="nav('p-admin', this)"><i class="fas fa-user-shield"></i>Admin</button>
 </nav>
 
 <script>
@@ -227,40 +240,277 @@
 let db = {
     "news": [
         {
-            "title": "Turnuva Başlıyor",
+            "title": "Maliye Spor Tunuvası Başlıyor",
             "img": "https://lh3.googleusercontent.com/d/1L7dXWV8kqGlUSLF9es5lAgJv_FdXC5FW",
-            "text": "Deneme",
-            "date": "29.03.2026"
+            "text": "Geleneksel Maliye Spor Futbol Turnuvası, 13 Nisan Pazartesi günü başlayacaktır. Turnuvada 16 takım ve 145 personel, Alsancak Namık Kemal Halı Sahası’nda şampiyonluk için mücadele edecektir. Tüm takımlarımıza başarılar dileriz.",
+            "date": "29.03.2026",
+            "id": 1774769194236
         },
         {
             "title": "Sistem Hazır",
             "img": "",
-            "text": "Turnuva uygulaması aktiftir.",
-            "date": "30.03.2026"
+            "text": "İzmir Maliyespor Turnuva sistemi aktiftir. Başarılar dileriz.",
+            "date": "30.03.2026",
+            "id": 1774768743889
         }
     ],
-    "matches": [],
-    "knockouts": [],
+    "matches": [
+        {
+            "ev": "TAŞITLAR F.C.",
+            "dep": "ALİAĞA V.D.MÜD.",
+            "evS": 2,
+            "depS": 1
+        }
+    ],
+    "knockouts": [
+        {
+            "stage": "Play-Off Turu",
+            "ev": "KARŞIYAKA V.D.MÜD.",
+            "dep": "EĞİTİM F.K.",
+            "evS": 2,
+            "depS": 1
+        }
+    ],
     "teams": {
-        "TAŞITLAR F.C.": { "g": "A", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 },
-        "MUHAKEMAT 1838": { "g": "A", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 },
-        "ALİAĞA V.D.MÜD.": { "g": "A", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 },
-        "YEMEKHANE GÜCÜ": { "g": "A", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 },
-        "BORNOVA KOMPLEKS": { "g": "B", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 },
-        "DENETİM F.C.": { "g": "B", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 },
-        "EĞİTİM F.K.": { "g": "B", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 },
-        "PERSONEL MÜD.": { "g": "B", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 },
-        "KARŞIYAKA V.D.MÜD.": { "g": "C", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 },
-        "İDARİ MALİ İŞLER": { "g": "C", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 },
-        "EGE V.D.MÜD.": { "g": "C", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 },
-        "TAŞITLAR MASTER": { "g": "C", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 },
-        "İZMİR İHTİSAS": { "g": "D", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 },
-        "DENETİM GÜCÜ": { "g": "D", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 },
-        "ÇAKABEY İHTİSAS": { "g": "D", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 },
-        "GAZİ BUCA SPOR": { "g": "D", "o": 0, "gal": 0, "b": 0, "m": 0, "ag": 0, "yg": 0, "av": 0, "p": 0, "tb": 0, "ts": 0, "tk": 0 }
+        "TAŞITLAR F.C.": {
+            "g": "A",
+            "o": 1,
+            "gal": 1,
+            "b": 0,
+            "m": 0,
+            "ag": 2,
+            "yg": 1,
+            "av": 1,
+            "p": 3,
+            "tb": 0,
+            "ts": 0,
+            "tk": 0
+        },
+        "MUHAKEMAT 1838": {
+            "g": "A",
+            "o": 0,
+            "gal": 0,
+            "b": 0,
+            "m": 0,
+            "ag": 0,
+            "yg": 0,
+            "av": 0,
+            "p": 0,
+            "tb": 0,
+            "ts": 0,
+            "tk": 0
+        },
+        "ALİAĞA V.D.MÜD.": {
+            "g": "A",
+            "o": 1,
+            "gal": 0,
+            "b": 0,
+            "m": 1,
+            "ag": 1,
+            "yg": 2,
+            "av": -1,
+            "p": 0,
+            "tb": 0,
+            "ts": 0,
+            "tk": 0
+        },
+        "YEMEKHANE GÜCÜ": {
+            "g": "A",
+            "o": 0,
+            "gal": 0,
+            "b": 0,
+            "m": 0,
+            "ag": 0,
+            "yg": 0,
+            "av": 0,
+            "p": 0,
+            "tb": 0,
+            "ts": 0,
+            "tk": 0
+        },
+        "BORNOVA KOMPLEKS": {
+            "g": "B",
+            "o": 0,
+            "gal": 0,
+            "b": 0,
+            "m": 0,
+            "ag": 0,
+            "yg": 0,
+            "av": 0,
+            "p": 0,
+            "tb": 0,
+            "ts": 0,
+            "tk": 0
+        },
+        "DENETİM F.C.": {
+            "g": "B",
+            "o": 0,
+            "gal": 0,
+            "b": 0,
+            "m": 0,
+            "ag": 0,
+            "yg": 0,
+            "av": 0,
+            "p": 0,
+            "tb": 0,
+            "ts": 0,
+            "tk": 0
+        },
+        "EĞİTİM F.K.": {
+            "g": "B",
+            "o": 0,
+            "gal": 0,
+            "b": 0,
+            "m": 0,
+            "ag": 0,
+            "yg": 0,
+            "av": 0,
+            "p": 0,
+            "tb": 0,
+            "ts": 0,
+            "tk": 0
+        },
+        "PERSONEL MÜD.": {
+            "g": "B",
+            "o": 0,
+            "gal": 0,
+            "b": 0,
+            "m": 0,
+            "ag": 0,
+            "yg": 0,
+            "av": 0,
+            "p": 0,
+            "tb": 0,
+            "ts": 0,
+            "tk": 0
+        },
+        "KARŞIYAKA V.D.MÜD.": {
+            "g": "C",
+            "o": 0,
+            "gal": 0,
+            "b": 0,
+            "m": 0,
+            "ag": 0,
+            "yg": 0,
+            "av": 0,
+            "p": 0,
+            "tb": 0,
+            "ts": 0,
+            "tk": 0
+        },
+        "İDARİ MALİ İŞLER": {
+            "g": "C",
+            "o": 0,
+            "gal": 0,
+            "b": 0,
+            "m": 0,
+            "ag": 0,
+            "yg": 0,
+            "av": 0,
+            "p": 0,
+            "tb": 0,
+            "ts": 0,
+            "tk": 0
+        },
+        "EGE V.D.MÜD.": {
+            "g": "C",
+            "o": 0,
+            "gal": 0,
+            "b": 0,
+            "m": 0,
+            "ag": 0,
+            "yg": 0,
+            "av": 0,
+            "p": 0,
+            "tb": 0,
+            "ts": 0,
+            "tk": 0
+        },
+        "TAŞITLAR MASTER": {
+            "g": "C",
+            "o": 0,
+            "gal": 0,
+            "b": 0,
+            "m": 0,
+            "ag": 0,
+            "yg": 0,
+            "av": 0,
+            "p": 0,
+            "tb": 0,
+            "ts": 0,
+            "tk": 0
+        },
+        "İZMİR İHTİSAS": {
+            "g": "D",
+            "o": 0,
+            "gal": 0,
+            "b": 0,
+            "m": 0,
+            "ag": 0,
+            "yg": 0,
+            "av": 0,
+            "p": 0,
+            "tb": 0,
+            "ts": 0,
+            "tk": 0
+        },
+        "DENETİM GÜCÜ": {
+            "g": "D",
+            "o": 0,
+            "gal": 0,
+            "b": 0,
+            "m": 0,
+            "ag": 0,
+            "yg": 0,
+            "av": 0,
+            "p": 0,
+            "tb": 0,
+            "ts": 0,
+            "tk": 0
+        },
+        "ÇAKABEY İHTİSAS": {
+            "g": "D",
+            "o": 0,
+            "gal": 0,
+            "b": 0,
+            "m": 0,
+            "ag": 0,
+            "yg": 0,
+            "av": 0,
+            "p": 0,
+            "tb": 0,
+            "ts": 0,
+            "tk": 0
+        },
+        "GAZİ BUCA SPOR": {
+            "g": "D",
+            "o": 0,
+            "gal": 0,
+            "b": 0,
+            "m": 0,
+            "ag": 0,
+            "yg": 0,
+            "av": 0,
+            "p": 0,
+            "tb": 0,
+            "ts": 0,
+            "tk": 0
+        }
     },
-    "players": []
+    "players": [
+        {
+            "name": "Onur ELMAZ",
+            "team": "DENETİM F.C.",
+            "gol": 1,
+            "b": 1,
+            "s": 1,
+            "k": 0
+        }
+    ]
 };
+
+// --- GLOBAL DEĞİŞKEN (ADMİN Mİ?) ---
+let isAdmin = false;
 
 // --- CORE FUNCTIONS ---
 function nav(id, btn) {
@@ -273,6 +523,7 @@ function nav(id, btn) {
 
 function doLogin() {
     if(document.getElementById('admin-pass').value === "dikili35h") {
+        isAdmin = true;
         document.getElementById('admin-login').style.display='none';
         document.getElementById('admin-panel').style.display='block';
         
@@ -280,28 +531,27 @@ function doLogin() {
         let options = '<option value="">Takım Seç</option>';
         Object.keys(db.teams).sort().forEach(t => options += `<option value="${t}">${t}</option>`);
         selectors.forEach(s => document.getElementById(s).innerHTML = options);
+        
+        renderNews(); // Admin giriş yapınca "Haber Sil" butonları görünsün diye tekrar render et.
+        alert("Sayın Onur ELMAZ, sisteme hoş geldiniz.");
     } else { alert("Şifre Hatalı!"); }
 }
 
 function cikisYap() {
-    // Admin panelini gizle, şifre alanını aç
+    isAdmin = false;
     document.getElementById('admin-panel').style.display = 'none';
     document.getElementById('admin-login').style.display = 'block';
     document.getElementById('admin-pass').value = '';
-    
-    // Haberler sekmesine dön
+    renderNews(); // Sil butonlarını gizle
     nav('p-news', document.querySelectorAll('.nav-item')[0]);
     alert("Güvenli çıkış yapıldı!");
 }
 
-// DRİVE LİNK DÜZELTİCİ
 function fixImageLink(url) {
     if(!url) return "";
     if(!url.includes("http")) return url; 
     const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/) || url.match(/id=([a-zA-Z0-9_-]+)/);
-    if(match && match[1]) {
-        return `https://lh3.googleusercontent.com/d/${match[1]}`;
-    }
+    if(match && match[1]) { return `https://lh3.googleusercontent.com/d/${match[1]}`; }
     return url;
 }
 
@@ -311,8 +561,23 @@ function haberEkle() {
     let img = fixImageLink(document.getElementById('h-resim').value);
     const text = document.getElementById('h-ozet').value;
     if(!title || !text) return alert("Eksik bilgi!");
-    db.news.unshift({title, img, text, date: new Date().toLocaleDateString('tr-TR')});
-    renderNews(); alert("Haber yayınlandı!");
+    
+    // Habere özel bir ID ekliyoruz (Silmek için lazım)
+    db.news.unshift({title, img, text, date: new Date().toLocaleDateString('tr-TR'), id: Date.now()});
+    renderNews(); 
+    
+    // Kutuları temizle
+    document.getElementById('h-baslik').value = "";
+    document.getElementById('h-resim').value = "";
+    document.getElementById('h-ozet').value = "";
+    alert("Haber yayınlandı!");
+}
+
+function haberSil(id) {
+    if(confirm("Bu haberi silmek istediğinize emin misiniz?")) {
+        db.news = db.news.filter(n => n.id !== id);
+        renderNews();
+    }
 }
 
 function macKaydet() {
@@ -321,9 +586,18 @@ function macKaydet() {
     const evS = parseInt(document.getElementById('m-ev-skor').value);
     const depS = parseInt(document.getElementById('m-dep-skor').value);
     if(!ev || !dep || isNaN(evS) || isNaN(depS) || ev === dep) return alert("Hatalı veri!");
-    db.matches.push({ev, dep, evS, depS});
+    
+    // AKILLI KAYIT: Bu maç daha önce girilmişse (yanlışlık varsa) eskisini bul ve üstüne yaz!
+    let matchIndex = db.matches.findIndex(m => m.ev === ev && m.dep === dep);
+    if(matchIndex > -1) {
+        db.matches[matchIndex] = {ev, dep, evS, depS};
+        alert("Mevcut maçın skoru düzeltildi!");
+    } else {
+        db.matches.push({ev, dep, evS, depS});
+        alert("Yeni Grup Maçı İşlendi!");
+    }
+    
     calculateStats(); filterG('A', document.querySelector('.group-btn'));
-    alert("Grup Maçı İşlendi!");
 }
 
 function elemeKaydet() {
@@ -335,10 +609,14 @@ function elemeKaydet() {
     if(!stage || !ev || !dep || isNaN(evS) || isNaN(depS) || ev === dep) return alert("Hatalı veri!");
     
     let idx = db.knockouts.findIndex(k => k.stage === stage && k.ev === ev && k.dep === dep);
-    if(idx > -1) db.knockouts[idx] = {stage, ev, dep, evS, depS};
-    else db.knockouts.push({stage, ev, dep, evS, depS});
-    
-    renderKnockouts(); alert("Eleme Maçı İşlendi!");
+    if(idx > -1) {
+        db.knockouts[idx] = {stage, ev, dep, evS, depS};
+        alert("Eleme maçı güncellendi!");
+    } else {
+        db.knockouts.push({stage, ev, dep, evS, depS});
+        alert("Eleme Maçı İşlendi!");
+    }
+    renderKnockouts(); 
 }
 
 function takimKartGuncelle() {
@@ -347,7 +625,7 @@ function takimKartGuncelle() {
     db.teams[team].tb = parseInt(document.getElementById('tk-b').value) || 0;
     db.teams[team].ts = parseInt(document.getElementById('tk-s').value) || 0;
     db.teams[team].tk = parseInt(document.getElementById('tk-k').value) || 0;
-    renderStats(); alert("Takım kartları kaydedildi!");
+    renderStats(); alert("Takım kartları kaydedildi/güncellendi!");
 }
 
 function statGuncelle() {
@@ -358,10 +636,16 @@ function statGuncelle() {
     const s = parseInt(document.getElementById('s-s').value) || 0;
     const k = parseInt(document.getElementById('s-k').value) || 0;
     if(!name || !team) return alert("Eksik!");
-    let pIdx = db.players.findIndex(p => p.name === name && p.team === team);
-    if(pIdx > -1) db.players[pIdx] = {name, team, gol, b, s, k};
-    else db.players.push({name, team, gol, b, s, k});
-    renderStats(); alert("Oyuncu güncellendi!");
+    
+    let pIdx = db.players.findIndex(p => p.name.toLowerCase() === name.toLowerCase() && p.team === team);
+    if(pIdx > -1) {
+        db.players[pIdx] = {name, team, gol, b, s, k};
+        alert("Mevcut oyuncunun istatistikleri düzeltildi!");
+    } else {
+        db.players.push({name, team, gol, b, s, k});
+        alert("Yeni oyuncu sisteme eklendi!");
+    }
+    renderStats(); 
 }
 
 // --- HESAPLAMA VE RENDER ---
@@ -424,10 +708,18 @@ function renderKnockouts() {
 
 function renderNews() {
     const cont = document.getElementById('news-list'); cont.innerHTML = '';
+    if(db.news.length === 0) cont.innerHTML = '<p style="text-align:center; color:#999;">Henüz haber yok.</p>';
+    
     db.news.forEach(n => {
-        cont.innerHTML += `<div class="news-card">
-            ${n.img ? `<img src="${n.img}" class="news-img" loading="lazy">` : ''}
-            <div class="news-body"><div class="news-date">${n.date}</div><div class="news-title">${n.title}</div><div class="news-text">${n.text}</div></div></div>`;
+        // Eğer Admin giriş yaptıysa "Sil" butonunu göster
+        const silBtn = isAdmin ? `<button class="btn-delete-news" style="display:block;" onclick="haberSil(${n.id})"><i class="fas fa-trash"></i> Sil</button>` : '';
+        
+        cont.innerHTML += `
+            <div class="news-card">
+                ${silBtn}
+                ${n.img ? `<img src="${n.img}" class="news-img" loading="lazy">` : ''}
+                <div class="news-body"><div class="news-date">${n.date}</div><div class="news-title">${n.title}</div><div class="news-text">${n.text}</div></div>
+            </div>`;
     });
 }
 
@@ -454,9 +746,11 @@ function renderStats() {
 }
 
 function indirGuncel() {
-    // DOSYAYA KAYDEDERKEN ADMIN PANELİNİ GİZLE Kİ, OYUNCULARA AÇIK GİTMESİN!
+    isAdmin = false; // Güvenlik: İndirilen dosyada admin gizli olsun
     document.getElementById('admin-panel').style.display = 'none';
     document.getElementById('admin-login').style.display = 'block';
+    document.getElementById('admin-pass').value = '';
+    renderNews(); // Sil butonlarını dosyadan kaldır
     
     const tamKod = document.documentElement.outerHTML;
     const regex = /let db = \{[\s\S]*?\};/;
@@ -464,14 +758,17 @@ function indirGuncel() {
     
     const blob = new Blob([yeniKod], { type: 'text/html' });
     const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
-    a.download = 'Maliyespor_Guncel.html'; a.click();
+    a.download = 'index.html'; // GitHub için direkt index.html olarak inmesi işini kolaylaştırır
+    a.click();
     
-    // İndirme bitince paneli geri aç (Sen işleme devam edebil diye)
+    // Geri aç (Kullanıcı devam etsin diye)
+    isAdmin = true;
     document.getElementById('admin-panel').style.display = 'block';
     document.getElementById('admin-login').style.display = 'none';
+    renderNews();
 }
 
 window.onload = () => { calculateStats(); renderNews(); filterG('A', document.querySelector('.group-btn')); renderStats(); renderKnockouts(); };
 </script>
-</body>
-</html>
+
+</body></html>
