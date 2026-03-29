@@ -1,7 +1,15 @@
 <html lang="tr"><head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    
+    <!-- TELEFON UYGULAMASI (PWA) İKON VE RENK AYARLARI -->
     <title>İzmir Maliye Spor - Turnuva Paneli</title>
+    <link rel="icon" type="image/png" href="logo.png">
+    <link rel="apple-touch-icon" href="logo.png">
+    <meta name="theme-color" content="#004080">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root { --p: #004080; --s: #0059b3; --a: #e60000; --bg: #f4f7f6; --white: #ffffff; }
@@ -78,6 +86,11 @@
         <div id="news-list">
             <div class="news-card">
                 
+                <a href="https://drive.google.com/file/d/1L7dXWV8kqGlUSLF9es5lAgJv_FdXC5FW/view?usp=sharing" target="_blank"><img src="https://lh3.googleusercontent.com/d/1L7dXWV8kqGlUSLF9es5lAgJv_FdXC5FW" class="news-img" loading="lazy"></a>
+                <div class="news-body"><div class="news-date">29.03.2026</div><div class="news-title">Turnuva Başlıyor</div><div class="news-text">Deneme</div></div>
+            </div>
+            <div class="news-card">
+                
                 
                 <div class="news-body"><div class="news-date">30.03.2026</div><div class="news-title">Sistem Hazır</div><div class="news-text">İzmir Maliyespor Turnuva sistemi aktiftir. Başarılar dileriz.</div></div>
             </div></div>
@@ -112,14 +125,18 @@
             <div class="table-w">
                 <table>
                     <thead><tr><th>Takım</th><th>O</th><th>G</th><th>M</th><th>AV</th><th>P</th></tr></thead>
-                    <tbody id="puan-body"><tr><td class="t-left">TAŞITLAR F.C.</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="highlight">0</td></tr><tr><td class="t-left">MUHAKEMAT 1838</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="highlight">0</td></tr><tr><td class="t-left">ALİAĞA V.D.MÜD.</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="highlight">0</td></tr><tr><td class="t-left">YEMEKHANE GÜCÜ</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="highlight">0</td></tr></tbody>
+                    <tbody id="puan-body"><tr><td class="t-left">TAŞITLAR F.C.</td><td>1</td><td>1</td><td>0</td><td>3</td><td class="highlight">3</td></tr><tr><td class="t-left">ALİAĞA V.D.MÜD.</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="highlight">0</td></tr><tr><td class="t-left">YEMEKHANE GÜCÜ</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="highlight">0</td></tr><tr><td class="t-left">MUHAKEMAT 1838</td><td>1</td><td>0</td><td>1</td><td>-3</td><td class="highlight">0</td></tr></tbody>
                 </table>
             </div>
         </div>
 
         <div class="card" id="knockout-area" style="display: none;">
             <h2>🏆 Eleme Turları Fikstürü</h2>
-            <div id="knockout-list"><p style="text-align:center; color:#999; margin:20px 0;">Henüz eleme eşleşmesi girilmedi.</p></div>
+            <div id="knockout-list"><div class="stage-title">Play-Off Turu</div>
+                <div class="match-card">
+                    <div class="match-teams">EGE V.D.MÜD. <br> <span style="color:#777;font-size:10px;">vs</span> <br> PERSONEL MÜD.</div>
+                    <div class="match-score">1 - 2</div>
+                </div></div>
         </div>
     </div>
 
@@ -136,7 +153,7 @@
             <h2>🛡️ Takım Fair-Play Listesi</h2>
             <table id="takim-kart-table">
                 <thead><tr><th>Takım</th><th>B</th><th>S</th><th>K</th></tr></thead>
-                <tbody id="takim-kart-body"></tbody>
+                <tbody id="takim-kart-body"><tr><td class="t-left">DENETİM F.C.</td><td>1</td><td>2</td><td style="color:red;font-weight:bold">0</td></tr></tbody>
             </table>
         </div>
         <div class="card">
@@ -190,10 +207,10 @@
                 <button class="btn" style="background:var(--a); color:white;" onclick="elemeKaydet()">Eleme Maçını İşle</button>
             </div>
 
-            <div class="card" style="border: 2px solid var(--s);">
+            <div class="card" style="border: 2px solid #17a2b8;">
                 <h2>📅 Fikstür Ekle / Güncelle</h2>
                 <input type="text" id="a-fikstur" placeholder="Fikstür Linki (Drive PDF veya Resim)">
-                <button class="btn btn-s" onclick="fiksturKaydet()">Fikstürü Yayınla</button>
+                <button class="btn" style="background:#17a2b8; color:white;" onclick="fiksturKaydet()">Fikstürü Yayınla</button>
             </div>
 
             <div class="card" style="border: 2px solid var(--s);">
@@ -253,39 +270,63 @@ let db = {
     "fixtureLink": "https://drive.google.com/file/d/15zUru3_Vrzy03h_foInbFTVy4xtjC9-f/view?usp=sharing",
     "news": [
         {
+            "title": "Turnuva Başlıyor",
+            "img": "https://lh3.googleusercontent.com/d/1L7dXWV8kqGlUSLF9es5lAgJv_FdXC5FW",
+            "rawImg": "https://drive.google.com/file/d/1L7dXWV8kqGlUSLF9es5lAgJv_FdXC5FW/view?usp=sharing",
+            "text": "Deneme",
+            "date": "29.03.2026",
+            "id": 1774773671165
+        },
+        {
             "title": "Sistem Hazır",
             "img": "",
+            "rawImg": "",
             "text": "İzmir Maliyespor Turnuva sistemi aktiftir. Başarılar dileriz.",
             "date": "30.03.2026",
             "id": 1774773671164
         }
     ],
-    "matches": [],
-    "knockouts": [],
+    "matches": [
+        {
+            "ev": "TAŞITLAR F.C.",
+            "dep": "MUHAKEMAT 1838",
+            "evS": 3,
+            "depS": 0
+        }
+    ],
+    "knockouts": [
+        {
+            "stage": "Play-Off Turu",
+            "ev": "EGE V.D.MÜD.",
+            "dep": "PERSONEL MÜD.",
+            "evS": 1,
+            "depS": 2
+        }
+    ],
     "teams": {
         "TAŞITLAR F.C.": {
             "g": "A",
-            "o": 0,
-            "gal": 0,
+            "o": 1,
+            "gal": 1,
             "b": 0,
             "m": 0,
-            "ag": 0,
+            "ag": 3,
             "yg": 0,
-            "av": 0,
-            "p": 0,
+            "av": 3,
+            "p": 3,
             "tb": 0,
             "ts": 0,
             "tk": 0
         },
         "MUHAKEMAT 1838": {
             "g": "A",
-            "o": 0,
+            "o": 1,
             "gal": 0,
             "b": 0,
-            "m": 0,
+            "m": 1,
             "ag": 0,
-            "yg": 0,
-            "av": 0,
+            "yg": 3,
+            "av": -3,
             "p": 0,
             "tb": 0,
             "ts": 0,
@@ -343,8 +384,8 @@ let db = {
             "yg": 0,
             "av": 0,
             "p": 0,
-            "tb": 0,
-            "ts": 0,
+            "tb": 1,
+            "ts": 2,
             "tk": 0
         },
         "EĞİTİM F.K.": {
@@ -516,7 +557,7 @@ function doLogin() {
         
         document.getElementById('a-fikstur').value = db.fixtureLink || "";
         
-        renderNews(); // Admin giriş yapınca "Haber Sil" butonları görünsün diye tekrar render et.
+        renderNews(); // Admin giriş yapınca "Haber Sil" butonları görünsün
         alert("Sayın Onur ELMAZ, sisteme hoş geldiniz.");
     } else { alert("Şifre Hatalı!"); }
 }
@@ -531,7 +572,7 @@ function cikisYap() {
     alert("Güvenli çıkış yapıldı!");
 }
 
-// Drive linkini temiz bir resim formatına çeviren kod (Sadece resimler için, PDF'e dokunmaz)
+// DRİVE LİNK DÜZELTİCİ
 function fixImageLink(url) {
     if(!url) return "";
     if(!url.includes("http")) return url; 
@@ -551,8 +592,8 @@ function fiksturKaydet() {
 
 function haberEkle() {
     const title = document.getElementById('h-baslik').value;
-    const rawImg = document.getElementById('h-resim').value; // Orijinal linki tıklandığında açılması için tutuyoruz
-    const img = fixImageLink(rawImg); // Ekranda göstermek için dönüştür
+    const rawImg = document.getElementById('h-resim').value;
+    const img = fixImageLink(rawImg);
     const text = document.getElementById('h-ozet').value;
     if(!title || !text) return alert("Eksik bilgi!");
     
@@ -702,7 +743,6 @@ function renderFixture() {
         cont.innerHTML = '<p style="text-align:center; color:#999; font-size:13px; margin:20px 0;">Sistem yöneticisi henüz fikstür belgesini yüklemedi.</p>';
         return;
     }
-    // Fikstürü görüntüle ve tıklanabilir yap
     let displayImg = fixImageLink(db.fixtureLink);
     cont.innerHTML = `
         <a href="${db.fixtureLink}" target="_blank" style="display:block; text-align:center; margin-bottom:15px;">
@@ -718,7 +758,6 @@ function renderNews() {
     
     db.news.forEach(n => {
         const silBtn = isAdmin ? `<button class="btn-delete-news" style="display:block;" onclick="haberSil(${n.id})"><i class="fas fa-trash"></i> Sil</button>` : '';
-        // Resim tıklanabilir yapıldı
         const imgHtml = n.img ? `<a href="${n.rawImg || n.img}" target="_blank"><img src="${n.img}" class="news-img" loading="lazy"></a>` : '';
         
         cont.innerHTML += `
@@ -776,5 +815,6 @@ function indirGuncel() {
 
 window.onload = () => { calculateStats(); renderNews(); renderFixture(); filterG('A', document.querySelector('.group-btn')); renderStats(); renderKnockouts(); };
 </script>
+
 
 </body></html>
