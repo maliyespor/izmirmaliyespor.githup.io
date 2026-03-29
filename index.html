@@ -13,9 +13,9 @@
         .header h1 { font-size: 1.1rem; text-transform: uppercase; }
 
         /* NAVIGATION */
-        .nav-bar { position: fixed; bottom: 0; width: 100%; background: white; display: flex; border-top: 1px solid #ddd; z-index: 1000; padding: 5px 0; }
-        .nav-item { flex: 1; text-align: center; color: #777; font-size: 10px; cursor: pointer; border: none; background: none; }
-        .nav-item i { font-size: 20px; display: block; margin-bottom: 3px; }
+        .nav-bar { position: fixed; bottom: 0; width: 100%; background: white; display: flex; border-top: 1px solid #ddd; z-index: 1000; padding: 5px 0; justify-content: space-between; }
+        .nav-item { flex: 1; text-align: center; color: #777; font-size: 9px; cursor: pointer; border: none; background: none; padding: 0 2px; }
+        .nav-item i { font-size: 18px; display: block; margin-bottom: 4px; }
         .nav-item.active { color: var(--p); font-weight: bold; }
 
         /* CONTAINER */
@@ -43,7 +43,7 @@
 
         /* ADMIN FORMS */
         input, select, textarea { width: 100%; padding: 12px; margin: 8px 0; border: 1px solid #ccc; border-radius: 8px; font-size: 14px; }
-        .btn { width: 100%; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px; transition: 0.2s; }
+        .btn { display: block; text-align: center; text-decoration: none; width: 100%; padding: 12px; border: none; border-radius: 8px; font-weight: bold; cursor: pointer; margin-top: 10px; transition: 0.2s; }
         .btn-p { background: var(--p); color: white; }
         .btn-s { background: #28a745; color: white; }
         .btn-w { background: #ffc107; color: #333; }
@@ -53,12 +53,12 @@
 
         /* HABER TASARIMI */
         .news-card { background: white; border-radius: 12px; overflow: hidden; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); position: relative; }
-        .news-img { width: 100%; height: 200px; object-fit: cover; background: #eee; }
+        .news-img { width: 100%; height: 200px; object-fit: cover; background: #eee; display: block; }
         .news-body { padding: 15px; }
         .news-date { font-size: 10px; color: #999; margin-bottom: 5px; }
         .news-title { font-size: 1.1rem; font-weight: bold; color: var(--p); margin-bottom: 8px; }
         .news-text { font-size: 13px; color: #555; line-height: 1.4; }
-        .btn-delete-news { position: absolute; top: 10px; right: 10px; background: rgba(220,53,69,0.9); color: white; border: none; padding: 5px 10px; border-radius: 5px; font-size: 12px; cursor: pointer; display: none; } /* Sadece adminde görünür */
+        .btn-delete-news { position: absolute; top: 10px; right: 10px; background: rgba(220,53,69,0.9); color: white; border: none; padding: 5px 10px; border-radius: 5px; font-size: 12px; cursor: pointer; display: none; } 
 
         .group-selector { display: flex; gap: 5px; margin-bottom: 15px; overflow-x: auto; padding-bottom: 5px; }
         .group-btn { padding: 8px 15px; border-radius: 20px; border: 1px solid #ddd; background: white; font-size: 12px; white-space: nowrap; cursor: pointer; }
@@ -78,14 +78,23 @@
         <div id="news-list">
             <div class="news-card">
                 
-                <img src="https://lh3.googleusercontent.com/d/1L7dXWV8kqGlUSLF9es5lAgJv_FdXC5FW" class="news-img" loading="lazy">
-                <div class="news-body"><div class="news-date">29.03.2026</div><div class="news-title">Maliye Spor Tunuvası Başlıyor</div><div class="news-text">Geleneksel Maliye Spor Futbol Turnuvası, 13 Nisan Pazartesi günü başlayacaktır. Turnuvada 16 takım ve 145 personel, Alsancak Namık Kemal Halı Sahası’nda şampiyonluk için mücadele edecektir. Tüm takımlarımıza başarılar dileriz.</div></div>
-            </div>
-            <div class="news-card">
-                
                 
                 <div class="news-body"><div class="news-date">30.03.2026</div><div class="news-title">Sistem Hazır</div><div class="news-text">İzmir Maliyespor Turnuva sistemi aktiftir. Başarılar dileriz.</div></div>
             </div></div>
+    </div>
+
+    <!-- FİKSTÜR SAYFASI -->
+    <div id="p-fikstur" class="page">
+        <div class="card">
+            <h2>📅 Turnuva Fikstürü</h2>
+            <p style="font-size:12px; color:#666; margin-bottom:15px;">Tüm maç programını tam ekran görmek veya PDF olarak indirmek için aşağıdaki butona tıklayınız.</p>
+            <div id="fikstur-container">
+        <a href="https://drive.google.com/file/d/15zUru3_Vrzy03h_foInbFTVy4xtjC9-f/view?usp=sharing" target="_blank" style="display:block; text-align:center; margin-bottom:15px;">
+            <img src="https://lh3.googleusercontent.com/d/15zUru3_Vrzy03h_foInbFTVy4xtjC9-f" style="max-width:100%; max-height:400px; border-radius:8px; border:1px solid #ccc; object-fit:contain;" alt="Fikstür Görseli (Açılmazsa alttaki butona tıklayın)">
+        </a>
+        <a href="https://drive.google.com/file/d/15zUru3_Vrzy03h_foInbFTVy4xtjC9-f/view?usp=sharing" target="_blank" class="btn btn-p"><i class="fas fa-file-pdf"></i> Fikstürü Tam Ekran Aç / İndir</a>
+    </div>
+        </div>
     </div>
 
     <!-- PUAN DURUMU & ELEMELER SAYFASI -->
@@ -103,18 +112,14 @@
             <div class="table-w">
                 <table>
                     <thead><tr><th>Takım</th><th>O</th><th>G</th><th>M</th><th>AV</th><th>P</th></tr></thead>
-                    <tbody id="puan-body"><tr><td class="t-left">TAŞITLAR F.C.</td><td>1</td><td>1</td><td>0</td><td>1</td><td class="highlight">3</td></tr><tr><td class="t-left">MUHAKEMAT 1838</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="highlight">0</td></tr><tr><td class="t-left">YEMEKHANE GÜCÜ</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="highlight">0</td></tr><tr><td class="t-left">ALİAĞA V.D.MÜD.</td><td>1</td><td>0</td><td>1</td><td>-1</td><td class="highlight">0</td></tr></tbody>
+                    <tbody id="puan-body"><tr><td class="t-left">TAŞITLAR F.C.</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="highlight">0</td></tr><tr><td class="t-left">MUHAKEMAT 1838</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="highlight">0</td></tr><tr><td class="t-left">ALİAĞA V.D.MÜD.</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="highlight">0</td></tr><tr><td class="t-left">YEMEKHANE GÜCÜ</td><td>0</td><td>0</td><td>0</td><td>0</td><td class="highlight">0</td></tr></tbody>
                 </table>
             </div>
         </div>
 
         <div class="card" id="knockout-area" style="display: none;">
             <h2>🏆 Eleme Turları Fikstürü</h2>
-            <div id="knockout-list"><div class="stage-title">Play-Off Turu</div>
-                <div class="match-card">
-                    <div class="match-teams">KARŞIYAKA V.D.MÜD. <br> <span style="color:#777;font-size:10px;">vs</span> <br> EĞİTİM F.K.</div>
-                    <div class="match-score">2 - 1</div>
-                </div></div>
+            <div id="knockout-list"><p style="text-align:center; color:#999; margin:20px 0;">Henüz eleme eşleşmesi girilmedi.</p></div>
         </div>
     </div>
 
@@ -124,7 +129,7 @@
             <h2>⚽ Gol Krallığı (Top 10)</h2>
             <table id="gol-table">
                 <thead><tr><th>Oyuncu</th><th>Takım</th><th>Gol</th></tr></thead>
-                <tbody><tr><td class="t-left">Onur ELMAZ</td><td>DENETİM F.C.</td><td class="highlight">1</td></tr></tbody>
+                <tbody></tbody>
             </table>
         </div>
         <div class="card">
@@ -138,7 +143,7 @@
             <h2>🟥 Oyuncu Kart &amp; Cezalı Listesi</h2>
             <table id="kart-table">
                 <thead><tr><th>Oyuncu</th><th>B</th><th>S</th><th>K</th></tr></thead>
-                <tbody><tr><td class="t-left">Onur ELMAZ</td><td>1</td><td>1</td><td style="color:red;font-weight:bold">0</td></tr></tbody>
+                <tbody></tbody>
             </table>
         </div>
     </div>
@@ -186,6 +191,12 @@
             </div>
 
             <div class="card" style="border: 2px solid var(--s);">
+                <h2>📅 Fikstür Ekle / Güncelle</h2>
+                <input type="text" id="a-fikstur" placeholder="Fikstür Linki (Drive PDF veya Resim)">
+                <button class="btn btn-s" onclick="fiksturKaydet()">Fikstürü Yayınla</button>
+            </div>
+
+            <div class="card" style="border: 2px solid var(--s);">
                 <h2>📣 Haber Ekle</h2>
                 <input type="text" id="h-baslik" placeholder="Haber Başlığı">
                 <input type="text" id="h-resim" placeholder="Resim Linki (Drive veya URL)">
@@ -230,58 +241,38 @@
 
 <nav class="nav-bar">
     <button class="nav-item" onclick="nav('p-news', this)"><i class="fas fa-newspaper"></i>Haberler</button>
+    <button class="nav-item" onclick="nav('p-fikstur', this)"><i class="fas fa-calendar-alt"></i>Fikstür</button>
     <button class="nav-item" onclick="nav('p-puan', this)"><i class="fas fa-list-ol"></i>Puan</button>
-    <button class="nav-item" onclick="nav('p-stats', this)"><i class="fas fa-chart-bar"></i>İstatistik</button>
+    <button class="nav-item" onclick="nav('p-stats', this)"><i class="fas fa-chart-bar"></i>İstat.</button>
     <button class="nav-item active" onclick="nav('p-admin', this)"><i class="fas fa-user-shield"></i>Admin</button>
 </nav>
 
 <script>
 // --- VERİTABANI ---
 let db = {
+    "fixtureLink": "https://drive.google.com/file/d/15zUru3_Vrzy03h_foInbFTVy4xtjC9-f/view?usp=sharing",
     "news": [
-        {
-            "title": "Maliye Spor Tunuvası Başlıyor",
-            "img": "https://lh3.googleusercontent.com/d/1L7dXWV8kqGlUSLF9es5lAgJv_FdXC5FW",
-            "text": "Geleneksel Maliye Spor Futbol Turnuvası, 13 Nisan Pazartesi günü başlayacaktır. Turnuvada 16 takım ve 145 personel, Alsancak Namık Kemal Halı Sahası’nda şampiyonluk için mücadele edecektir. Tüm takımlarımıza başarılar dileriz.",
-            "date": "29.03.2026",
-            "id": 1774769194236
-        },
         {
             "title": "Sistem Hazır",
             "img": "",
             "text": "İzmir Maliyespor Turnuva sistemi aktiftir. Başarılar dileriz.",
             "date": "30.03.2026",
-            "id": 1774768743889
+            "id": 1774773671164
         }
     ],
-    "matches": [
-        {
-            "ev": "TAŞITLAR F.C.",
-            "dep": "ALİAĞA V.D.MÜD.",
-            "evS": 2,
-            "depS": 1
-        }
-    ],
-    "knockouts": [
-        {
-            "stage": "Play-Off Turu",
-            "ev": "KARŞIYAKA V.D.MÜD.",
-            "dep": "EĞİTİM F.K.",
-            "evS": 2,
-            "depS": 1
-        }
-    ],
+    "matches": [],
+    "knockouts": [],
     "teams": {
         "TAŞITLAR F.C.": {
             "g": "A",
-            "o": 1,
-            "gal": 1,
+            "o": 0,
+            "gal": 0,
             "b": 0,
             "m": 0,
-            "ag": 2,
-            "yg": 1,
-            "av": 1,
-            "p": 3,
+            "ag": 0,
+            "yg": 0,
+            "av": 0,
+            "p": 0,
             "tb": 0,
             "ts": 0,
             "tk": 0
@@ -302,13 +293,13 @@ let db = {
         },
         "ALİAĞA V.D.MÜD.": {
             "g": "A",
-            "o": 1,
+            "o": 0,
             "gal": 0,
             "b": 0,
-            "m": 1,
-            "ag": 1,
-            "yg": 2,
-            "av": -1,
+            "m": 0,
+            "ag": 0,
+            "yg": 0,
+            "av": 0,
             "p": 0,
             "tb": 0,
             "ts": 0,
@@ -497,16 +488,7 @@ let db = {
             "tk": 0
         }
     },
-    "players": [
-        {
-            "name": "Onur ELMAZ",
-            "team": "DENETİM F.C.",
-            "gol": 1,
-            "b": 1,
-            "s": 1,
-            "k": 0
-        }
-    ]
+    "players": []
 };
 
 // --- GLOBAL DEĞİŞKEN (ADMİN Mİ?) ---
@@ -532,6 +514,8 @@ function doLogin() {
         Object.keys(db.teams).sort().forEach(t => options += `<option value="${t}">${t}</option>`);
         selectors.forEach(s => document.getElementById(s).innerHTML = options);
         
+        document.getElementById('a-fikstur').value = db.fixtureLink || "";
+        
         renderNews(); // Admin giriş yapınca "Haber Sil" butonları görünsün diye tekrar render et.
         alert("Sayın Onur ELMAZ, sisteme hoş geldiniz.");
     } else { alert("Şifre Hatalı!"); }
@@ -547,26 +531,34 @@ function cikisYap() {
     alert("Güvenli çıkış yapıldı!");
 }
 
+// Drive linkini temiz bir resim formatına çeviren kod (Sadece resimler için, PDF'e dokunmaz)
 function fixImageLink(url) {
     if(!url) return "";
     if(!url.includes("http")) return url; 
     const match = url.match(/\/d\/([a-zA-Z0-9_-]+)/) || url.match(/id=([a-zA-Z0-9_-]+)/);
-    if(match && match[1]) { return `https://lh3.googleusercontent.com/d/${match[1]}`; }
+    if(match && match[1] && !url.includes("pdf")) { 
+        return `https://lh3.googleusercontent.com/d/${match[1]}`; 
+    }
     return url;
 }
 
 // --- ADMIN KAYIT İŞLEMLERİ ---
+function fiksturKaydet() {
+    db.fixtureLink = document.getElementById('a-fikstur').value.trim();
+    renderFixture();
+    alert("Fikstür güncellendi! Sisteme kaydetmeyi unutmayın.");
+}
+
 function haberEkle() {
     const title = document.getElementById('h-baslik').value;
-    let img = fixImageLink(document.getElementById('h-resim').value);
+    const rawImg = document.getElementById('h-resim').value; // Orijinal linki tıklandığında açılması için tutuyoruz
+    const img = fixImageLink(rawImg); // Ekranda göstermek için dönüştür
     const text = document.getElementById('h-ozet').value;
     if(!title || !text) return alert("Eksik bilgi!");
     
-    // Habere özel bir ID ekliyoruz (Silmek için lazım)
-    db.news.unshift({title, img, text, date: new Date().toLocaleDateString('tr-TR'), id: Date.now()});
+    db.news.unshift({title, img, rawImg: rawImg || img, text, date: new Date().toLocaleDateString('tr-TR'), id: Date.now()});
     renderNews(); 
     
-    // Kutuları temizle
     document.getElementById('h-baslik').value = "";
     document.getElementById('h-resim').value = "";
     document.getElementById('h-ozet').value = "";
@@ -587,7 +579,6 @@ function macKaydet() {
     const depS = parseInt(document.getElementById('m-dep-skor').value);
     if(!ev || !dep || isNaN(evS) || isNaN(depS) || ev === dep) return alert("Hatalı veri!");
     
-    // AKILLI KAYIT: Bu maç daha önce girilmişse (yanlışlık varsa) eskisini bul ve üstüne yaz!
     let matchIndex = db.matches.findIndex(m => m.ev === ev && m.dep === dep);
     if(matchIndex > -1) {
         db.matches[matchIndex] = {ev, dep, evS, depS};
@@ -596,7 +587,6 @@ function macKaydet() {
         db.matches.push({ev, dep, evS, depS});
         alert("Yeni Grup Maçı İşlendi!");
     }
-    
     calculateStats(); filterG('A', document.querySelector('.group-btn'));
 }
 
@@ -706,18 +696,35 @@ function renderKnockouts() {
     });
 }
 
+function renderFixture() {
+    const cont = document.getElementById('fikstur-container');
+    if(!db.fixtureLink) {
+        cont.innerHTML = '<p style="text-align:center; color:#999; font-size:13px; margin:20px 0;">Sistem yöneticisi henüz fikstür belgesini yüklemedi.</p>';
+        return;
+    }
+    // Fikstürü görüntüle ve tıklanabilir yap
+    let displayImg = fixImageLink(db.fixtureLink);
+    cont.innerHTML = `
+        <a href="${db.fixtureLink}" target="_blank" style="display:block; text-align:center; margin-bottom:15px;">
+            <img src="${displayImg}" style="max-width:100%; max-height:400px; border-radius:8px; border:1px solid #ccc; object-fit:contain;" alt="Fikstür Görseli (Açılmazsa alttaki butona tıklayın)">
+        </a>
+        <a href="${db.fixtureLink}" target="_blank" class="btn btn-p"><i class="fas fa-file-pdf"></i> Fikstürü Tam Ekran Aç / İndir</a>
+    `;
+}
+
 function renderNews() {
     const cont = document.getElementById('news-list'); cont.innerHTML = '';
     if(db.news.length === 0) cont.innerHTML = '<p style="text-align:center; color:#999;">Henüz haber yok.</p>';
     
     db.news.forEach(n => {
-        // Eğer Admin giriş yaptıysa "Sil" butonunu göster
         const silBtn = isAdmin ? `<button class="btn-delete-news" style="display:block;" onclick="haberSil(${n.id})"><i class="fas fa-trash"></i> Sil</button>` : '';
+        // Resim tıklanabilir yapıldı
+        const imgHtml = n.img ? `<a href="${n.rawImg || n.img}" target="_blank"><img src="${n.img}" class="news-img" loading="lazy"></a>` : '';
         
         cont.innerHTML += `
             <div class="news-card">
                 ${silBtn}
-                ${n.img ? `<img src="${n.img}" class="news-img" loading="lazy">` : ''}
+                ${imgHtml}
                 <div class="news-body"><div class="news-date">${n.date}</div><div class="news-title">${n.title}</div><div class="news-text">${n.text}</div></div>
             </div>`;
     });
@@ -746,11 +753,11 @@ function renderStats() {
 }
 
 function indirGuncel() {
-    isAdmin = false; // Güvenlik: İndirilen dosyada admin gizli olsun
+    isAdmin = false; 
     document.getElementById('admin-panel').style.display = 'none';
     document.getElementById('admin-login').style.display = 'block';
     document.getElementById('admin-pass').value = '';
-    renderNews(); // Sil butonlarını dosyadan kaldır
+    renderNews(); 
     
     const tamKod = document.documentElement.outerHTML;
     const regex = /let db = \{[\s\S]*?\};/;
@@ -758,17 +765,16 @@ function indirGuncel() {
     
     const blob = new Blob([yeniKod], { type: 'text/html' });
     const a = document.createElement('a'); a.href = URL.createObjectURL(blob);
-    a.download = 'index.html'; // GitHub için direkt index.html olarak inmesi işini kolaylaştırır
+    a.download = 'index.html'; 
     a.click();
     
-    // Geri aç (Kullanıcı devam etsin diye)
     isAdmin = true;
     document.getElementById('admin-panel').style.display = 'block';
     document.getElementById('admin-login').style.display = 'none';
     renderNews();
 }
 
-window.onload = () => { calculateStats(); renderNews(); filterG('A', document.querySelector('.group-btn')); renderStats(); renderKnockouts(); };
+window.onload = () => { calculateStats(); renderNews(); renderFixture(); filterG('A', document.querySelector('.group-btn')); renderStats(); renderKnockouts(); };
 </script>
 
 </body></html>
