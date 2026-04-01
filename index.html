@@ -71,9 +71,6 @@
         .group-selector { display: flex; gap: 5px; margin-bottom: 15px; overflow-x: auto; padding-bottom: 5px; }
         .group-btn { padding: 8px 15px; border-radius: 20px; border: 1px solid #ddd; background: white; font-size: 12px; white-space: nowrap; cursor: pointer; }
         .group-btn.active { background: var(--p); color: white; border-color: var(--p); }
-        
-        /* ANKET IFRAME */
-        iframe { width: 100%; border: none; border-radius: 8px; min-height: 500px; }
     </style>
 </head>
 <body>
@@ -85,7 +82,7 @@
 
 <div class="container">
     <!-- HABERLER SAYFASI -->
-    <div id="p-news" class="page">
+    <div id="p-news" class="page active">
         <div id="news-list"><div class="news-card"><a href="https://drive.google.com/file/d/1i0l2tQ8aUDQYLDtH84hpzujpcahloSei/view?usp=sharing" target="_blank"><img src="https://lh3.googleusercontent.com/d/1i0l2tQ8aUDQYLDtH84hpzujpcahloSei" class="news-img" loading="lazy"></a><div class="news-body"><div class="news-date">31.03.2026</div><div class="news-title">ANKETİMİZE KATILMAYI UNUTMAYIN</div><div class="news-text">Gol krallığı için yayımlanan ankete katılmayı unutmayın.(kayıt zorunluluğu olmadığı için lütfen 1'den fazla oy kullanmayın)</div></div></div><div class="news-card"><a href="https://drive.google.com/file/d/1L7dXWV8kqGlUSLF9es5lAgJv_FdXC5FW/view?usp=sharing" target="_blank"><img src="https://lh3.googleusercontent.com/d/1L7dXWV8kqGlUSLF9es5lAgJv_FdXC5FW" class="news-img" loading="lazy"></a><div class="news-body"><div class="news-date">31.03.2026</div><div class="news-title">GERİ SAYIM BAŞLADI</div><div class="news-text">Geleneksel Maliye Spor Futbol Turnuvası, 13 Nisan Pazartesi günü başlayacaktır. Turnuvada 16 takım ve 145 personel, Alsancak Namık Kemal Halı Sahası’nda şampiyonluk için mücadele edecektir. Tüm takımlarımıza başarılar dileriz.</div></div></div></div>
     </div>
 
@@ -97,7 +94,7 @@
         <div style="text-align:center; padding:10px 0;">
             <i class="fas fa-vote-yea" style="font-size: 40px; color: var(--p); margin-bottom: 10px;"></i>
             <p style="font-size:13px; margin-bottom:15px; color:#333;">Yeni anketimiz yayında! Aşağıdaki butona tıklayarak oyunuzu kullanabilirsiniz.</p>
-            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdDW35uh8CNwzOHqk6cjKmcJQKRNfvKzRurqC6GDJjetGR_yg/viewform?usp=header" target="_blank" class="btn btn-p" style="display:inline-block; width:90%;"><i class="fas fa-check-circle"></i> Ankete Git ve Oy Kullan</a>
+            <a href="https://docs.google.com/forms/d/e/1FAIpQLSdDW35uh8CNwzOHqk6cjKmcJQKRNfvKzRurqC6GDJjetGR_yg/viewform" target="_blank" class="btn btn-p" style="display:inline-block; width:90%;"><i class="fas fa-check-circle"></i> Ankete Git ve Oy Kullan</a>
         </div>
     </div>
         </div>
@@ -164,7 +161,7 @@
     </div>
 
     <!-- ADMIN SAYFASI -->
-    <div id="p-admin" class="page active">
+    <div id="p-admin" class="page">
         <div id="admin-login" class="card" style="display: block;">
             <h2>🔒 Yönetici Girişi</h2>
             <div class="admin-info">Sistem Yöneticisi: Onur ELMAZ<br>Strateji Müdürlüğü</div>
@@ -250,7 +247,7 @@
                 <button class="btn btn-p" onclick="statGuncelle()">İstatistik Kaydet</button>
             </div>
 
-            <!-- YENİ: SİSTEMİ SIFIRLA BUTONU -->
+            <!-- SİSTEMİ SIFIRLA BUTONU -->
             <div class="card" style="border: 2px solid #dc3545; background: #fff5f5;">
                 <h2 style="color: #dc3545;">⚠️ Sistemi Sıfırla (Turnuva Başlangıcı)</h2>
                 <p style="font-size:11px; color:#666; margin-bottom:10px;">Test için girdiğiniz tüm maçları, puanları, golleri ve kartları siler. Fikstür, anket ve haberler kalır.</p>
@@ -269,19 +266,19 @@
 </div>
 
 <nav class="nav-bar">
-    <button class="nav-item" onclick="nav('p-news', this)"><i class="fas fa-newspaper"></i>Haberler</button>
+    <button class="nav-item active" onclick="nav('p-news', this)"><i class="fas fa-newspaper"></i>Haberler</button>
     <button class="nav-item" onclick="nav('p-anket', this)"><i class="fas fa-poll"></i>Anket</button>
     <button class="nav-item" onclick="nav('p-fikstur', this)"><i class="fas fa-calendar-alt"></i>Fikstür</button>
     <button class="nav-item" onclick="nav('p-puan', this)"><i class="fas fa-list-ol"></i>Puan</button>
     <button class="nav-item" onclick="nav('p-stats', this)"><i class="fas fa-chart-bar"></i>İstat.</button>
-    <button class="nav-item active" onclick="nav('p-admin', this)"><i class="fas fa-user-shield"></i>Admin</button>
+    <button class="nav-item" onclick="nav('p-admin', this)"><i class="fas fa-user-shield"></i>Admin</button>
 </nav>
 
 <script>
 // --- VERİTABANI ---
 let db = {
     "fixtureLink": "https://drive.google.com/file/d/15zUru3_Vrzy03h_foInbFTVy4xtjC9-f/view?usp=sharing",
-    "pollLink": "https://docs.google.com/forms/d/e/1FAIpQLSdDW35uh8CNwzOHqk6cjKmcJQKRNfvKzRurqC6GDJjetGR_yg/viewform?usp=header",
+    "pollLink": "https://docs.google.com/forms/d/e/1FAIpQLSdDW35uh8CNwzOHqk6cjKmcJQKRNfvKzRurqC6GDJjetGR_yg/viewform",
     "news": [
         {
             "title": "ANKETİMİZE KATILMAYI UNUTMAYIN",
@@ -558,36 +555,19 @@ function doLogin() {
 }
 function cikisYap() { isAdmin=false; location.reload(); }
 
-// --- YENİ: SİSTEMİ SIFIRLA FONKSİYONU ---
+// --- SİSTEMİ SIFIRLA FONKSİYONU ---
 function sistemiSifirla() {
     if(confirm("DİKKAT! Tüm maç sonuçları, puan durumları, goller ve kartlar SİLİNECEK. Bu işlem geri alınamaz! Emin misiniz?")) {
         if(confirm("Son Kararınız mı? Sistem tamamen sıfırlanacak!")) {
-            // 1. Maçları ve Elemeleri sil
             db.matches = [];
             db.knockouts = [];
-            // 2. Oyuncuları sil
             db.players = [];
-            // 3. Takım istatistiklerini sıfırla
             Object.keys(db.teams).forEach(t => {
-                db.teams[t].o = 0;
-                db.teams[t].gal = 0;
-                db.teams[t].b = 0;
-                db.teams[t].m = 0;
-                db.teams[t].ag = 0;
-                db.teams[t].yg = 0;
-                db.teams[t].av = 0;
-                db.teams[t].p = 0;
-                db.teams[t].tb = 0;
-                db.teams[t].ts = 0;
-                db.teams[t].tk = 0;
+                db.teams[t].o = 0; db.teams[t].gal = 0; db.teams[t].b = 0; db.teams[t].m = 0;
+                db.teams[t].ag = 0; db.teams[t].yg = 0; db.teams[t].av = 0; db.teams[t].p = 0;
+                db.teams[t].tb = 0; db.teams[t].ts = 0; db.teams[t].tk = 0;
             });
-            
-            // Arayüzü güncelle
-            calculateStats(); 
-            filterG('A', document.querySelector('.group-btn')); 
-            renderStats();
-            renderKnockouts();
-            
+            calculateStats(); filterG('A', document.querySelector('.group-btn')); renderStats(); renderKnockouts();
             alert("Sistem başarıyla sıfırlandı! Lütfen 'GÜNCEL DOSYAYI İNDİR' butonuna basarak yeni boş dosyayı GitHub'a yükleyin.");
         }
     }
@@ -598,7 +578,6 @@ function anketKaydet() {
     renderPoll();
     alert("Anket güncellendi!");
 }
-
 function renderPoll() {
     const cont = document.getElementById('anket-container');
     if(!db.pollLink) { 
@@ -737,12 +716,49 @@ function renderStats() {
     const kBody = document.querySelector('#kart-table tbody'); kBody.innerHTML = '';
     db.players.sort((a,b) => b.k - a.k || b.s - a.s).forEach(p => { if(p.b > 0 || p.s > 0 || p.k > 0) kBody.innerHTML += `<tr><td class="t-left">${p.name}</td><td>${p.b}</td><td>${p.s}</td><td style="color:red;font-weight:bold">${p.k}</td></tr>`; });
 }
+
+// --- SİHİRLİ YÖNLENDİRME (İNDİRME ÖNCESİ) ---
 function indirGuncel() {
-    isAdmin = false; document.getElementById('admin-panel').style.display = 'none'; document.getElementById('admin-login').style.display = 'block'; document.getElementById('admin-pass').value = ''; renderNews(); 
-    const tamKod = document.documentElement.outerHTML; const regex = /let db = \{[\s\S]*?\};/; const yeniKod = tamKod.replace(regex, `let db = ${JSON.stringify(db, null, 4)};`);
-    const blob = new Blob([yeniKod], { type: 'text/html' }); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'index.html'; a.click();
-    isAdmin = true; document.getElementById('admin-panel').style.display = 'block'; document.getElementById('admin-login').style.display = 'none'; renderNews();
+    // 1. Admin panelini gizle ve güvenliğe al
+    isAdmin = false; 
+    document.getElementById('admin-panel').style.display = 'none'; 
+    document.getElementById('admin-login').style.display = 'block'; 
+    document.getElementById('admin-pass').value = ''; 
+    
+    // 2. ÇAKTIRMADAN HABERLER SEKMESİNE GEÇ (Oyuncular buradan başlasın diye)
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('p-news').classList.add('active');
+    
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.querySelectorAll('.nav-item')[0].classList.add('active'); // 0 = Haberler butonu
+    
+    renderNews(); // Sil butonlarını gizlemek için yeniden çiz
+    
+    // 3. Dosyayı bu "Haberler açık" haliyle kaydet
+    const tamKod = document.documentElement.outerHTML; 
+    const regex = /let db = \{[\s\S]*?\};/; 
+    const yeniKod = tamKod.replace(regex, `let db = ${JSON.stringify(db, null, 4)};`);
+    
+    const blob = new Blob([yeniKod], { type: 'text/html' }); 
+    const a = document.createElement('a'); 
+    a.href = URL.createObjectURL(blob); 
+    a.download = 'index.html'; 
+    a.click();
+    
+    // 4. İndirme bitince senin ekranını tekrar Admin'e geri getir
+    isAdmin = true; 
+    document.getElementById('admin-panel').style.display = 'block'; 
+    document.getElementById('admin-login').style.display = 'none'; 
+    
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    document.getElementById('p-admin').classList.add('active');
+    
+    document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
+    document.querySelectorAll('.nav-item')[5].classList.add('active'); // 5 = Admin butonu
+    
+    renderNews(); // Sil butonlarını senin için geri getir
 }
+
 window.onload = () => { calculateStats(); renderNews(); renderPoll(); renderFixture(); filterG('A', document.querySelector('.group-btn')); renderStats(); renderKnockouts(); };
 </script>
 
