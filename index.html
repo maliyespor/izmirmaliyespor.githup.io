@@ -83,7 +83,7 @@
 <div class="container">
     <!-- HABERLER SAYFASI -->
     <div id="p-news" class="page active">
-        <div id="news-list"><div class="news-card"><div class="news-body"><div class="news-date">16.04.2026</div><div class="news-title">15.04.2026 Maç Sonuçları</div><div class="news-text">İdari Mali İşler:4 - Ege VD:2----------------------------------Karşıyaka VD:3 - Taşıtlar Master: 1</div></div></div><div class="news-card"><div class="news-body"><div class="news-date">15.04.2026</div><div class="news-title">14.04.2026 Maç Sonuçları</div><div class="news-text">Bornova Kompleks: 5 - Personel Müd.: 0 --------------------- Denetim F.C: 3 - Eğitim F.K: 2
+        <div id="news-list"><div class="news-card"><div class="news-body"><div class="news-date">17.04.2026</div><div class="news-title">16.04.2026 Maç Sonuçları</div><div class="news-text">İzmir İhtisas:7 - Gazi Buca Spor:4 --------------------------Denetim Gücü:5 - Çakabey İhtisas:2</div></div></div><div class="news-card"><div class="news-body"><div class="news-date">16.04.2026</div><div class="news-title">15.04.2026 Maç Sonuçları</div><div class="news-text">İdari Mali İşler:4 - Ege VD:2----------------------------------Karşıyaka VD:3 - Taşıtlar Master: 1</div></div></div><div class="news-card"><div class="news-body"><div class="news-date">15.04.2026</div><div class="news-title">14.04.2026 Maç Sonuçları</div><div class="news-text">Bornova Kompleks: 5 - Personel Müd.: 0 --------------------- Denetim F.C: 3 - Eğitim F.K: 2
 </div></div></div><div class="news-card"><a href="https://drive.google.com/file/d/1L7dXWV8kqGlUSLF9es5lAgJv_FdXC5FW/view?usp=sharing" target="_blank"><img src="https://lh3.googleusercontent.com/d/1L7dXWV8kqGlUSLF9es5lAgJv_FdXC5FW" class="news-img" loading="lazy"></a><div class="news-body"><div class="news-date">14.04.2026</div><div class="news-title">13.04.2026 Maç Sonuçları</div><div class="news-text">Taşıtlar F.C: 8 - Yemekhane Gücü:1---------------------- Muhakemat 1838: 3 - Aliağa VD.: 3
 
 </div></div></div></div>
@@ -115,19 +115,19 @@
     <!-- PUAN DURUMU & ELEMELER SAYFASI -->
     <div id="p-puan" class="page">
         <div class="group-selector">
-            <button class="group-btn active" onclick="filterG('A', this)">Grup A</button>
+            <button class="group-btn" onclick="filterG('A', this)">Grup A</button>
             <button class="group-btn" onclick="filterG('B', this)">Grup B</button>
             <button class="group-btn" onclick="filterG('C', this)">Grup C</button>
-            <button class="group-btn" onclick="filterG('D', this)">Grup D</button>
+            <button class="group-btn active" onclick="filterG('D', this)">Grup D</button>
             <button class="group-btn" style="border-color:var(--a); color:var(--a);" onclick="showKnockouts(this)">🏆 Elemeler</button>
         </div>
         
         <div class="card" id="group-area" style="display: block;">
-            <h2 id="g-title">🏆 Puan Durumu - Grup A</h2>
+            <h2 id="g-title">🏆 Puan Durumu - Grup D</h2>
             <div class="table-w">
                 <table>
                     <thead><tr><th>Takım</th><th>O</th><th>G</th><th>M</th><th>AV</th><th>P</th></tr></thead>
-                    <tbody id="puan-body"><tr><td class="t-left">TAŞITLAR F.C.</td><td>1</td><td>1</td><td>0</td><td>7</td><td class="highlight">3</td></tr><tr><td class="t-left">MUHAKEMAT 1838</td><td>1</td><td>0</td><td>0</td><td>0</td><td class="highlight">1</td></tr><tr><td class="t-left">ALİAĞA V.D.MÜD.</td><td>1</td><td>0</td><td>0</td><td>0</td><td class="highlight">1</td></tr><tr><td class="t-left">YEMEKHANE GÜCÜ</td><td>1</td><td>0</td><td>1</td><td>-7</td><td class="highlight">0</td></tr></tbody>
+                    <tbody id="puan-body"><tr><td class="t-left">İZMİR İHTİSAS</td><td>1</td><td>1</td><td>0</td><td>3</td><td class="highlight">3</td></tr><tr><td class="t-left">DENETİM GÜCÜ</td><td>1</td><td>1</td><td>0</td><td>3</td><td class="highlight">3</td></tr><tr><td class="t-left">ÇAKABEY İHTİSAS</td><td>1</td><td>0</td><td>1</td><td>-3</td><td class="highlight">0</td></tr><tr><td class="t-left">GAZİ BUCA SPOR</td><td>1</td><td>0</td><td>1</td><td>-3</td><td class="highlight">0</td></tr></tbody>
                 </table>
             </div>
         </div>
@@ -144,7 +144,7 @@
             <h2>⚽ Gol Krallığı (Top 10)</h2>
             <table id="gol-table">
                 <thead><tr><th>Oyuncu</th><th>Takım</th><th>Gol</th></tr></thead>
-                <tbody><tr><td class="t-left">OĞUZ BASRİ YILDIZ</td><td>TAŞITLAR F.C.</td><td class="highlight">4</td></tr><tr><td class="t-left">ERGÜL YILGIN</td><td>BORNOVA KOMPLEKS</td><td class="highlight">3</td></tr><tr><td class="t-left">MUSTAFA ARIK</td><td>MUHAKEMAT 1838</td><td class="highlight">2</td></tr><tr><td class="t-left">GÜVEN AKGÜMÜŞ</td><td>ALİAĞA V.D.MÜD.</td><td class="highlight">2</td></tr><tr><td class="t-left">MUSTAFA BAĞCI</td><td>TAŞITLAR F.C.</td><td class="highlight">2</td></tr><tr><td class="t-left">FERHAT BİLİR</td><td>BORNOVA KOMPLEKS</td><td class="highlight">2</td></tr><tr><td class="t-left">MURAT BIYAN</td><td>DENETİM F.C.</td><td class="highlight">2</td></tr><tr><td class="t-left">ESAT TÜRKARSLAN</td><td>İDARİ MALİ İŞLER</td><td class="highlight">2</td></tr><tr><td class="t-left">FURKAN KARABOĞA</td><td>MUHAKEMAT 1838</td><td class="highlight">1</td></tr><tr><td class="t-left">BARIŞ KARAKAYA</td><td>İDARİ MALİ İŞLER</td><td class="highlight">1</td></tr></tbody>
+                <tbody><tr><td class="t-left">OĞUZ BASRİ YILDIZ</td><td>TAŞITLAR F.C.</td><td class="highlight">4</td></tr><tr><td class="t-left">ERGÜL YILGIN</td><td>BORNOVA KOMPLEKS</td><td class="highlight">3</td></tr><tr><td class="t-left">LEVENT KILIÇ</td><td>İZMİR İHTİSAS</td><td class="highlight">3</td></tr><tr><td class="t-left">MUSTAFA ARIK</td><td>MUHAKEMAT 1838</td><td class="highlight">2</td></tr><tr><td class="t-left">GÜVEN AKGÜMÜŞ</td><td>ALİAĞA V.D.MÜD.</td><td class="highlight">2</td></tr><tr><td class="t-left">MUSTAFA BAĞCI</td><td>TAŞITLAR F.C.</td><td class="highlight">2</td></tr><tr><td class="t-left">FERHAT BİLİR</td><td>BORNOVA KOMPLEKS</td><td class="highlight">2</td></tr><tr><td class="t-left">MURAT BIYAN</td><td>DENETİM F.C.</td><td class="highlight">2</td></tr><tr><td class="t-left">ESAT TÜRKARSLAN</td><td>İDARİ MALİ İŞLER</td><td class="highlight">2</td></tr><tr><td class="t-left">EMRULLAH TEMEL</td><td>İZMİR İHTİSAS</td><td class="highlight">2</td></tr></tbody>
             </table>
         </div>
         <div class="card">
@@ -284,6 +284,14 @@ let db = {
     "pollLink": "https://docs.google.com/forms/d/e/1FAIpQLSdDW35uh8CNwzOHqk6cjKmcJQKRNfvKzRurqC6GDJjetGR_yg/viewform",
     "news": [
         {
+            "title": "16.04.2026 Maç Sonuçları",
+            "img": "",
+            "rawImg": "",
+            "text": "İzmir İhtisas:7 - Gazi Buca Spor:4 --------------------------Denetim Gücü:5 - Çakabey İhtisas:2",
+            "date": "17.04.2026",
+            "id": 1776405736769
+        },
+        {
             "title": "15.04.2026 Maç Sonuçları",
             "img": "",
             "rawImg": "",
@@ -344,6 +352,18 @@ let db = {
             "dep": "TAŞITLAR MASTER",
             "evS": 3,
             "depS": 1
+        },
+        {
+            "ev": "İZMİR İHTİSAS",
+            "dep": "GAZİ BUCA SPOR",
+            "evS": 7,
+            "depS": 4
+        },
+        {
+            "ev": "DENETİM GÜCÜ",
+            "dep": "ÇAKABEY İHTİSAS",
+            "evS": 5,
+            "depS": 2
         }
     ],
     "knockouts": [],
@@ -518,41 +538,41 @@ let db = {
         },
         "İZMİR İHTİSAS": {
             "g": "D",
-            "o": 0,
-            "gal": 0,
+            "o": 1,
+            "gal": 1,
             "b": 0,
             "m": 0,
-            "ag": 0,
-            "yg": 0,
-            "av": 0,
-            "p": 0,
+            "ag": 7,
+            "yg": 4,
+            "av": 3,
+            "p": 3,
             "tb": 0,
             "ts": 0,
             "tk": 0
         },
         "DENETİM GÜCÜ": {
             "g": "D",
-            "o": 0,
-            "gal": 0,
+            "o": 1,
+            "gal": 1,
             "b": 0,
             "m": 0,
-            "ag": 0,
-            "yg": 0,
-            "av": 0,
-            "p": 0,
+            "ag": 5,
+            "yg": 2,
+            "av": 3,
+            "p": 3,
             "tb": 0,
             "ts": 0,
             "tk": 0
         },
         "ÇAKABEY İHTİSAS": {
             "g": "D",
-            "o": 0,
+            "o": 1,
             "gal": 0,
             "b": 0,
-            "m": 0,
-            "ag": 0,
-            "yg": 0,
-            "av": 0,
+            "m": 1,
+            "ag": 2,
+            "yg": 5,
+            "av": -3,
             "p": 0,
             "tb": 0,
             "ts": 0,
@@ -560,13 +580,13 @@ let db = {
         },
         "GAZİ BUCA SPOR": {
             "g": "D",
-            "o": 0,
+            "o": 1,
             "gal": 0,
             "b": 0,
-            "m": 0,
-            "ag": 0,
-            "yg": 0,
-            "av": 0,
+            "m": 1,
+            "ag": 4,
+            "yg": 7,
+            "av": -3,
             "p": 0,
             "tb": 0,
             "ts": 0,
@@ -639,6 +659,14 @@ let db = {
             "k": 0
         },
         {
+            "name": "LEVENT KILIÇ",
+            "team": "İZMİR İHTİSAS",
+            "gol": 3,
+            "b": 0,
+            "s": 0,
+            "k": 0
+        },
+        {
             "name": "MUSTAFA ARIK",
             "team": "MUHAKEMAT 1838",
             "gol": 2,
@@ -681,6 +709,30 @@ let db = {
         {
             "name": "ESAT TÜRKARSLAN",
             "team": "İDARİ MALİ İŞLER",
+            "gol": 2,
+            "b": 0,
+            "s": 0,
+            "k": 0
+        },
+        {
+            "name": "EMRULLAH TEMEL",
+            "team": "İZMİR İHTİSAS",
+            "gol": 2,
+            "b": 0,
+            "s": 0,
+            "k": 0
+        },
+        {
+            "name": "SÜLEYMAN ERTEK",
+            "team": "GAZİ BUCA SPOR",
+            "gol": 2,
+            "b": 0,
+            "s": 0,
+            "k": 0
+        },
+        {
+            "name": "CANSIN ÖZER",
+            "team": "DENETİM GÜCÜ",
             "gol": 2,
             "b": 0,
             "s": 0,
@@ -777,6 +829,70 @@ let db = {
         {
             "name": "EREN YÜKSEK",
             "team": "KARŞIYAKA V.D.MÜD.",
+            "gol": 1,
+            "b": 0,
+            "s": 0,
+            "k": 0
+        },
+        {
+            "name": "NURKAY YİĞİT",
+            "team": "İZMİR İHTİSAS",
+            "gol": 1,
+            "b": 0,
+            "s": 0,
+            "k": 0
+        },
+        {
+            "name": "EMRE KELEŞ",
+            "team": "İZMİR İHTİSAS",
+            "gol": 1,
+            "b": 0,
+            "s": 0,
+            "k": 0
+        },
+        {
+            "name": "ONUR SAVGAN",
+            "team": "GAZİ BUCA SPOR",
+            "gol": 1,
+            "b": 0,
+            "s": 0,
+            "k": 0
+        },
+        {
+            "name": "ÇAĞLAR DEMİRCİ",
+            "team": "GAZİ BUCA SPOR",
+            "gol": 1,
+            "b": 0,
+            "s": 0,
+            "k": 0
+        },
+        {
+            "name": "GÖKHAN KARAHAN",
+            "team": "DENETİM GÜCÜ",
+            "gol": 1,
+            "b": 0,
+            "s": 0,
+            "k": 0
+        },
+        {
+            "name": "EMRAH ÇALIK",
+            "team": "DENETİM GÜCÜ",
+            "gol": 1,
+            "b": 0,
+            "s": 0,
+            "k": 0
+        },
+        {
+            "name": "CİHAN IŞIKSAL",
+            "team": "ÇAKABEY İHTİSAS",
+            "gol": 1,
+            "b": 0,
+            "s": 0,
+            "k": 0
+        },
+        {
+            "name": "RAMAZAN TASLAK",
+            "team": "ÇAKABEY İHTİSAS",
             "gol": 1,
             "b": 0,
             "s": 0,
