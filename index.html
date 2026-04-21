@@ -119,19 +119,19 @@
     <!-- PUAN DURUMU & ELEMELER SAYFASI -->
     <div id="p-puan" class="page">
         <div class="group-selector">
-            <button class="group-btn" onclick="filterG('A', this)">Grup A</button>
+            <button class="group-btn active" onclick="filterG('A', this)">Grup A</button>
             <button class="group-btn" onclick="filterG('B', this)">Grup B</button>
             <button class="group-btn" onclick="filterG('C', this)">Grup C</button>
-            <button class="group-btn active" onclick="filterG('D', this)">Grup D</button>
+            <button class="group-btn" onclick="filterG('D', this)">Grup D</button>
             <button class="group-btn" style="border-color:var(--a); color:var(--a);" onclick="showKnockouts(this)">🏆 Elemeler</button>
         </div>
         
         <div class="card" id="group-area" style="display: block;">
-            <h2 id="g-title">🏆 Puan Durumu - Grup D</h2>
+            <h2 id="g-title">🏆 Puan Durumu - Grup A</h2>
             <div class="table-w">
                 <table>
                     <thead><tr><th>Takım</th><th>O</th><th>G</th><th>M</th><th>AV</th><th>P</th></tr></thead>
-                    <tbody id="puan-body"><tr><td class="t-left">İZMİR İHTİSAS</td><td>1</td><td>1</td><td>0</td><td>3</td><td class="highlight">3</td></tr><tr><td class="t-left">DENETİM GÜCÜ</td><td>1</td><td>1</td><td>0</td><td>3</td><td class="highlight">3</td></tr><tr><td class="t-left">ÇAKABEY İHTİSAS</td><td>1</td><td>0</td><td>1</td><td>-3</td><td class="highlight">0</td></tr><tr><td class="t-left">GAZİ BUCA SPOR</td><td>1</td><td>0</td><td>1</td><td>-3</td><td class="highlight">0</td></tr></tbody>
+                    <tbody id="puan-body"><tr><td class="t-left">TAŞITLAR F.C.</td><td>2</td><td>2</td><td>0</td><td>12</td><td class="highlight">6</td></tr><tr><td class="t-left">MUHAKEMAT 1838</td><td>2</td><td>1</td><td>0</td><td>4</td><td class="highlight">4</td></tr><tr><td class="t-left">ALİAĞA V.D.MÜD.</td><td>2</td><td>0</td><td>1</td><td>-5</td><td class="highlight">1</td></tr><tr><td class="t-left">YEMEKHANE GÜCÜ</td><td>2</td><td>0</td><td>2</td><td>-11</td><td class="highlight">0</td></tr></tbody>
                 </table>
             </div>
         </div>
@@ -148,7 +148,7 @@
             <h2>⚽ Gol Krallığı (Top 10)</h2>
             <table id="gol-table">
                 <thead><tr><th>Oyuncu</th><th>Takım</th><th>Gol</th></tr></thead>
-                <tbody><tr><td class="t-left">OĞUZ BASRİ YILDIZ</td><td>TAŞITLAR F.C.</td><td class="highlight">5</td></tr><tr><td class="t-left">ERGÜL YILGIN</td><td>BORNOVA KOMPLEKS</td><td class="highlight">3</td></tr><tr><td class="t-left">LEVENT KILIÇ</td><td>İZMİR İHTİSAS</td><td class="highlight">3</td></tr><tr><td class="t-left">SEMİH BAYRAM</td><td>YEMEKHANE GÜCÜ</td><td class="highlight">3</td></tr><tr><td class="t-left">MUSTAFA BAĞCI</td><td>TAŞITLAR F.C.</td><td class="highlight">3</td></tr><tr><td class="t-left">MUSTAFA ARIK</td><td>TAŞITLAR F.C.</td><td class="highlight">3</td></tr><tr><td class="t-left">GÜVEN AKGÜMÜŞ</td><td>ALİAĞA V.D.MÜD.</td><td class="highlight">2</td></tr><tr><td class="t-left">FERHAT BİLİR</td><td>BORNOVA KOMPLEKS</td><td class="highlight">2</td></tr><tr><td class="t-left">MURAT BIYAN</td><td>DENETİM F.C.</td><td class="highlight">2</td></tr><tr><td class="t-left">ESAT TÜRKARSLAN</td><td>İDARİ MALİ İŞLER</td><td class="highlight">2</td></tr></tbody>
+                <tbody><tr><td class="t-left">OĞUZ BASRİ YILDIZ</td><td>TAŞITLAR F.C.</td><td class="highlight">5</td></tr><tr><td class="t-left">ERGÜL YILGIN</td><td>BORNOVA KOMPLEKS</td><td class="highlight">3</td></tr><tr><td class="t-left">LEVENT KILIÇ</td><td>İZMİR İHTİSAS</td><td class="highlight">3</td></tr><tr><td class="t-left">SEMİH BAYRAM</td><td>YEMEKHANE GÜCÜ</td><td class="highlight">3</td></tr><tr><td class="t-left">MUSTAFA BAĞCI</td><td>TAŞITLAR F.C.</td><td class="highlight">3</td></tr><tr><td class="t-left">MUSTAFA ARIK</td><td>MUHAKEMAT 1838</td><td class="highlight">3</td></tr><tr><td class="t-left">GÜVEN AKGÜMÜŞ</td><td>ALİAĞA V.D.MÜD.</td><td class="highlight">2</td></tr><tr><td class="t-left">FERHAT BİLİR</td><td>BORNOVA KOMPLEKS</td><td class="highlight">2</td></tr><tr><td class="t-left">MURAT BIYAN</td><td>DENETİM F.C.</td><td class="highlight">2</td></tr><tr><td class="t-left">ESAT TÜRKARSLAN</td><td>İDARİ MALİ İŞLER</td><td class="highlight">2</td></tr></tbody>
             </table>
         </div>
         <div class="card">
@@ -241,7 +241,7 @@
                 <button class="btn-del-small" onclick="golKraliSil(4)">Sil</button>
             </div>
             <div class="admin-list-item">
-                <span><b>MUSTAFA ARIK</b> (TAŞITLAR F.C.) - 3 Gol</span>
+                <span><b>MUSTAFA ARIK</b> (MUHAKEMAT 1838) - 3 Gol</span>
                 <button class="btn-del-small" onclick="golKraliSil(5)">Sil</button>
             </div>
             <div class="admin-list-item">
@@ -285,104 +285,100 @@
                 <button class="btn-del-small" onclick="golKraliSil(15)">Sil</button>
             </div>
             <div class="admin-list-item">
-                <span><b>MUSTAFA ARIK</b> (MUHAKEMAT 1838) - 1 Gol</span>
+                <span><b>MEHMET AKKAŞ</b> (TAŞITLAR F.C.) - 1 Gol</span>
                 <button class="btn-del-small" onclick="golKraliSil(16)">Sil</button>
             </div>
             <div class="admin-list-item">
-                <span><b>MEHMET AKKAŞ</b> (TAŞITLAR F.C.) - 1 Gol</span>
+                <span><b>FURKAN  KARABOĞA</b> (MUHAKEMAT 1838) - 1 Gol</span>
                 <button class="btn-del-small" onclick="golKraliSil(17)">Sil</button>
             </div>
             <div class="admin-list-item">
-                <span><b>FURKAN  KARABOĞA</b> (MUHAKEMAT 1838) - 1 Gol</span>
+                <span><b>MUSTAFA ERDAL</b> (ALİAĞA V.D.MÜD.) - 1 Gol</span>
                 <button class="btn-del-small" onclick="golKraliSil(18)">Sil</button>
             </div>
             <div class="admin-list-item">
-                <span><b>MUSTAFA ERDAL</b> (ALİAĞA V.D.MÜD.) - 1 Gol</span>
+                <span><b>ALPASLAN KOÇ</b> (DENETİM F.C.) - 1 Gol</span>
                 <button class="btn-del-small" onclick="golKraliSil(19)">Sil</button>
             </div>
             <div class="admin-list-item">
-                <span><b>ALPASLAN KOÇ</b> (DENETİM F.C.) - 1 Gol</span>
+                <span><b>ALİ BENCİK</b> (EĞİTİM F.K.) - 1 Gol</span>
                 <button class="btn-del-small" onclick="golKraliSil(20)">Sil</button>
             </div>
             <div class="admin-list-item">
-                <span><b>ALİ BENCİK</b> (EĞİTİM F.K.) - 1 Gol</span>
+                <span><b>BARIŞ KARAKAYA</b> (İDARİ MALİ İŞLER) - 1 Gol</span>
                 <button class="btn-del-small" onclick="golKraliSil(21)">Sil</button>
             </div>
             <div class="admin-list-item">
-                <span><b>BARIŞ KARAKAYA</b> (İDARİ MALİ İŞLER) - 1 Gol</span>
+                <span><b>İLKER BARIŞ TOZLU</b> (İDARİ MALİ İŞLER) - 1 Gol</span>
                 <button class="btn-del-small" onclick="golKraliSil(22)">Sil</button>
             </div>
             <div class="admin-list-item">
-                <span><b>İLKER BARIŞ TOZLU</b> (İDARİ MALİ İŞLER) - 1 Gol</span>
+                <span><b>VELİ KURT</b> (EGE V.D.MÜD.) - 1 Gol</span>
                 <button class="btn-del-small" onclick="golKraliSil(23)">Sil</button>
             </div>
             <div class="admin-list-item">
-                <span><b>VELİ KURT</b> (EGE V.D.MÜD.) - 1 Gol</span>
+                <span><b>VEDAT AKAT</b> (EGE V.D.MÜD.) - 1 Gol</span>
                 <button class="btn-del-small" onclick="golKraliSil(24)">Sil</button>
             </div>
             <div class="admin-list-item">
-                <span><b>VEDAT AKAT</b> (EGE V.D.MÜD.) - 1 Gol</span>
+                <span><b>CANER HÜYÜK</b> (KARŞIYAKA V.D.MÜD.) - 1 Gol</span>
                 <button class="btn-del-small" onclick="golKraliSil(25)">Sil</button>
             </div>
             <div class="admin-list-item">
-                <span><b>CANER HÜYÜK</b> (KARŞIYAKA V.D.MÜD.) - 1 Gol</span>
+                <span><b>GÖKHAN GÖK</b> (KARŞIYAKA V.D.MÜD.) - 1 Gol</span>
                 <button class="btn-del-small" onclick="golKraliSil(26)">Sil</button>
             </div>
             <div class="admin-list-item">
-                <span><b>GÖKHAN GÖK</b> (KARŞIYAKA V.D.MÜD.) - 1 Gol</span>
+                <span><b>EREN YÜKSEK</b> (KARŞIYAKA V.D.MÜD.) - 1 Gol</span>
                 <button class="btn-del-small" onclick="golKraliSil(27)">Sil</button>
             </div>
             <div class="admin-list-item">
-                <span><b>EREN YÜKSEK</b> (KARŞIYAKA V.D.MÜD.) - 1 Gol</span>
+                <span><b>SERKAN ÖMEROĞLU</b> (TAŞITLAR MASTER) - 1 Gol</span>
                 <button class="btn-del-small" onclick="golKraliSil(28)">Sil</button>
             </div>
             <div class="admin-list-item">
-                <span><b>SERKAN ÖMEROĞLU</b> (TAŞITLAR MASTER) - 1 Gol</span>
+                <span><b>NURKAY YİĞİT</b> (İZMİR İHTİSAS) - 1 Gol</span>
                 <button class="btn-del-small" onclick="golKraliSil(29)">Sil</button>
             </div>
             <div class="admin-list-item">
-                <span><b>NURKAY YİĞİT</b> (İZMİR İHTİSAS) - 1 Gol</span>
+                <span><b>EMRE KELEŞ</b> (İZMİR İHTİSAS) - 1 Gol</span>
                 <button class="btn-del-small" onclick="golKraliSil(30)">Sil</button>
             </div>
             <div class="admin-list-item">
-                <span><b>EMRE KELEŞ</b> (İZMİR İHTİSAS) - 1 Gol</span>
+                <span><b>ONUR SAVGAN</b> (GAZİ BUCA SPOR) - 1 Gol</span>
                 <button class="btn-del-small" onclick="golKraliSil(31)">Sil</button>
             </div>
             <div class="admin-list-item">
-                <span><b>ONUR SAVGAN</b> (GAZİ BUCA SPOR) - 1 Gol</span>
+                <span><b>ÇAĞLAR DEMİRCİ</b> (GAZİ BUCA SPOR) - 1 Gol</span>
                 <button class="btn-del-small" onclick="golKraliSil(32)">Sil</button>
             </div>
             <div class="admin-list-item">
-                <span><b>ÇAĞLAR DEMİRCİ</b> (GAZİ BUCA SPOR) - 1 Gol</span>
+                <span><b>GÖKHAN KARAHAN</b> (DENETİM GÜCÜ) - 1 Gol</span>
                 <button class="btn-del-small" onclick="golKraliSil(33)">Sil</button>
             </div>
             <div class="admin-list-item">
-                <span><b>GÖKHAN KARAHAN</b> (DENETİM GÜCÜ) - 1 Gol</span>
+                <span><b>EMRAH ÇALIK</b> (DENETİM GÜCÜ) - 1 Gol</span>
                 <button class="btn-del-small" onclick="golKraliSil(34)">Sil</button>
             </div>
             <div class="admin-list-item">
-                <span><b>EMRAH ÇALIK</b> (DENETİM GÜCÜ) - 1 Gol</span>
+                <span><b>CİHAN IŞIKSAL</b> (ÇAKABEY İHTİSAS) - 1 Gol</span>
                 <button class="btn-del-small" onclick="golKraliSil(35)">Sil</button>
             </div>
             <div class="admin-list-item">
-                <span><b>CİHAN IŞIKSAL</b> (ÇAKABEY İHTİSAS) - 1 Gol</span>
+                <span><b>RAMAZAN TASLAK</b> (ÇAKABEY İHTİSAS) - 1 Gol</span>
                 <button class="btn-del-small" onclick="golKraliSil(36)">Sil</button>
             </div>
             <div class="admin-list-item">
-                <span><b>RAMAZAN TASLAK</b> (ÇAKABEY İHTİSAS) - 1 Gol</span>
+                <span><b>AHMET CAN ŞAHİN</b> (TAŞITLAR F.C.) - 1 Gol</span>
                 <button class="btn-del-small" onclick="golKraliSil(37)">Sil</button>
             </div>
             <div class="admin-list-item">
-                <span><b>AHMET CAN ŞAHİN</b> (TAŞITLAR F.C.) - 1 Gol</span>
+                <span><b>ALİ CAN İPEK</b> (TAŞITLAR F.C.) - 1 Gol</span>
                 <button class="btn-del-small" onclick="golKraliSil(38)">Sil</button>
             </div>
             <div class="admin-list-item">
-                <span><b>ALİ CAN İPEK</b> (TAŞITLAR F.C.) - 1 Gol</span>
-                <button class="btn-del-small" onclick="golKraliSil(39)">Sil</button>
-            </div>
-            <div class="admin-list-item">
                 <span><b>FEYYAZ KASIM</b> (TAŞITLAR F.C.) - 1 Gol</span>
-                <button class="btn-del-small" onclick="golKraliSil(40)">Sil</button>
+                <button class="btn-del-small" onclick="golKraliSil(39)">Sil</button>
             </div></div>
             </div>
 
@@ -845,7 +841,7 @@ let db = {
         },
         {
             "name": "MUSTAFA ARIK",
-            "team": "TAŞITLAR F.C.",
+            "team": "MUHAKEMAT 1838",
             "gol": 3
         },
         {
@@ -897,11 +893,6 @@ let db = {
             "name": "KAAN İZGİ",
             "team": "MUHAKEMAT 1838",
             "gol": 2
-        },
-        {
-            "name": "MUSTAFA ARIK",
-            "team": "MUHAKEMAT 1838",
-            "gol": 1
         },
         {
             "name": "MEHMET AKKAŞ",
