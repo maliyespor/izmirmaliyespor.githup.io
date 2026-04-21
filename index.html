@@ -58,6 +58,8 @@
         .btn-d { background: #dc3545; color: white; }
         
         .admin-info { font-size: 11px; color: #666; text-align: center; margin-bottom: 15px; font-style: italic; }
+        .admin-list-item { display: flex; justify-content: space-between; align-items: center; background: #f8f9fa; padding: 8px; margin-bottom: 5px; border-radius: 6px; border: 1px solid #eee; font-size: 12px; }
+        .btn-del-small { background: var(--a); color: white; border: none; padding: 5px 10px; border-radius: 4px; cursor: pointer; font-size: 11px; }
 
         /* HABER TASARIMI */
         .news-card { background: white; border-radius: 12px; overflow: hidden; margin-bottom: 15px; box-shadow: 0 2px 8px rgba(0,0,0,0.1); position: relative; }
@@ -71,6 +73,9 @@
         .group-selector { display: flex; gap: 5px; margin-bottom: 15px; overflow-x: auto; padding-bottom: 5px; }
         .group-btn { padding: 8px 15px; border-radius: 20px; border: 1px solid #ddd; background: white; font-size: 12px; white-space: nowrap; cursor: pointer; }
         .group-btn.active { background: var(--p); color: white; border-color: var(--p); }
+        
+        /* ANKET IFRAME */
+        iframe { width: 100%; border: none; border-radius: 8px; min-height: 500px; }
     </style>
 </head>
 <body>
@@ -81,12 +86,11 @@
 </header>
 
 <div class="container">
-    <!-- HABERLER SAYFASI -->
+    <!-- HABERLER SAYFASI (AÇILIŞ SAYFASI) -->
     <div id="p-news" class="page active">
-        <div id="news-list"><div class="news-card"><div class="news-body"><div class="news-date">17.04.2026</div><div class="news-title">Fikstür Güncellendi !!!</div><div class="news-text">⚽Denetim Müdürlüğünde olan personelin haftaya Afyon ilinde yapılacak eğitim seminerinde olması nedeniyle fikstürde değişikliğe gidilmiştir. 
+        <div id="news-list"><div class="news-card"><div class="news-body"><div class="news-date">21.04.2026</div><div class="news-title">FİKSTÜR GÜNCELLENDİ</div><div class="news-text">⚽Denetim Müdürlüğünde olan personelin haftaya Afyon ilinde yapılacak eğitim seminerinde olması nedeniyle fikstürde değişikliğe gidilmiştir. 
 
-20-21 Nisan pazartesi ve salı günü maç oynanmayacak olup çarşamba günü C grubu maçları oynanacaktır. </div></div></div><div class="news-card"><div class="news-body"><div class="news-date">17.04.2026</div><div class="news-title">16.04.2026 Maç Sonuçları</div><div class="news-text">İzmir İhtisas:7 - Gazi Buca Spor:4 --------------------------Denetim Gücü:5 - Çakabey İhtisas:2</div></div></div><div class="news-card"><div class="news-body"><div class="news-date">16.04.2026</div><div class="news-title">15.04.2026 Maç Sonuçları</div><div class="news-text">İdari Mali İşler:4 - Ege VD:2----------------------------------Karşıyaka VD:3 - Taşıtlar Master: 1</div></div></div><div class="news-card"><div class="news-body"><div class="news-date">15.04.2026</div><div class="news-title">14.04.2026 Maç Sonuçları</div><div class="news-text">Bornova Kompleks: 5 - Personel Müd.: 0 --------------------- Denetim F.C: 3 - Eğitim F.K: 2
-</div></div></div></div>
+20-21 Nisan pazartesi ve salı günü maç oynanmayacak olup çarşamba günü C grubu maçları oynanacaktır. </div></div></div><div class="news-card"><div class="news-body"><div class="news-date">21.04.2026</div><div class="news-title">16.04.2026 Maç Sonuçları</div><div class="news-text">İzmir İhtisas:7 - Gazi Buca Spor:4 --------------------------                    Denetim Gücü:5 - Çakabey İhtisas:2</div></div></div><div class="news-card"><div class="news-body"><div class="news-date">21.04.2026</div><div class="news-title">17.04.2026 Maç Sonuçları</div><div class="news-text">Yemekhane Gücü:3 - Muhakemat 1838:7 --------------------------Aliağa VD:0 - Taşıtlar F.C:5</div></div></div></div>
     </div>
 
     <!-- ANKET SAYFASI -->
@@ -108,26 +112,26 @@
         <div class="card">
             <h2>📅 Turnuva Fikstürü</h2>
             <p style="font-size:12px; color:#666; margin-bottom:15px;">Tüm maç programını tam ekran görmek veya PDF olarak indirmek için aşağıdaki butona tıklayınız.</p>
-            <div id="fikstur-container"><a href="https://drive.google.com/file/d/1NCWoDt1aJ5RNiOwk6eX4JFc9c3iC-MFU/view?usp=sharing" target="_blank" style="display:block; text-align:center; margin-bottom:15px;"><img src="https://lh3.googleusercontent.com/d/1NCWoDt1aJ5RNiOwk6eX4JFc9c3iC-MFU" style="max-width:100%; max-height:400px; border-radius:8px; border:1px solid #ccc; object-fit:contain;" alt="Fikstür"></a><a href="https://drive.google.com/file/d/1NCWoDt1aJ5RNiOwk6eX4JFc9c3iC-MFU/view?usp=sharing" target="_blank" class="btn btn-p"><i class="fas fa-file-pdf"></i> Fikstürü Tam Ekran Aç</a></div>
+            <div id="fikstur-container"><a href="https://drive.google.com/file/d/1kpNh-R4diXq7zK4XrRY6Nbx9bGfqUUh2/view?usp=sharing" target="_blank" style="display:block; text-align:center; margin-bottom:15px;"><img src="https://lh3.googleusercontent.com/d/1kpNh-R4diXq7zK4XrRY6Nbx9bGfqUUh2" style="max-width:100%; max-height:400px; border-radius:8px; border:1px solid #ccc; object-fit:contain;" alt="Fikstür"></a><a href="https://drive.google.com/file/d/1kpNh-R4diXq7zK4XrRY6Nbx9bGfqUUh2/view?usp=sharing" target="_blank" class="btn btn-p"><i class="fas fa-file-pdf"></i> Fikstürü Tam Ekran Aç</a></div>
         </div>
     </div>
 
     <!-- PUAN DURUMU & ELEMELER SAYFASI -->
     <div id="p-puan" class="page">
         <div class="group-selector">
-            <button class="group-btn active" onclick="filterG('A', this)">Grup A</button>
+            <button class="group-btn" onclick="filterG('A', this)">Grup A</button>
             <button class="group-btn" onclick="filterG('B', this)">Grup B</button>
             <button class="group-btn" onclick="filterG('C', this)">Grup C</button>
-            <button class="group-btn" onclick="filterG('D', this)">Grup D</button>
+            <button class="group-btn active" onclick="filterG('D', this)">Grup D</button>
             <button class="group-btn" style="border-color:var(--a); color:var(--a);" onclick="showKnockouts(this)">🏆 Elemeler</button>
         </div>
         
         <div class="card" id="group-area" style="display: block;">
-            <h2 id="g-title">🏆 Puan Durumu - Grup A</h2>
+            <h2 id="g-title">🏆 Puan Durumu - Grup D</h2>
             <div class="table-w">
                 <table>
                     <thead><tr><th>Takım</th><th>O</th><th>G</th><th>M</th><th>AV</th><th>P</th></tr></thead>
-                    <tbody id="puan-body"><tr><td class="t-left">TAŞITLAR F.C.</td><td>1</td><td>1</td><td>0</td><td>7</td><td class="highlight">3</td></tr><tr><td class="t-left">MUHAKEMAT 1838</td><td>1</td><td>0</td><td>0</td><td>0</td><td class="highlight">1</td></tr><tr><td class="t-left">ALİAĞA V.D.MÜD.</td><td>1</td><td>0</td><td>0</td><td>0</td><td class="highlight">1</td></tr><tr><td class="t-left">YEMEKHANE GÜCÜ</td><td>1</td><td>0</td><td>1</td><td>-7</td><td class="highlight">0</td></tr></tbody>
+                    <tbody id="puan-body"><tr><td class="t-left">İZMİR İHTİSAS</td><td>1</td><td>1</td><td>0</td><td>3</td><td class="highlight">3</td></tr><tr><td class="t-left">DENETİM GÜCÜ</td><td>1</td><td>1</td><td>0</td><td>3</td><td class="highlight">3</td></tr><tr><td class="t-left">ÇAKABEY İHTİSAS</td><td>1</td><td>0</td><td>1</td><td>-3</td><td class="highlight">0</td></tr><tr><td class="t-left">GAZİ BUCA SPOR</td><td>1</td><td>0</td><td>1</td><td>-3</td><td class="highlight">0</td></tr></tbody>
                 </table>
             </div>
         </div>
@@ -144,21 +148,21 @@
             <h2>⚽ Gol Krallığı (Top 10)</h2>
             <table id="gol-table">
                 <thead><tr><th>Oyuncu</th><th>Takım</th><th>Gol</th></tr></thead>
-                <tbody><tr><td class="t-left">OĞUZ BASRİ YILDIZ</td><td>TAŞITLAR F.C.</td><td class="highlight">4</td></tr><tr><td class="t-left">ERGÜL YILGIN</td><td>BORNOVA KOMPLEKS</td><td class="highlight">3</td></tr><tr><td class="t-left">LEVENT KILIÇ</td><td>İZMİR İHTİSAS</td><td class="highlight">3</td></tr><tr><td class="t-left">MUSTAFA ARIK</td><td>MUHAKEMAT 1838</td><td class="highlight">2</td></tr><tr><td class="t-left">GÜVEN AKGÜMÜŞ</td><td>ALİAĞA V.D.MÜD.</td><td class="highlight">2</td></tr><tr><td class="t-left">MUSTAFA BAĞCI</td><td>TAŞITLAR F.C.</td><td class="highlight">2</td></tr><tr><td class="t-left">FERHAT BİLİR</td><td>BORNOVA KOMPLEKS</td><td class="highlight">2</td></tr><tr><td class="t-left">MURAT BIYAN</td><td>DENETİM F.C.</td><td class="highlight">2</td></tr><tr><td class="t-left">ESAT TÜRKARSLAN</td><td>İDARİ MALİ İŞLER</td><td class="highlight">2</td></tr><tr><td class="t-left">EMRULLAH TEMEL</td><td>İZMİR İHTİSAS</td><td class="highlight">2</td></tr></tbody>
+                <tbody><tr><td class="t-left">OĞUZ BASRİ YILDIZ</td><td>TAŞITLAR F.C.</td><td class="highlight">5</td></tr><tr><td class="t-left">ERGÜL YILGIN</td><td>BORNOVA KOMPLEKS</td><td class="highlight">3</td></tr><tr><td class="t-left">LEVENT KILIÇ</td><td>İZMİR İHTİSAS</td><td class="highlight">3</td></tr><tr><td class="t-left">SEMİH BAYRAM</td><td>YEMEKHANE GÜCÜ</td><td class="highlight">3</td></tr><tr><td class="t-left">MUSTAFA BAĞCI</td><td>TAŞITLAR F.C.</td><td class="highlight">3</td></tr><tr><td class="t-left">MUSTAFA ARIK</td><td>TAŞITLAR F.C.</td><td class="highlight">3</td></tr><tr><td class="t-left">GÜVEN AKGÜMÜŞ</td><td>ALİAĞA V.D.MÜD.</td><td class="highlight">2</td></tr><tr><td class="t-left">FERHAT BİLİR</td><td>BORNOVA KOMPLEKS</td><td class="highlight">2</td></tr><tr><td class="t-left">MURAT BIYAN</td><td>DENETİM F.C.</td><td class="highlight">2</td></tr><tr><td class="t-left">ESAT TÜRKARSLAN</td><td>İDARİ MALİ İŞLER</td><td class="highlight">2</td></tr></tbody>
             </table>
         </div>
         <div class="card">
             <h2>🛡️ Takım Fair-Play Listesi</h2>
             <table id="takim-kart-table">
                 <thead><tr><th>Takım</th><th>B</th><th>S</th><th>K</th></tr></thead>
-                <tbody id="takim-kart-body"><tr><td class="t-left">İDARİ MALİ İŞLER</td><td>0</td><td>2</td><td style="color:red;font-weight:bold">0</td></tr><tr><td class="t-left">TAŞITLAR MASTER</td><td>0</td><td>2</td><td style="color:red;font-weight:bold">0</td></tr><tr><td class="t-left">MUHAKEMAT 1838</td><td>0</td><td>1</td><td style="color:red;font-weight:bold">0</td></tr><tr><td class="t-left">KARŞIYAKA V.D.MÜD.</td><td>0</td><td>1</td><td style="color:red;font-weight:bold">0</td></tr></tbody>
+                <tbody id="takim-kart-body"><tr><td class="t-left">İDARİ MALİ İŞLER</td><td>0</td><td>2</td><td style="color:red;font-weight:bold">0</td></tr><tr><td class="t-left">TAŞITLAR MASTER</td><td>0</td><td>2</td><td style="color:red;font-weight:bold">0</td></tr><tr><td class="t-left">MUHAKEMAT 1838</td><td>1</td><td>1</td><td style="color:red;font-weight:bold">0</td></tr><tr><td class="t-left">ALİAĞA V.D.MÜD.</td><td>0</td><td>1</td><td style="color:red;font-weight:bold">0</td></tr><tr><td class="t-left">KARŞIYAKA V.D.MÜD.</td><td>0</td><td>1</td><td style="color:red;font-weight:bold">0</td></tr><tr><td class="t-left">YEMEKHANE GÜCÜ</td><td>1</td><td>0</td><td style="color:red;font-weight:bold">0</td></tr></tbody>
             </table>
         </div>
         <div class="card">
             <h2>🟥 Oyuncu Kart &amp; Cezalı Listesi</h2>
             <table id="kart-table">
                 <thead><tr><th>Oyuncu</th><th>B</th><th>S</th><th>K</th></tr></thead>
-                <tbody><tr><td class="t-left">FURKAN KARABOĞA</td><td>0</td><td>1</td><td style="color:red;font-weight:bold">0</td></tr><tr><td class="t-left">BARIŞ KARAKAYA</td><td>0</td><td>1</td><td style="color:red;font-weight:bold">0</td></tr><tr><td class="t-left">SERKAN ÖMEROĞLU</td><td>0</td><td>1</td><td style="color:red;font-weight:bold">0</td></tr><tr><td class="t-left">ALİ KAYA</td><td>0</td><td>1</td><td style="color:red;font-weight:bold">0</td></tr><tr><td class="t-left">ERSOY PARLAK</td><td>0</td><td>1</td><td style="color:red;font-weight:bold">0</td></tr><tr><td class="t-left">YILMAZ ÇAKIR</td><td>0</td><td>1</td><td style="color:red;font-weight:bold">0</td></tr></tbody>
+                <tbody><tr><td class="t-left">FURKAN KARABOĞA</td><td>0</td><td>1</td><td style="color:red;font-weight:bold">0</td></tr><tr><td class="t-left">BARIŞ KARAKAYA</td><td>0</td><td>1</td><td style="color:red;font-weight:bold">0</td></tr><tr><td class="t-left">ALİ KAYA</td><td>0</td><td>1</td><td style="color:red;font-weight:bold">0</td></tr><tr><td class="t-left">ERSOY PARLAK</td><td>0</td><td>1</td><td style="color:red;font-weight:bold">0</td></tr><tr><td class="t-left">SERKAN ÖMEROĞLU</td><td>0</td><td>1</td><td style="color:red;font-weight:bold">0</td></tr><tr><td class="t-left">YILMAZ ÇAKIR</td><td>0</td><td>1</td><td style="color:red;font-weight:bold">0</td></tr><tr><td class="t-left">ALİ ŞAN</td><td>0</td><td>1</td><td style="color:red;font-weight:bold">0</td></tr><tr><td class="t-left">MURAT POLAT</td><td>1</td><td>0</td><td style="color:red;font-weight:bold">0</td></tr><tr><td class="t-left">İBRAHİM ULUÇOBAN</td><td>1</td><td>0</td><td style="color:red;font-weight:bold">0</td></tr></tbody>
             </table>
         </div>
     </div>
@@ -205,9 +209,249 @@
                 <button class="btn" style="background:var(--a); color:white;" onclick="elemeKaydet()">Eleme Maçını İşle</button>
             </div>
 
+            <!-- YENİ: GOL KRALLIĞI MANUEL YÖNETİM -->
+            <div class="card" style="border: 2px solid #28a745;">
+                <h2>⚽ Gol Krallığı Manuel Yönetim</h2>
+                <p style="font-size:11px; color:#666; margin-bottom:10px;">Gol krallığına oyuncu ekleyin. Hatalı girdiyseniz aşağıdaki listeden silip tekrar ekleyin.</p>
+                <select id="gk-takim"><option value="">Takım Seç</option><option value="ALİAĞA V.D.MÜD.">ALİAĞA V.D.MÜD.</option><option value="BORNOVA KOMPLEKS">BORNOVA KOMPLEKS</option><option value="DENETİM F.C.">DENETİM F.C.</option><option value="DENETİM GÜCÜ">DENETİM GÜCÜ</option><option value="EGE V.D.MÜD.">EGE V.D.MÜD.</option><option value="EĞİTİM F.K.">EĞİTİM F.K.</option><option value="GAZİ BUCA SPOR">GAZİ BUCA SPOR</option><option value="KARŞIYAKA V.D.MÜD.">KARŞIYAKA V.D.MÜD.</option><option value="MUHAKEMAT 1838">MUHAKEMAT 1838</option><option value="PERSONEL MÜD.">PERSONEL MÜD.</option><option value="TAŞITLAR F.C.">TAŞITLAR F.C.</option><option value="TAŞITLAR MASTER">TAŞITLAR MASTER</option><option value="YEMEKHANE GÜCÜ">YEMEKHANE GÜCÜ</option><option value="ÇAKABEY İHTİSAS">ÇAKABEY İHTİSAS</option><option value="İDARİ MALİ İŞLER">İDARİ MALİ İŞLER</option><option value="İZMİR İHTİSAS">İZMİR İHTİSAS</option></select>
+                <input type="text" id="gk-isim" placeholder="Oyuncu Adı">
+                <input type="number" id="gk-gol" placeholder="Gol Sayısı" min="1">
+                <button class="btn btn-s" onclick="golKraliEkle()">Listeye Ekle / Güncelle</button>
+                
+                <h3 style="margin-top:15px; font-size:13px; color:var(--p);">Mevcut Golcüler (Silmek için tıklayın)</h3>
+                <div id="admin-gol-list" style="margin-top:10px;">
+            <div class="admin-list-item">
+                <span><b>OĞUZ BASRİ YILDIZ</b> (TAŞITLAR F.C.) - 5 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(0)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>ERGÜL YILGIN</b> (BORNOVA KOMPLEKS) - 3 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(1)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>LEVENT KILIÇ</b> (İZMİR İHTİSAS) - 3 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(2)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>SEMİH BAYRAM</b> (YEMEKHANE GÜCÜ) - 3 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(3)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>MUSTAFA BAĞCI</b> (TAŞITLAR F.C.) - 3 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(4)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>MUSTAFA ARIK</b> (TAŞITLAR F.C.) - 3 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(5)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>GÜVEN AKGÜMÜŞ</b> (ALİAĞA V.D.MÜD.) - 2 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(6)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>FERHAT BİLİR</b> (BORNOVA KOMPLEKS) - 2 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(7)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>MURAT BIYAN</b> (DENETİM F.C.) - 2 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(8)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>ESAT TÜRKARSLAN</b> (İDARİ MALİ İŞLER) - 2 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(9)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>EMRULLAH TEMEL</b> (İZMİR İHTİSAS) - 2 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(10)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>SÜLEYMAN ERTEK</b> (GAZİ BUCA SPOR) - 2 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(11)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>CANSIN ÖZER</b> (DENETİM GÜCÜ) - 2 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(12)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>ALİ BAYAR</b> (MUHAKEMAT 1838) - 2 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(13)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>YUNUS ERDEM</b> (MUHAKEMAT 1838) - 2 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(14)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>KAAN İZGİ</b> (MUHAKEMAT 1838) - 2 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(15)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>MUSTAFA ARIK</b> (MUHAKEMAT 1838) - 1 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(16)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>MEHMET AKKAŞ</b> (TAŞITLAR F.C.) - 1 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(17)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>FURKAN  KARABOĞA</b> (MUHAKEMAT 1838) - 1 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(18)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>MUSTAFA ERDAL</b> (ALİAĞA V.D.MÜD.) - 1 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(19)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>ALPASLAN KOÇ</b> (DENETİM F.C.) - 1 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(20)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>ALİ BENCİK</b> (EĞİTİM F.K.) - 1 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(21)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>BARIŞ KARAKAYA</b> (İDARİ MALİ İŞLER) - 1 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(22)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>İLKER BARIŞ TOZLU</b> (İDARİ MALİ İŞLER) - 1 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(23)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>VELİ KURT</b> (EGE V.D.MÜD.) - 1 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(24)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>VEDAT AKAT</b> (EGE V.D.MÜD.) - 1 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(25)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>CANER HÜYÜK</b> (KARŞIYAKA V.D.MÜD.) - 1 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(26)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>GÖKHAN GÖK</b> (KARŞIYAKA V.D.MÜD.) - 1 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(27)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>EREN YÜKSEK</b> (KARŞIYAKA V.D.MÜD.) - 1 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(28)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>SERKAN ÖMEROĞLU</b> (TAŞITLAR MASTER) - 1 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(29)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>NURKAY YİĞİT</b> (İZMİR İHTİSAS) - 1 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(30)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>EMRE KELEŞ</b> (İZMİR İHTİSAS) - 1 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(31)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>ONUR SAVGAN</b> (GAZİ BUCA SPOR) - 1 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(32)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>ÇAĞLAR DEMİRCİ</b> (GAZİ BUCA SPOR) - 1 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(33)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>GÖKHAN KARAHAN</b> (DENETİM GÜCÜ) - 1 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(34)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>EMRAH ÇALIK</b> (DENETİM GÜCÜ) - 1 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(35)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>CİHAN IŞIKSAL</b> (ÇAKABEY İHTİSAS) - 1 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(36)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>RAMAZAN TASLAK</b> (ÇAKABEY İHTİSAS) - 1 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(37)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>AHMET CAN ŞAHİN</b> (TAŞITLAR F.C.) - 1 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(38)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>ALİ CAN İPEK</b> (TAŞITLAR F.C.) - 1 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(39)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>FEYYAZ KASIM</b> (TAŞITLAR F.C.) - 1 Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(40)">Sil</button>
+            </div></div>
+            </div>
+
+            <!-- YENİ: OYUNCU KART YÖNETİMİ -->
+            <div class="card" style="border: 2px solid var(--p);">
+                <h2>🟥 Oyuncu Kart / Ceza Yönetimi</h2>
+                <p style="font-size:11px; color:#666; margin-bottom:10px;">Oyuncuya kart ekleyin. Hatalı girdiyseniz aşağıdaki listeden silip tekrar ekleyin.</p>
+                <select id="s-takim"><option value="">Takım Seç</option><option value="ALİAĞA V.D.MÜD.">ALİAĞA V.D.MÜD.</option><option value="BORNOVA KOMPLEKS">BORNOVA KOMPLEKS</option><option value="DENETİM F.C.">DENETİM F.C.</option><option value="DENETİM GÜCÜ">DENETİM GÜCÜ</option><option value="EGE V.D.MÜD.">EGE V.D.MÜD.</option><option value="EĞİTİM F.K.">EĞİTİM F.K.</option><option value="GAZİ BUCA SPOR">GAZİ BUCA SPOR</option><option value="KARŞIYAKA V.D.MÜD.">KARŞIYAKA V.D.MÜD.</option><option value="MUHAKEMAT 1838">MUHAKEMAT 1838</option><option value="PERSONEL MÜD.">PERSONEL MÜD.</option><option value="TAŞITLAR F.C.">TAŞITLAR F.C.</option><option value="TAŞITLAR MASTER">TAŞITLAR MASTER</option><option value="YEMEKHANE GÜCÜ">YEMEKHANE GÜCÜ</option><option value="ÇAKABEY İHTİSAS">ÇAKABEY İHTİSAS</option><option value="İDARİ MALİ İŞLER">İDARİ MALİ İŞLER</option><option value="İZMİR İHTİSAS">İZMİR İHTİSAS</option></select>
+                <input type="text" id="s-isim" placeholder="Oyuncu Adı">
+                <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:5px;">
+                    <input type="number" id="s-b" placeholder="Beyaz" min="0">
+                    <input type="number" id="s-s" placeholder="Sarı" min="0">
+                    <input type="number" id="s-k" placeholder="Kırmızı" min="0">
+                </div>
+                <button class="btn btn-p" onclick="kartGuncelle()">Kartları Kaydet</button>
+
+                <h3 style="margin-top:15px; font-size:13px; color:var(--p);">Kart Görenler (Silmek için tıklayın)</h3>
+                <div id="admin-kart-list" style="margin-top:10px;">
+            <div class="admin-list-item">
+                <span><b>FURKAN KARABOĞA</b> (MUHAKEMAT 1838) - B:0 S:1 K:0</span>
+                <button class="btn-del-small" onclick="kartSil(0)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>BARIŞ KARAKAYA</b> (İDARİ MALİ İŞLER) - B:0 S:1 K:0</span>
+                <button class="btn-del-small" onclick="kartSil(1)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>ALİ KAYA</b> (İDARİ MALİ İŞLER) - B:0 S:1 K:0</span>
+                <button class="btn-del-small" onclick="kartSil(2)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>ERSOY PARLAK</b> (KARŞIYAKA V.D.MÜD.) - B:0 S:1 K:0</span>
+                <button class="btn-del-small" onclick="kartSil(3)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>SERKAN ÖMEROĞLU</b> (TAŞITLAR MASTER) - B:0 S:1 K:0</span>
+                <button class="btn-del-small" onclick="kartSil(4)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>YILMAZ ÇAKIR</b> (TAŞITLAR MASTER) - B:0 S:1 K:0</span>
+                <button class="btn-del-small" onclick="kartSil(5)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>ALİ ŞAN</b> (ALİAĞA V.D.MÜD.) - B:0 S:1 K:0</span>
+                <button class="btn-del-small" onclick="kartSil(6)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>MURAT POLAT</b> (YEMEKHANE GÜCÜ) - B:1 S:0 K:0</span>
+                <button class="btn-del-small" onclick="kartSil(7)">Sil</button>
+            </div>
+            <div class="admin-list-item">
+                <span><b>İBRAHİM ULUÇOBAN</b> (MUHAKEMAT 1838) - B:1 S:0 K:0</span>
+                <button class="btn-del-small" onclick="kartSil(8)">Sil</button>
+            </div></div>
+            </div>
+
+            <div class="card" style="border: 2px solid #ff9800;">
+                <h2>🛡️ Takım Toplam Kart Güncelle</h2>
+                <select id="tk-takim"><option value="">Takım Seç</option><option value="ALİAĞA V.D.MÜD.">ALİAĞA V.D.MÜD.</option><option value="BORNOVA KOMPLEKS">BORNOVA KOMPLEKS</option><option value="DENETİM F.C.">DENETİM F.C.</option><option value="DENETİM GÜCÜ">DENETİM GÜCÜ</option><option value="EGE V.D.MÜD.">EGE V.D.MÜD.</option><option value="EĞİTİM F.K.">EĞİTİM F.K.</option><option value="GAZİ BUCA SPOR">GAZİ BUCA SPOR</option><option value="KARŞIYAKA V.D.MÜD.">KARŞIYAKA V.D.MÜD.</option><option value="MUHAKEMAT 1838">MUHAKEMAT 1838</option><option value="PERSONEL MÜD.">PERSONEL MÜD.</option><option value="TAŞITLAR F.C.">TAŞITLAR F.C.</option><option value="TAŞITLAR MASTER">TAŞITLAR MASTER</option><option value="YEMEKHANE GÜCÜ">YEMEKHANE GÜCÜ</option><option value="ÇAKABEY İHTİSAS">ÇAKABEY İHTİSAS</option><option value="İDARİ MALİ İŞLER">İDARİ MALİ İŞLER</option><option value="İZMİR İHTİSAS">İZMİR İHTİSAS</option></select>
+                <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:5px;">
+                    <input type="number" id="tk-b" placeholder="Beyaz">
+                    <input type="number" id="tk-s" placeholder="Sarı">
+                    <input type="number" id="tk-k" placeholder="Kırmızı">
+                </div>
+                <button class="btn btn-w" onclick="takimKartGuncelle()">Takım Kartlarını Kaydet</button>
+            </div>
+
             <div class="card" style="border: 2px solid #8e44ad;">
                 <h2>🗳️ Anket Yayınla / Güncelle</h2>
-                <p style="font-size:11px; color:#666; margin-bottom:10px;">Google Forms üzerinden aldığınız <b>Kısa veya Uzun</b> linki buraya yapıştırın.</p>
                 <input type="text" id="a-anket" placeholder="Google Form Linki">
                 <button class="btn" style="background:#8e44ad; color:white;" onclick="anketKaydet()">Anketi Yayınla</button>
             </div>
@@ -224,30 +468,6 @@
                 <input type="text" id="h-resim" placeholder="Resim Linki (Drive veya URL)">
                 <textarea id="h-ozet" rows="3" placeholder="Haber Detayı..."></textarea>
                 <button class="btn btn-s" onclick="haberEkle()">Haberi Yayınla</button>
-            </div>
-
-            <div class="card" style="border: 2px solid #ff9800;">
-                <h2>🛡️ Takım Toplam Kart Güncelle</h2>
-                <select id="tk-takim"><option value="">Takım Seç</option><option value="ALİAĞA V.D.MÜD.">ALİAĞA V.D.MÜD.</option><option value="BORNOVA KOMPLEKS">BORNOVA KOMPLEKS</option><option value="DENETİM F.C.">DENETİM F.C.</option><option value="DENETİM GÜCÜ">DENETİM GÜCÜ</option><option value="EGE V.D.MÜD.">EGE V.D.MÜD.</option><option value="EĞİTİM F.K.">EĞİTİM F.K.</option><option value="GAZİ BUCA SPOR">GAZİ BUCA SPOR</option><option value="KARŞIYAKA V.D.MÜD.">KARŞIYAKA V.D.MÜD.</option><option value="MUHAKEMAT 1838">MUHAKEMAT 1838</option><option value="PERSONEL MÜD.">PERSONEL MÜD.</option><option value="TAŞITLAR F.C.">TAŞITLAR F.C.</option><option value="TAŞITLAR MASTER">TAŞITLAR MASTER</option><option value="YEMEKHANE GÜCÜ">YEMEKHANE GÜCÜ</option><option value="ÇAKABEY İHTİSAS">ÇAKABEY İHTİSAS</option><option value="İDARİ MALİ İŞLER">İDARİ MALİ İŞLER</option><option value="İZMİR İHTİSAS">İZMİR İHTİSAS</option></select>
-                <div style="display:grid; grid-template-columns: 1fr 1fr 1fr; gap:5px;">
-                    <input type="number" id="tk-b" placeholder="Beyaz">
-                    <input type="number" id="tk-s" placeholder="Sarı">
-                    <input type="number" id="tk-k" placeholder="Kırmızı">
-                </div>
-                <button class="btn btn-w" onclick="takimKartGuncelle()">Takım Kartlarını Kaydet</button>
-            </div>
-
-            <div class="card" style="border: 2px solid var(--p);">
-                <h2>⚽ Oyuncu İstatistik Gir / Düzelt</h2>
-                <select id="s-takim"><option value="">Takım Seç</option><option value="ALİAĞA V.D.MÜD.">ALİAĞA V.D.MÜD.</option><option value="BORNOVA KOMPLEKS">BORNOVA KOMPLEKS</option><option value="DENETİM F.C.">DENETİM F.C.</option><option value="DENETİM GÜCÜ">DENETİM GÜCÜ</option><option value="EGE V.D.MÜD.">EGE V.D.MÜD.</option><option value="EĞİTİM F.K.">EĞİTİM F.K.</option><option value="GAZİ BUCA SPOR">GAZİ BUCA SPOR</option><option value="KARŞIYAKA V.D.MÜD.">KARŞIYAKA V.D.MÜD.</option><option value="MUHAKEMAT 1838">MUHAKEMAT 1838</option><option value="PERSONEL MÜD.">PERSONEL MÜD.</option><option value="TAŞITLAR F.C.">TAŞITLAR F.C.</option><option value="TAŞITLAR MASTER">TAŞITLAR MASTER</option><option value="YEMEKHANE GÜCÜ">YEMEKHANE GÜCÜ</option><option value="ÇAKABEY İHTİSAS">ÇAKABEY İHTİSAS</option><option value="İDARİ MALİ İŞLER">İDARİ MALİ İŞLER</option><option value="İZMİR İHTİSAS">İZMİR İHTİSAS</option></select>
-                <input type="text" id="s-isim" placeholder="Oyuncu Adı (Aynı adı yazarsan üstüne yazar)">
-                <div style="display:grid; grid-template-columns: 1fr 1fr; gap:5px;">
-                    <input type="number" id="s-gol" placeholder="Gol" min="0">
-                    <input type="number" id="s-b" placeholder="Beyaz" min="0">
-                    <input type="number" id="s-s" placeholder="Sarı" min="0">
-                    <input type="number" id="s-k" placeholder="Kırmızı" min="0">
-                </div>
-                <button class="btn btn-p" onclick="statGuncelle()">İstatistik Kaydet</button>
             </div>
 
             <!-- SİSTEMİ SIFIRLA BUTONU -->
@@ -280,54 +500,46 @@
 <script>
 // --- VERİTABANI ---
 let db = {
-    "fixtureLink": "https://drive.google.com/file/d/1NCWoDt1aJ5RNiOwk6eX4JFc9c3iC-MFU/view?usp=sharing",
+    "fixtureLink": "https://drive.google.com/file/d/1kpNh-R4diXq7zK4XrRY6Nbx9bGfqUUh2/view?usp=sharing",
     "pollLink": "https://docs.google.com/forms/d/e/1FAIpQLSdDW35uh8CNwzOHqk6cjKmcJQKRNfvKzRurqC6GDJjetGR_yg/viewform",
     "news": [
         {
-            "title": "Fikstür Güncellendi !!!",
+            "title": "FİKSTÜR GÜNCELLENDİ",
             "img": "",
             "rawImg": "",
             "text": "⚽Denetim Müdürlüğünde olan personelin haftaya Afyon ilinde yapılacak eğitim seminerinde olması nedeniyle fikstürde değişikliğe gidilmiştir. \n\n20-21 Nisan pazartesi ve salı günü maç oynanmayacak olup çarşamba günü C grubu maçları oynanacaktır. ",
-            "date": "17.04.2026",
-            "id": 1776423084888
+            "date": "21.04.2026",
+            "id": 1776756983410
         },
         {
             "title": "16.04.2026 Maç Sonuçları",
             "img": "",
             "rawImg": "",
-            "text": "İzmir İhtisas:7 - Gazi Buca Spor:4 --------------------------Denetim Gücü:5 - Çakabey İhtisas:2",
-            "date": "17.04.2026",
-            "id": 1776405736769
+            "text": "İzmir İhtisas:7 - Gazi Buca Spor:4 --------------------------                    Denetim Gücü:5 - Çakabey İhtisas:2",
+            "date": "21.04.2026",
+            "id": 1776756837661
         },
         {
-            "title": "15.04.2026 Maç Sonuçları",
+            "title": "17.04.2026 Maç Sonuçları",
             "img": "",
             "rawImg": "",
-            "text": "İdari Mali İşler:4 - Ege VD:2----------------------------------Karşıyaka VD:3 - Taşıtlar Master: 1",
-            "date": "16.04.2026",
-            "id": 1776321235338
-        },
-        {
-            "title": "14.04.2026 Maç Sonuçları",
-            "img": "",
-            "rawImg": "",
-            "text": "Bornova Kompleks: 5 - Personel Müd.: 0 --------------------- Denetim F.C: 3 - Eğitim F.K: 2\n",
-            "date": "15.04.2026",
-            "id": 1776233838196
+            "text": "Yemekhane Gücü:3 - Muhakemat 1838:7 --------------------------Aliağa VD:0 - Taşıtlar F.C:5",
+            "date": "21.04.2026",
+            "id": 1776756432449
         }
     ],
     "matches": [
-        {
-            "ev": "MUHAKEMAT 1838",
-            "dep": "ALİAĞA V.D.MÜD.",
-            "evS": 3,
-            "depS": 3
-        },
         {
             "ev": "TAŞITLAR F.C.",
             "dep": "YEMEKHANE GÜCÜ",
             "evS": 8,
             "depS": 1
+        },
+        {
+            "ev": "MUHAKEMAT 1838",
+            "dep": "ALİAĞA V.D.MÜD.",
+            "evS": 3,
+            "depS": 3
         },
         {
             "ev": "BORNOVA KOMPLEKS",
@@ -364,63 +576,75 @@ let db = {
             "dep": "ÇAKABEY İHTİSAS",
             "evS": 5,
             "depS": 2
+        },
+        {
+            "ev": "YEMEKHANE GÜCÜ",
+            "dep": "MUHAKEMAT 1838",
+            "evS": 3,
+            "depS": 7
+        },
+        {
+            "ev": "ALİAĞA V.D.MÜD.",
+            "dep": "TAŞITLAR F.C.",
+            "evS": 0,
+            "depS": 5
         }
     ],
     "knockouts": [],
     "teams": {
         "TAŞITLAR F.C.": {
             "g": "A",
-            "o": 1,
-            "gal": 1,
+            "o": 2,
+            "gal": 2,
             "b": 0,
             "m": 0,
-            "ag": 8,
+            "ag": 13,
             "yg": 1,
-            "av": 7,
-            "p": 3,
+            "av": 12,
+            "p": 6,
             "tb": 0,
             "ts": 0,
             "tk": 0
         },
         "MUHAKEMAT 1838": {
             "g": "A",
-            "o": 1,
-            "gal": 0,
+            "o": 2,
+            "gal": 1,
             "b": 1,
             "m": 0,
-            "ag": 3,
-            "yg": 3,
-            "av": 0,
-            "p": 1,
-            "tb": 0,
+            "ag": 10,
+            "yg": 6,
+            "av": 4,
+            "p": 4,
+            "tb": 1,
             "ts": 1,
             "tk": 0
         },
         "ALİAĞA V.D.MÜD.": {
             "g": "A",
-            "o": 1,
+            "o": 2,
             "gal": 0,
             "b": 1,
-            "m": 0,
+            "m": 1,
             "ag": 3,
-            "yg": 3,
-            "av": 0,
+            "yg": 8,
+            "av": -5,
             "p": 1,
             "tb": 0,
-            "ts": 0,
+            "ts": 1,
             "tk": 0
         },
         "YEMEKHANE GÜCÜ": {
             "g": "A",
-            "o": 1,
+            "o": 2,
             "gal": 0,
             "b": 0,
-            "m": 1,
-            "ag": 1,
-            "yg": 8,
-            "av": -7,
+            "m": 2,
+            "ag": 4,
+            "yg": 15,
+            "av": -11,
             "p": 0,
-            "tb": 0,
+            "tb": 1,
             "ts": 0,
             "tk": 0
         },
@@ -593,11 +817,217 @@ let db = {
             "tk": 0
         }
     },
+    "topScorers": [
+        {
+            "name": "OĞUZ BASRİ YILDIZ",
+            "team": "TAŞITLAR F.C.",
+            "gol": 5
+        },
+        {
+            "name": "ERGÜL YILGIN",
+            "team": "BORNOVA KOMPLEKS",
+            "gol": 3
+        },
+        {
+            "name": "LEVENT KILIÇ",
+            "team": "İZMİR İHTİSAS",
+            "gol": 3
+        },
+        {
+            "name": "SEMİH BAYRAM",
+            "team": "YEMEKHANE GÜCÜ",
+            "gol": 3
+        },
+        {
+            "name": "MUSTAFA BAĞCI",
+            "team": "TAŞITLAR F.C.",
+            "gol": 3
+        },
+        {
+            "name": "MUSTAFA ARIK",
+            "team": "TAŞITLAR F.C.",
+            "gol": 3
+        },
+        {
+            "name": "GÜVEN AKGÜMÜŞ",
+            "team": "ALİAĞA V.D.MÜD.",
+            "gol": 2
+        },
+        {
+            "name": "FERHAT BİLİR",
+            "team": "BORNOVA KOMPLEKS",
+            "gol": 2
+        },
+        {
+            "name": "MURAT BIYAN",
+            "team": "DENETİM F.C.",
+            "gol": 2
+        },
+        {
+            "name": "ESAT TÜRKARSLAN",
+            "team": "İDARİ MALİ İŞLER",
+            "gol": 2
+        },
+        {
+            "name": "EMRULLAH TEMEL",
+            "team": "İZMİR İHTİSAS",
+            "gol": 2
+        },
+        {
+            "name": "SÜLEYMAN ERTEK",
+            "team": "GAZİ BUCA SPOR",
+            "gol": 2
+        },
+        {
+            "name": "CANSIN ÖZER",
+            "team": "DENETİM GÜCÜ",
+            "gol": 2
+        },
+        {
+            "name": "ALİ BAYAR",
+            "team": "MUHAKEMAT 1838",
+            "gol": 2
+        },
+        {
+            "name": "YUNUS ERDEM",
+            "team": "MUHAKEMAT 1838",
+            "gol": 2
+        },
+        {
+            "name": "KAAN İZGİ",
+            "team": "MUHAKEMAT 1838",
+            "gol": 2
+        },
+        {
+            "name": "MUSTAFA ARIK",
+            "team": "MUHAKEMAT 1838",
+            "gol": 1
+        },
+        {
+            "name": "MEHMET AKKAŞ",
+            "team": "TAŞITLAR F.C.",
+            "gol": 1
+        },
+        {
+            "name": "FURKAN  KARABOĞA",
+            "team": "MUHAKEMAT 1838",
+            "gol": 1
+        },
+        {
+            "name": "MUSTAFA ERDAL",
+            "team": "ALİAĞA V.D.MÜD.",
+            "gol": 1
+        },
+        {
+            "name": "ALPASLAN KOÇ",
+            "team": "DENETİM F.C.",
+            "gol": 1
+        },
+        {
+            "name": "ALİ BENCİK",
+            "team": "EĞİTİM F.K.",
+            "gol": 1
+        },
+        {
+            "name": "BARIŞ KARAKAYA",
+            "team": "İDARİ MALİ İŞLER",
+            "gol": 1
+        },
+        {
+            "name": "İLKER BARIŞ TOZLU",
+            "team": "İDARİ MALİ İŞLER",
+            "gol": 1
+        },
+        {
+            "name": "VELİ KURT",
+            "team": "EGE V.D.MÜD.",
+            "gol": 1
+        },
+        {
+            "name": "VEDAT AKAT",
+            "team": "EGE V.D.MÜD.",
+            "gol": 1
+        },
+        {
+            "name": "CANER HÜYÜK",
+            "team": "KARŞIYAKA V.D.MÜD.",
+            "gol": 1
+        },
+        {
+            "name": "GÖKHAN GÖK",
+            "team": "KARŞIYAKA V.D.MÜD.",
+            "gol": 1
+        },
+        {
+            "name": "EREN YÜKSEK",
+            "team": "KARŞIYAKA V.D.MÜD.",
+            "gol": 1
+        },
+        {
+            "name": "SERKAN ÖMEROĞLU",
+            "team": "TAŞITLAR MASTER",
+            "gol": 1
+        },
+        {
+            "name": "NURKAY YİĞİT",
+            "team": "İZMİR İHTİSAS",
+            "gol": 1
+        },
+        {
+            "name": "EMRE KELEŞ",
+            "team": "İZMİR İHTİSAS",
+            "gol": 1
+        },
+        {
+            "name": "ONUR SAVGAN",
+            "team": "GAZİ BUCA SPOR",
+            "gol": 1
+        },
+        {
+            "name": "ÇAĞLAR DEMİRCİ",
+            "team": "GAZİ BUCA SPOR",
+            "gol": 1
+        },
+        {
+            "name": "GÖKHAN KARAHAN",
+            "team": "DENETİM GÜCÜ",
+            "gol": 1
+        },
+        {
+            "name": "EMRAH ÇALIK",
+            "team": "DENETİM GÜCÜ",
+            "gol": 1
+        },
+        {
+            "name": "CİHAN IŞIKSAL",
+            "team": "ÇAKABEY İHTİSAS",
+            "gol": 1
+        },
+        {
+            "name": "RAMAZAN TASLAK",
+            "team": "ÇAKABEY İHTİSAS",
+            "gol": 1
+        },
+        {
+            "name": "AHMET CAN ŞAHİN",
+            "team": "TAŞITLAR F.C.",
+            "gol": 1
+        },
+        {
+            "name": "ALİ CAN İPEK",
+            "team": "TAŞITLAR F.C.",
+            "gol": 1
+        },
+        {
+            "name": "FEYYAZ KASIM",
+            "team": "TAŞITLAR F.C.",
+            "gol": 1
+        }
+    ],
     "players": [
         {
             "name": "FURKAN KARABOĞA",
             "team": "MUHAKEMAT 1838",
-            "gol": 1,
             "b": 0,
             "s": 1,
             "k": 0
@@ -605,15 +1035,6 @@ let db = {
         {
             "name": "BARIŞ KARAKAYA",
             "team": "İDARİ MALİ İŞLER",
-            "gol": 1,
-            "b": 0,
-            "s": 1,
-            "k": 0
-        },
-        {
-            "name": "SERKAN ÖMEROĞLU",
-            "team": "TAŞITLAR MASTER",
-            "gol": 1,
             "b": 0,
             "s": 1,
             "k": 0
@@ -621,7 +1042,6 @@ let db = {
         {
             "name": "ALİ KAYA",
             "team": "İDARİ MALİ İŞLER",
-            "gol": 0,
             "b": 0,
             "s": 1,
             "k": 0
@@ -629,7 +1049,13 @@ let db = {
         {
             "name": "ERSOY PARLAK",
             "team": "KARŞIYAKA V.D.MÜD.",
-            "gol": 0,
+            "b": 0,
+            "s": 1,
+            "k": 0
+        },
+        {
+            "name": "SERKAN ÖMEROĞLU",
+            "team": "TAŞITLAR MASTER",
             "b": 0,
             "s": 1,
             "k": 0
@@ -637,264 +1063,28 @@ let db = {
         {
             "name": "YILMAZ ÇAKIR",
             "team": "TAŞITLAR MASTER",
-            "gol": 0,
             "b": 0,
             "s": 1,
             "k": 0
         },
         {
-            "name": "OĞUZ BASRİ YILDIZ",
-            "team": "TAŞITLAR F.C.",
-            "gol": 4,
-            "b": 0,
-            "s": 0,
-            "k": 0
-        },
-        {
-            "name": "ERGÜL YILGIN",
-            "team": "BORNOVA KOMPLEKS",
-            "gol": 3,
-            "b": 0,
-            "s": 0,
-            "k": 0
-        },
-        {
-            "name": "LEVENT KILIÇ",
-            "team": "İZMİR İHTİSAS",
-            "gol": 3,
-            "b": 0,
-            "s": 0,
-            "k": 0
-        },
-        {
-            "name": "MUSTAFA ARIK",
-            "team": "MUHAKEMAT 1838",
-            "gol": 2,
-            "b": 0,
-            "s": 0,
-            "k": 0
-        },
-        {
-            "name": "GÜVEN AKGÜMÜŞ",
+            "name": "ALİ ŞAN",
             "team": "ALİAĞA V.D.MÜD.",
-            "gol": 2,
             "b": 0,
-            "s": 0,
+            "s": 1,
             "k": 0
         },
         {
-            "name": "MUSTAFA BAĞCI",
-            "team": "TAŞITLAR F.C.",
-            "gol": 2,
-            "b": 0,
-            "s": 0,
-            "k": 0
-        },
-        {
-            "name": "FERHAT BİLİR",
-            "team": "BORNOVA KOMPLEKS",
-            "gol": 2,
-            "b": 0,
-            "s": 0,
-            "k": 0
-        },
-        {
-            "name": "MURAT BIYAN",
-            "team": "DENETİM F.C.",
-            "gol": 2,
-            "b": 0,
-            "s": 0,
-            "k": 0
-        },
-        {
-            "name": "ESAT TÜRKARSLAN",
-            "team": "İDARİ MALİ İŞLER",
-            "gol": 2,
-            "b": 0,
-            "s": 0,
-            "k": 0
-        },
-        {
-            "name": "EMRULLAH TEMEL",
-            "team": "İZMİR İHTİSAS",
-            "gol": 2,
-            "b": 0,
-            "s": 0,
-            "k": 0
-        },
-        {
-            "name": "SÜLEYMAN ERTEK",
-            "team": "GAZİ BUCA SPOR",
-            "gol": 2,
-            "b": 0,
-            "s": 0,
-            "k": 0
-        },
-        {
-            "name": "CANSIN ÖZER",
-            "team": "DENETİM GÜCÜ",
-            "gol": 2,
-            "b": 0,
-            "s": 0,
-            "k": 0
-        },
-        {
-            "name": "MUSTAFA ERDAL",
-            "team": "ALİAĞA V.D.MÜD.",
-            "gol": 1,
-            "b": 0,
-            "s": 0,
-            "k": 0
-        },
-        {
-            "name": "MEHMET ÇEVİREN",
-            "team": "TAŞITLAR F.C.",
-            "gol": 1,
-            "b": 0,
-            "s": 0,
-            "k": 0
-        },
-        {
-            "name": "MEHMET AKKAŞ",
-            "team": "TAŞITLAR F.C.",
-            "gol": 1,
-            "b": 0,
-            "s": 0,
-            "k": 0
-        },
-        {
-            "name": "SEMİH BAYRAM",
+            "name": "MURAT POLAT",
             "team": "YEMEKHANE GÜCÜ",
-            "gol": 1,
-            "b": 0,
+            "b": 1,
             "s": 0,
             "k": 0
         },
         {
-            "name": "ALPASLAN KOÇ",
-            "team": "DENETİM F.C.",
-            "gol": 1,
-            "b": 0,
-            "s": 0,
-            "k": 0
-        },
-        {
-            "name": "ALİ BENCİK",
-            "team": "EĞİTİM F.K.",
-            "gol": 1,
-            "b": 0,
-            "s": 0,
-            "k": 0
-        },
-        {
-            "name": "İLKER BARIŞ TOZLU",
-            "team": "İDARİ MALİ İŞLER",
-            "gol": 1,
-            "b": 0,
-            "s": 0,
-            "k": 0
-        },
-        {
-            "name": "VELİ KURT",
-            "team": "EGE V.D.MÜD.",
-            "gol": 1,
-            "b": 0,
-            "s": 0,
-            "k": 0
-        },
-        {
-            "name": "VEDAT AKAT",
-            "team": "EGE V.D.MÜD.",
-            "gol": 1,
-            "b": 0,
-            "s": 0,
-            "k": 0
-        },
-        {
-            "name": "CANER HÜYÜK",
-            "team": "KARŞIYAKA V.D.MÜD.",
-            "gol": 1,
-            "b": 0,
-            "s": 0,
-            "k": 0
-        },
-        {
-            "name": "GÖKHAN GÖK",
-            "team": "KARŞIYAKA V.D.MÜD.",
-            "gol": 1,
-            "b": 0,
-            "s": 0,
-            "k": 0
-        },
-        {
-            "name": "EREN YÜKSEK",
-            "team": "KARŞIYAKA V.D.MÜD.",
-            "gol": 1,
-            "b": 0,
-            "s": 0,
-            "k": 0
-        },
-        {
-            "name": "NURKAY YİĞİT",
-            "team": "İZMİR İHTİSAS",
-            "gol": 1,
-            "b": 0,
-            "s": 0,
-            "k": 0
-        },
-        {
-            "name": "EMRE KELEŞ",
-            "team": "İZMİR İHTİSAS",
-            "gol": 1,
-            "b": 0,
-            "s": 0,
-            "k": 0
-        },
-        {
-            "name": "ONUR SAVGAN",
-            "team": "GAZİ BUCA SPOR",
-            "gol": 1,
-            "b": 0,
-            "s": 0,
-            "k": 0
-        },
-        {
-            "name": "ÇAĞLAR DEMİRCİ",
-            "team": "GAZİ BUCA SPOR",
-            "gol": 1,
-            "b": 0,
-            "s": 0,
-            "k": 0
-        },
-        {
-            "name": "GÖKHAN KARAHAN",
-            "team": "DENETİM GÜCÜ",
-            "gol": 1,
-            "b": 0,
-            "s": 0,
-            "k": 0
-        },
-        {
-            "name": "EMRAH ÇALIK",
-            "team": "DENETİM GÜCÜ",
-            "gol": 1,
-            "b": 0,
-            "s": 0,
-            "k": 0
-        },
-        {
-            "name": "CİHAN IŞIKSAL",
-            "team": "ÇAKABEY İHTİSAS",
-            "gol": 1,
-            "b": 0,
-            "s": 0,
-            "k": 0
-        },
-        {
-            "name": "RAMAZAN TASLAK",
-            "team": "ÇAKABEY İHTİSAS",
-            "gol": 1,
-            "b": 0,
+            "name": "İBRAHİM ULUÇOBAN",
+            "team": "MUHAKEMAT 1838",
+            "b": 1,
             "s": 0,
             "k": 0
         }
@@ -902,6 +1092,8 @@ let db = {
 };
 
 let isAdmin = false;
+
+// --- CORE FUNCTIONS ---
 function nav(id, btn) {
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
@@ -909,12 +1101,14 @@ function nav(id, btn) {
     btn.classList.add('active');
     window.scrollTo(0,0);
 }
+
 function doLogin() {
     if(document.getElementById('admin-pass').value === "dikili35h") {
         isAdmin = true;
         document.getElementById('admin-login').style.display='none';
         document.getElementById('admin-panel').style.display='block';
-        const selectors = ['m-ev','m-dep','k-ev','k-dep','s-takim','tk-takim'];
+        
+        const selectors = ['m-ev','m-dep','k-ev','k-dep','s-takim','tk-takim','gk-takim'];
         let opt = '<option value="">Takım Seç</option>';
         Object.keys(db.teams).sort().forEach(t => opt += `<option value="${t}">${t}</option>`);
         selectors.forEach(s => document.getElementById(s).innerHTML = opt);
@@ -923,9 +1117,11 @@ function doLogin() {
         document.getElementById('a-anket').value = db.pollLink || "";
         
         renderNews();
+        renderAdminLists(); // Admin listelerini doldur
         alert("Sayın Onur ELMAZ, sisteme hoş geldiniz.");
     } else { alert("Hatalı!"); }
 }
+
 function cikisYap() { isAdmin=false; location.reload(); }
 
 // --- SİSTEMİ SIFIRLA FONKSİYONU ---
@@ -935,15 +1131,107 @@ function sistemiSifirla() {
             db.matches = [];
             db.knockouts = [];
             db.players = [];
+            db.topScorers = [];
             Object.keys(db.teams).forEach(t => {
                 db.teams[t].o = 0; db.teams[t].gal = 0; db.teams[t].b = 0; db.teams[t].m = 0;
                 db.teams[t].ag = 0; db.teams[t].yg = 0; db.teams[t].av = 0; db.teams[t].p = 0;
                 db.teams[t].tb = 0; db.teams[t].ts = 0; db.teams[t].tk = 0;
             });
-            calculateStats(); filterG('A', document.querySelector('.group-btn')); renderStats(); renderKnockouts();
+            calculateStats(); filterG('A', document.querySelector('.group-btn')); renderStats(); renderKnockouts(); renderAdminLists();
             alert("Sistem başarıyla sıfırlandı! Lütfen 'GÜNCEL DOSYAYI İNDİR' butonuna basarak yeni boş dosyayı GitHub'a yükleyin.");
         }
     }
+}
+
+// --- ADMIN LİSTELERİ (SİLME İŞLEMLERİ İÇİN) ---
+function renderAdminLists() {
+    // Gol Krallığı Listesi
+    const golCont = document.getElementById('admin-gol-list');
+    golCont.innerHTML = '';
+    if(!db.topScorers) db.topScorers = [];
+    db.topScorers.sort((a,b) => b.gol - a.gol).forEach((p, index) => {
+        golCont.innerHTML += `
+            <div class="admin-list-item">
+                <span><b>${p.name}</b> (${p.team}) - ${p.gol} Gol</span>
+                <button class="btn-del-small" onclick="golKraliSil(${index})">Sil</button>
+            </div>`;
+    });
+
+    // Kart Listesi
+    const kartCont = document.getElementById('admin-kart-list');
+    kartCont.innerHTML = '';
+    if(!db.players) db.players = [];
+    db.players.forEach((p, index) => {
+        kartCont.innerHTML += `
+            <div class="admin-list-item">
+                <span><b>${p.name}</b> (${p.team}) - B:${p.b} S:${p.s} K:${p.k}</span>
+                <button class="btn-del-small" onclick="kartSil(${index})">Sil</button>
+            </div>`;
+    });
+}
+
+function golKraliSil(index) {
+    if(confirm("Bu oyuncuyu gol krallığından silmek istiyor musunuz?")) {
+        db.topScorers.splice(index, 1);
+        renderStats(); renderAdminLists();
+    }
+}
+
+function kartSil(index) {
+    if(confirm("Bu oyuncunun kart kayıtlarını silmek istiyor musunuz?")) {
+        db.players.splice(index, 1);
+        renderStats(); renderAdminLists();
+    }
+}
+
+// --- GOL KRALLIĞI MANUEL EKLEME ---
+function golKraliEkle() {
+    const name = document.getElementById('gk-isim').value.trim();
+    const team = document.getElementById('gk-takim').value;
+    const gol = parseInt(document.getElementById('gk-gol').value);
+    
+    if(!name || !team || isNaN(gol)) return alert("Lütfen tüm alanları doldurun!");
+    if(!db.topScorers) db.topScorers = [];
+    
+    let idx = db.topScorers.findIndex(p => p.name.toLowerCase() === name.toLowerCase() && p.team === team);
+    if(idx > -1) {
+        db.topScorers[idx].gol = gol;
+        alert("Mevcut oyuncunun gol sayısı güncellendi!");
+    } else {
+        db.topScorers.push({name, team, gol});
+        alert("Oyuncu gol krallığına eklendi!");
+    }
+    
+    document.getElementById('gk-isim').value = '';
+    document.getElementById('gk-gol').value = '';
+    renderStats(); renderAdminLists();
+}
+
+// --- KART GÜNCELLEME ---
+function kartGuncelle() {
+    const name = document.getElementById('s-isim').value.trim();
+    const team = document.getElementById('s-takim').value;
+    const b = parseInt(document.getElementById('s-b').value) || 0;
+    const s = parseInt(document.getElementById('s-s').value) || 0;
+    const k = parseInt(document.getElementById('s-k').value) || 0;
+    
+    if(!name || !team) return alert("İsim ve Takım zorunludur!");
+    if(!db.players) db.players = [];
+    
+    let pIdx = db.players.findIndex(p => p.name.toLowerCase() === name.toLowerCase() && p.team === team);
+    if(pIdx > -1) {
+        db.players[pIdx] = {name, team, b, s, k};
+        alert("Mevcut oyuncunun kartları güncellendi!");
+    } else {
+        db.players.push({name, team, b, s, k});
+        alert("Oyuncu kart listesine eklendi!");
+    }
+    
+    document.getElementById('s-isim').value = '';
+    document.getElementById('s-b').value = '';
+    document.getElementById('s-s').value = '';
+    document.getElementById('s-k').value = '';
+    renderStats(); renderAdminLists();
 }
 
 function anketKaydet() {
@@ -951,6 +1239,7 @@ function anketKaydet() {
     renderPoll();
     alert("Anket güncellendi!");
 }
+
 function renderPoll() {
     const cont = document.getElementById('anket-container');
     if(!db.pollLink) { 
@@ -1019,14 +1308,6 @@ function takimKartGuncelle() {
     db.teams[team].tk = parseInt(document.getElementById('tk-k').value) || 0;
     renderStats(); alert("Kaydedildi!");
 }
-function statGuncelle() {
-    const name = document.getElementById('s-isim').value.trim(), team = document.getElementById('s-takim').value;
-    const gol = parseInt(document.getElementById('s-gol').value) || 0, b = parseInt(document.getElementById('s-b').value) || 0, s = parseInt(document.getElementById('s-s').value) || 0, k = parseInt(document.getElementById('s-k').value) || 0;
-    if(!name || !team) return alert("Eksik!");
-    let pIdx = db.players.findIndex(p => p.name.toLowerCase() === name.toLowerCase() && p.team === team);
-    if(pIdx > -1) db.players[pIdx] = {name, team, gol, b, s, k}; else db.players.push({name, team, gol, b, s, k});
-    renderStats(); alert("Kaydedildi!");
-}
 
 function calculateStats() {
     Object.keys(db.teams).forEach(t => { 
@@ -1081,57 +1362,46 @@ function renderNews() {
     });
 }
 function renderStats() {
+    // Gol Krallığı
     const gBody = document.querySelector('#gol-table tbody'); gBody.innerHTML = '';
-    db.players.sort((a,b) => b.gol - a.gol).slice(0,10).forEach(p => { if(p.gol > 0) gBody.innerHTML += `<tr><td class="t-left">${p.name}</td><td>${p.team}</td><td class="highlight">${p.gol}</td></tr>`; });
+    if(!db.topScorers) db.topScorers = [];
+    db.topScorers.sort((a,b) => b.gol - a.gol).slice(0,10).forEach(p => { 
+        gBody.innerHTML += `<tr><td class="t-left">${p.name}</td><td>${p.team}</td><td class="highlight">${p.gol}</td></tr>`; 
+    });
+
+    // Takım Kartları
     const tkBody = document.getElementById('takim-kart-body'); tkBody.innerHTML = ''; let tkArr = [];
     Object.keys(db.teams).forEach(t => { const d = db.teams[t]; if(d.tb > 0 || d.ts > 0 || d.tk > 0) tkArr.push({name: t, b: d.tb, s: d.ts, k: d.tk}); });
     tkArr.sort((a,b) => b.k - a.k || b.s - a.s).forEach(t => { tkBody.innerHTML += `<tr><td class="t-left">${t.name}</td><td>${t.b}</td><td>${t.s}</td><td style="color:red;font-weight:bold">${t.k}</td></tr>`; });
+    
+    // Oyuncu Kartları
     const kBody = document.querySelector('#kart-table tbody'); kBody.innerHTML = '';
-    db.players.sort((a,b) => b.k - a.k || b.s - a.s).forEach(p => { if(p.b > 0 || p.s > 0 || p.k > 0) kBody.innerHTML += `<tr><td class="t-left">${p.name}</td><td>${p.b}</td><td>${p.s}</td><td style="color:red;font-weight:bold">${p.k}</td></tr>`; });
+    if(!db.players) db.players = [];
+    db.players.sort((a,b) => b.k - a.k || b.s - a.s).forEach(p => { 
+        if(p.b > 0 || p.s > 0 || p.k > 0) kBody.innerHTML += `<tr><td class="t-left">${p.name}</td><td>${p.b}</td><td>${p.s}</td><td style="color:red;font-weight:bold">${p.k}</td></tr>`; 
+    });
 }
 
-// --- SİHİRLİ YÖNLENDİRME (İNDİRME ÖNCESİ) ---
 function indirGuncel() {
-    // 1. Admin panelini gizle ve güvenliğe al
-    isAdmin = false; 
-    document.getElementById('admin-panel').style.display = 'none'; 
-    document.getElementById('admin-login').style.display = 'block'; 
-    document.getElementById('admin-pass').value = ''; 
+    isAdmin = false; document.getElementById('admin-panel').style.display = 'none'; document.getElementById('admin-login').style.display = 'block'; document.getElementById('admin-pass').value = ''; renderNews(); 
     
-    // 2. ÇAKTIRMADAN HABERLER SEKMESİNE GEÇ (Oyuncular buradan başlasın diye)
+    // Çaktırmadan Haberler sekmesine geç
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById('p-news').classList.add('active');
-    
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-    document.querySelectorAll('.nav-item')[0].classList.add('active'); // 0 = Haberler butonu
+    document.querySelectorAll('.nav-item')[0].classList.add('active');
     
-    renderNews(); // Sil butonlarını gizlemek için yeniden çiz
+    const tamKod = document.documentElement.outerHTML; const regex = /let db = \{[\s\S]*?\};/; const yeniKod = tamKod.replace(regex, `let db = ${JSON.stringify(db, null, 4)};`);
+    const blob = new Blob([yeniKod], { type: 'text/html' }); const a = document.createElement('a'); a.href = URL.createObjectURL(blob); a.download = 'index.html'; a.click();
     
-    // 3. Dosyayı bu "Haberler açık" haliyle kaydet
-    const tamKod = document.documentElement.outerHTML; 
-    const regex = /let db = \{[\s\S]*?\};/; 
-    const yeniKod = tamKod.replace(regex, `let db = ${JSON.stringify(db, null, 4)};`);
-    
-    const blob = new Blob([yeniKod], { type: 'text/html' }); 
-    const a = document.createElement('a'); 
-    a.href = URL.createObjectURL(blob); 
-    a.download = 'index.html'; 
-    a.click();
-    
-    // 4. İndirme bitince senin ekranını tekrar Admin'e geri getir
-    isAdmin = true; 
-    document.getElementById('admin-panel').style.display = 'block'; 
-    document.getElementById('admin-login').style.display = 'none'; 
-    
+    // Geri dön
+    isAdmin = true; document.getElementById('admin-panel').style.display = 'block'; document.getElementById('admin-login').style.display = 'none'; 
     document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
     document.getElementById('p-admin').classList.add('active');
-    
     document.querySelectorAll('.nav-item').forEach(n => n.classList.remove('active'));
-    document.querySelectorAll('.nav-item')[5].classList.add('active'); // 5 = Admin butonu
-    
-    renderNews(); // Sil butonlarını senin için geri getir
+    document.querySelectorAll('.nav-item')[5].classList.add('active');
+    renderNews();
 }
-
 window.onload = () => { calculateStats(); renderNews(); renderPoll(); renderFixture(); filterG('A', document.querySelector('.group-btn')); renderStats(); renderKnockouts(); };
 </script>
 
