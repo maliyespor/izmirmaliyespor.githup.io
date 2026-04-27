@@ -88,25 +88,7 @@
 <div class="container">
     <!-- HABERLER SAYFASI (AÇILIŞ SAYFASI) -->
     <div id="p-news" class="page active">
-        <div id="news-list"><div class="news-card"><div class="news-body"><div class="news-date">24.04.2026</div><div class="news-title">KOMİTE KARARI</div><div class="news-text">İzmir Defterdarlığı - 2026 Maliye Spor Futbol Turnuvası
-Tertip Komitesi Kararı
-Sayı: 2026/TK-03
-
-Konu: Takım Çekilmesi ve Disiplin Hükümleri Hakkında
-
-TÜM PERSONELİN VE TAKIM KAPTANLARININ DİKKATİNE,
-
-2026 Yılı Maliye Spor Futbol Turnuvası C grubunda mücadele eden Ege Vergi Dairesi takımının, oyuncularında meydana gelen sakatlıkları gerekçe göstererek turnuvadan çekilme talebi Tertip Komitemizce değerlendirilmiştir. Yapılan inceleme ve görüşmeler neticesinde, turnuva bütünlüğünün korunması ve adil rekabet ortamının sürdürülmesi amacıyla aşağıdaki kararlar oy birliği ile alınmıştır:
-
-Müsabaka Sonuçlarının Düzenlenmesi: Turnuva yönetmeliği uyarınca Ege Vergi Dairesi takımı turnuvadan diskalifiye edilmiştir. Gruptaki puan ve averaj dengesinin korunması adına; adı geçen takımın 15.04.2026 tarihinde İdari ve Mali İşler takımı ile gerçekleştirdiği ve 4-2 mağlubiyeti ile sonuçlanan müsabaka skoru emsal kabul edilmiştir. Ege Vergi Dairesi’nin grubunda yer alan diğer tüm takımların oynadığı/oynayacağı maçlar, ilgili skor (4-2) üzerinden hükmen mağlubiyet şeklinde tescil edilecektir.
-
-Disiplin Yaptırımları: Turnuva başlangıcında yapılan teknik toplantıda tebliğ edilen ve kural kitapçığında yer alan disiplin hükümleri gereğince; Ege Vergi Dairesi takımı ve mevcut takım listesinde yer alan tüm oyuncular, bir sonraki turnuvadan men edilmiştir. İlgili personel, hangi takım adı altında olursa olsun bir sonraki organizasyonda oyuncu veya yönetici olarak yer alamayacaktır.
-
-Turnuvaya katılan diğer tüm ekiplerimize disiplin ve sporcu ahlakı çerçevesinde başarılar dileriz.
-
-Gereği bilgilerinize arz olunur.
-
-TERTİP KOMİTESİ BAŞKANLIĞI</div></div></div><div class="news-card"><div class="news-body"><div class="news-date">24.04.2026</div><div class="news-title">22.04.2026 Maç Sonuçları</div><div class="news-text">Taşıtlar Master:3 - İdari Mali İşler: 2</div></div></div><div class="news-card"><div class="news-body"><div class="news-date">21.04.2026</div><div class="news-title">16.04.2026 Maç Sonuçları</div><div class="news-text">İzmir İhtisas:7 - Gazi Buca Spor:4 --------------------------                    Denetim Gücü:5 - Çakabey İhtisas:2</div></div></div><div class="news-card"><div class="news-body"><div class="news-date">21.04.2026</div><div class="news-title">17.04.2026 Maç Sonuçları</div><div class="news-text">Yemekhane Gücü:3 - Muhakemat 1838:7 --------------------------Aliağa VD:0 - Taşıtlar F.C:5</div></div></div></div>
+        <div id="news-list"><div class="news-card"><div class="news-body"><div class="news-date">24.04.2026</div><div class="news-title">22.04.2026 Maç Sonuçları</div><div class="news-text">Taşıtlar Master:3 - İdari Mali İşler: 2</div></div></div><div class="news-card"><div class="news-body"><div class="news-date">21.04.2026</div><div class="news-title">16.04.2026 Maç Sonuçları</div><div class="news-text">İzmir İhtisas:7 - Gazi Buca Spor:4 --------------------------                    Denetim Gücü:5 - Çakabey İhtisas:2</div></div></div><div class="news-card"><div class="news-body"><div class="news-date">21.04.2026</div><div class="news-title">17.04.2026 Maç Sonuçları</div><div class="news-text">Yemekhane Gücü:3 - Muhakemat 1838:7 --------------------------Aliağa VD:0 - Taşıtlar F.C:5</div></div></div></div>
     </div>
 
     <!-- ANKET SAYFASI -->
@@ -135,19 +117,19 @@ TERTİP KOMİTESİ BAŞKANLIĞI</div></div></div><div class="news-card"><div cla
     <!-- PUAN DURUMU & ELEMELER SAYFASI -->
     <div id="p-puan" class="page">
         <div class="group-selector">
-            <button class="group-btn" onclick="filterG('A', this)">Grup A</button>
+            <button class="group-btn active" onclick="filterG('A', this)">Grup A</button>
             <button class="group-btn" onclick="filterG('B', this)">Grup B</button>
-            <button class="group-btn active" onclick="filterG('C', this)">Grup C</button>
+            <button class="group-btn" onclick="filterG('C', this)">Grup C</button>
             <button class="group-btn" onclick="filterG('D', this)">Grup D</button>
             <button class="group-btn" style="border-color:var(--a); color:var(--a);" onclick="showKnockouts(this)">🏆 Elemeler</button>
         </div>
         
         <div class="card" id="group-area" style="display: block;">
-            <h2 id="g-title">🏆 Puan Durumu - Grup C</h2>
+            <h2 id="g-title">🏆 Puan Durumu - Grup A</h2>
             <div class="table-w">
                 <table>
                     <thead><tr><th>Takım</th><th>O</th><th>G</th><th>M</th><th>AV</th><th>P</th></tr></thead>
-                    <tbody id="puan-body"><tr><td class="t-left">KARŞIYAKA V.D.MÜD.</td><td>2</td><td>2</td><td>0</td><td>4</td><td class="highlight">6</td></tr><tr><td class="t-left">İDARİ MALİ İŞLER</td><td>2</td><td>1</td><td>1</td><td>1</td><td class="highlight">3</td></tr><tr><td class="t-left">TAŞITLAR MASTER</td><td>2</td><td>1</td><td>1</td><td>-1</td><td class="highlight">3</td></tr><tr><td class="t-left">EGE V.D.MÜD.</td><td>2</td><td>0</td><td>2</td><td>-4</td><td class="highlight">0</td></tr></tbody>
+                    <tbody id="puan-body"><tr><td class="t-left">TAŞITLAR F.C.</td><td>2</td><td>2</td><td>0</td><td>12</td><td class="highlight">6</td></tr><tr><td class="t-left">MUHAKEMAT 1838</td><td>2</td><td>1</td><td>0</td><td>4</td><td class="highlight">4</td></tr><tr><td class="t-left">ALİAĞA V.D.MÜD.</td><td>2</td><td>0</td><td>1</td><td>-5</td><td class="highlight">1</td></tr><tr><td class="t-left">YEMEKHANE GÜCÜ</td><td>2</td><td>0</td><td>2</td><td>-11</td><td class="highlight">0</td></tr></tbody>
                 </table>
             </div>
         </div>
@@ -535,14 +517,6 @@ let db = {
     "fixtureLink": "https://drive.google.com/file/d/1kpNh-R4diXq7zK4XrRY6Nbx9bGfqUUh2/view?usp=sharing",
     "pollLink": "https://docs.google.com/forms/d/e/1FAIpQLSdDW35uh8CNwzOHqk6cjKmcJQKRNfvKzRurqC6GDJjetGR_yg/viewform",
     "news": [
-        {
-            "title": "KOMİTE KARARI",
-            "img": "",
-            "rawImg": "",
-            "text": "İzmir Defterdarlığı - 2026 Maliye Spor Futbol Turnuvası\nTertip Komitesi Kararı\nSayı: 2026/TK-03\n\nKonu: Takım Çekilmesi ve Disiplin Hükümleri Hakkında\n\nTÜM PERSONELİN VE TAKIM KAPTANLARININ DİKKATİNE,\n\n2026 Yılı Maliye Spor Futbol Turnuvası C grubunda mücadele eden Ege Vergi Dairesi takımının, oyuncularında meydana gelen sakatlıkları gerekçe göstererek turnuvadan çekilme talebi Tertip Komitemizce değerlendirilmiştir. Yapılan inceleme ve görüşmeler neticesinde, turnuva bütünlüğünün korunması ve adil rekabet ortamının sürdürülmesi amacıyla aşağıdaki kararlar oy birliği ile alınmıştır:\n\nMüsabaka Sonuçlarının Düzenlenmesi: Turnuva yönetmeliği uyarınca Ege Vergi Dairesi takımı turnuvadan diskalifiye edilmiştir. Gruptaki puan ve averaj dengesinin korunması adına; adı geçen takımın 15.04.2026 tarihinde İdari ve Mali İşler takımı ile gerçekleştirdiği ve 4-2 mağlubiyeti ile sonuçlanan müsabaka skoru emsal kabul edilmiştir. Ege Vergi Dairesi’nin grubunda yer alan diğer tüm takımların oynadığı/oynayacağı maçlar, ilgili skor (4-2) üzerinden hükmen mağlubiyet şeklinde tescil edilecektir.\n\nDisiplin Yaptırımları: Turnuva başlangıcında yapılan teknik toplantıda tebliğ edilen ve kural kitapçığında yer alan disiplin hükümleri gereğince; Ege Vergi Dairesi takımı ve mevcut takım listesinde yer alan tüm oyuncular, bir sonraki turnuvadan men edilmiştir. İlgili personel, hangi takım adı altında olursa olsun bir sonraki organizasyonda oyuncu veya yönetici olarak yer alamayacaktır.\n\nTurnuvaya katılan diğer tüm ekiplerimize disiplin ve sporcu ahlakı çerçevesinde başarılar dileriz.\n\nGereği bilgilerinize arz olunur.\n\nTERTİP KOMİTESİ BAŞKANLIĞI",
-            "date": "24.04.2026",
-            "id": 1777019476457
-        },
         {
             "title": "22.04.2026 Maç Sonuçları",
             "img": "",
